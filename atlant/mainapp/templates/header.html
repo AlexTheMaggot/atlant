@@ -1,0 +1,235 @@
+{% load static %}
+<header class="header">
+        <div class="test-class">
+            <!-- Навигация -->
+            <section class="spad top-nav">
+                <!-- Навигация -->
+                <nav>
+                    <!-- Начало ссылки на навигацию -->
+                    {% if '/uz/' in request.path %}
+                        <ul>
+                            <li><a href="{% url 'mainapp:about_uz' %}">Kompaniya haqida</a></li>
+                            <li><a href="{% url 'mainapp:contacts_uz' %}">Kontaktlar</a></li>
+                            <li><a href="{% url 'mainapp:rent_terms_uz' %}">Ijara shartlari</a></li>
+                            <li><a href="{% url 'mainapp:delivery_uz' %}">Yetkazib berish</a></li>
+                            <li><a href="{% url 'mainapp:services_uz' %}">Xizmatlar</a></li>
+                        </ul>
+                    {% else %}
+                        <ul>
+                            <li><a href="{% url 'mainapp:about' %}">О компании</a></li>
+                            <li><a href="{% url 'mainapp:contacts' %}">Контакты</a></li>
+                            <li><a href="{% url 'mainapp:rent_terms' %}">Условия аренды</a></li>
+                            <li><a href="{% url 'mainapp:delivery' %}">Доставка</a></li>
+                            <li><a href="{% url 'mainapp:services' %}">Услуги</a></li>
+                        </ul>
+                    {% endif %}
+                    <!-- Конец ссылки на навигацию -->
+                </nav>
+                <!-- Навигация конец -->
+                <!-- Языки -->
+                <div class="lang">
+                    <!-- Начало ссылок на языки -->
+                    <ul>
+                        {% if '/uz/' in request.path %}
+                            <li><a href="#" id="header_lang_ru">рус</a></li>
+                            <li class="active-lang"><a href="#" id="header_lang_uz">uzb</a></li>
+                        {% else %}
+                            <li class="active-lang"><a href="#" id="header_lang_ru">рус</a></li>
+                            <li><a href="#" id="header_lang_uz">uzb</a></li>
+                        {% endif %}
+                    </ul>
+                    <!-- Конец ссылок на языки -->
+                </div>
+                <!-- Языки конец -->
+            </section>
+
+            <!-- Секция с контакными данными -->
+            <section class="spad logo-info">
+
+                <!-- Кнопка закрыть -->
+                <div class="clouse-mobile-btn">
+                </div>
+                <!-- Кнопка закрыть конец -->
+
+                <!-- Логотип -->
+                <div class="logo">
+                    {% if '/uz/' in request.path %}
+                        <a href="{% url 'mainapp:index_uz' %}"><img src="{{ header.logo.url }}" alt="logo"></a>
+                    {% else %}
+                        <a href="{% url 'mainapp:index' %}"><img src="{{ header.logo.url }}" alt="logo"></a>
+                    {% endif %}
+                </div>
+                <!-- Логотип конец -->
+
+                <!-- Блок с адресом -->
+                <div class="adress">
+                    {% if '/uz/' in request.path %}
+                        <p class="adress-header">Bizning manzillar</p>
+                        <p>{{ header.address_uz }}</p>
+                    {% else %}
+                        <p class="adress-header">Наши адреса</p>
+                        <p>{{ header.address_ru }}</p>
+                    {% endif %}
+                </div>
+                <!-- Блок с адресом конец -->
+
+                <!-- Блок с контактами -->
+                <div class="contacts">
+                    {% if '/uz/' in request.path %}
+                        <p class="contact-header">Savdo bo'limi</p>
+                        <a href="tel:{{ header.phone }}"><span>{{ header.phone }}</span></a>
+                    {% else %}
+                        <p class="contact-header">Отдел продаж</p>
+                        <a href="tel:{{ header.phone }}"><span>{{ header.phone }}</span></a>
+                    {% endif %}
+                </div>
+                <!-- Блок с контактами конец -->
+
+                <!-- Блок с социальными сетями -->
+                <div class="social">
+                    <ul>
+                        <li class="telegram"><a href="{{ header.telegram }}"><i class="fab fa-telegram-plane"></i></a></li>
+                        <li class="instagram"><a href="{{ header.instagram }}"><i class="fab fa-instagram"></i></a></li>
+                        <li class="facebook"><a href="{{ header.facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="youtube"><a href="{{ header.youtube_1 }}"><i class="fab fa-youtube"></i></a></li>
+                        <li class="youtube"><a href="{{ header.youtube_2 }}"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+                <!-- Блок с социальными сетями -->
+            </section>
+            <!-- Секция с контакными данными конец  -->
+
+            <section class="spad category-nav">
+                <!-- Начало список ссылок на категории товаров -->
+                <div class="all-category">
+                    {% if '/uz/' in request.path %}
+                        <button class="all-category-link" href="#"><span><i class="fas fa-list"></i></span>katalog</button>
+                    {% else %}
+                        <button class="all-category-link" href="#"><span><i class="fas fa-list"></i></span>каталог товаров</button>
+                    {% endif %}
+                    <!-- Начало ссылок на категории -->
+                    <ul>
+                        {% if '/uz/' in request.path %}
+                            {% for category in categories %}
+                                <li><a href="{% url 'catalog_uz:category_detail_uz' category.slug %}">{{ category.name_uz }}</a></li>
+                            {% endfor %}
+                        {% else %}
+                            {% for category in categories %}
+                                <li><a href="{% url 'catalog:category_detail' category.slug %}">{{ category.name_ru }}</a></li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <!-- Конец ссылок на категории -->
+                </div>
+                <!-- Конец список ссылок на категории товаров -->
+
+                <!-- Навигация арендуемых товаров -->
+                <div class="renta-list">
+                    <!-- Начало ссылок арендуемых товаров -->
+                    <ul>
+                        <li class="nav__link__elem">
+                            {% if '/uz/' in request.path %}
+                                <a href="Formwork_rental.html">Kalıp ijarasi</a>
+                            {% else %}
+                                <a href="Formwork_rental.html">Аренда опалубка</a>
+                            {% endif %}
+                            <!-- Начало выпадающих ссылок -->
+                            <ul>
+                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                <li class="nav__link__elem">
+                                    <a href="#">Пример</a>
+                                    <!-- Начало выпадающих ссылок -->
+                                    <ul>
+                                        <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                        <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                        <li class="nav__link__elem">
+                                            <a href="#">Пример1</a>
+                                            <!-- Начало выпадающих ссылок -->
+                                            <ul>
+                                                <li class="nav__link__elem">
+                                                    <a href="#">Пример2</a>
+                                                    <!-- Начало выпадающих ссылок -->
+                                                    <ul>
+                                                        <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                                        <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                                        <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                                        <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                                    </ul>
+                                                    <!-- Конец выпадающих ссылок -->
+                                                </li>
+                                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                            </ul>
+                                            <!-- Конец выпадающих ссылок -->
+                                        </li>
+                                        <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                    </ul>
+                                    <!-- Конец выпадающих ссылок -->
+                                </li>
+                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                            </ul>
+                            <!-- Конец выпадающих ссылок -->
+                        </li>
+                        {% if '/uz/' in request.path %}
+                            <li class="nav__link__elem"><a href="Formwork_rental.html">Sotish qoliplari</a></li>
+                        {% else %}
+                            <li class="nav__link__elem"><a href="Formwork_rental.html">Продажа опалубка</a></li>
+                        {% endif %}
+                        <li class="nav__link__elem">
+                            {% if '/uz/' in request.path %}
+                                <a href="Formwork_rental.html">O'zgarish uylarini ijaraga berish</a>
+                            {% else %}
+                                <a href="Formwork_rental.html">Аренда бытовок</a>
+                            {% endif %}
+                            <!-- Начало выпадающих ссылок -->
+                            <ul>
+                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                <li class="nav__link__elem">
+                                    <a href="#">Пример1</a>
+                                    <!-- Начало выпадающих ссылок -->
+                                    <ul>
+                                        <li class="nav__link__elem">
+                                            <a href="#">Пример2</a>
+                                            <!-- Начало выпадающих ссылок -->
+                                            <ul>
+                                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                            </ul>
+                                            <!-- Конец выпадающих ссылок -->
+                                        </li>
+                                        <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                        <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                        <li class="nav__link__elem"><a href="#">Пример</a></li>
+                                    </ul>
+                                    <!-- Конец выпадающих ссылок -->
+                                </li>
+                                <li class="nav__link__elem"><a href="#">Пример</a></li>
+                            </ul>
+                            <!-- Конец выпадающих ссылок -->
+                        </li>
+                        {% if '/uz/' in request.path %}
+                            <li class="nav__link__elem"><a href="Formwork_rental.html">Iskala ijarasi</a></li>
+                        {% else %}
+                            <li class="nav__link__elem"><a href="Formwork_rental.html">Аренда лесов</a></li>
+                        {% endif %}
+                    </ul>
+                    <!-- Начало ссылок арендуемых товаров -->
+                </div>
+                <!-- Навигация арендуемых товаров конец -->
+
+                <!-- Поле поиска -->
+                <div class="search">
+                    <form action="{% url 'catalog:search' %}" method="GET">
+                        <button><i class="fas fa-search"></i></button>
+                        <input type="search" required name="search">
+                    </form>
+                </div>
+                <!-- Поле поиска -->
+            </section>
+        </div>
+    </header>

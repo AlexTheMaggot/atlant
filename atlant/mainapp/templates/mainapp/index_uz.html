@@ -1,0 +1,553 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}Index_uz{% endblock %}
+{% block content %}
+    <!-- Кнопка Обратоного Вызова -->
+    <button type="button" class="recall_btn btn btn-primary" data-toggle="modal" data-target="#myModal">
+        <img src="{% static 'img/phone_icon.svg' %}" alt="">
+    </button>
+    <!-- Кнопка Обратного Вызова конец -->
+
+    <!-- Модальное окно обратного звонка -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Начало контента модального окна -->
+                <div class="modal-body">
+                        <h2 class="modal_title">Пожалуйста, заполните поля для обратной связи с Вами</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-6"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-6"><input type="text" placeholder="Срок:"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+                <!-- Конец контента модального окна -->
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно обратного звонка конец -->
+
+    <!-- Мобильное конец -->
+    <div class="overlay"></div>
+    <section class="mobile_menu">
+        <!-- Логотип в мобильном -->
+        <div class="logo">
+            <a href="{% url 'mainapp:index' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+        </div>
+        <!-- Логотип в мобильном конец -->
+
+        <!-- Поиск в мобильном -->
+        <div class="mobile_search">
+            <form action="#" method="POST">
+                <button><i class="fas fa-search"></i></button>
+                <input type="search">
+            </form>
+        </div>
+        <!-- Поиск в мобильном конец -->
+
+        <div class="mobile_cat_nav">
+            <!-- Все категории в мобильном -->
+            <div class="mobile_all-product">
+                <a class="mobile_all-product-link" href="#"><span><i class="fas fa-list"></i></span>каталог товаров</a><button class="open-cat-list"><i class="fas fa-chevron-right"></i></button>
+                <!-- Начало ссылки меню категории товаров -->
+                <ul>
+                    <li><a href="Category_products.html">Шланги</a></li>
+                    <li><a href="Category_products.html">Фиксаторы для лесов</a></li>
+                    <li><a href="Category_products.html">Фанера</a></li>
+                    <li><a href="Category_products.html">Унивилки</a></li>
+                    <li><a href="Category_products.html">Уголки</a></li>
+                    <li><a href="Category_products.html">Трубы</a></li>
+                    <li><a href="Category_products.html">Тайрот</a></li>
+                    <li><a href="Category_products.html">Стойки</a></li>
+                    <li><a href="Category_products.html">Пружинный зажим</a></li>
+                    <li><a href="Category_products.html">Перемычка</a></li>
+                    <li><a href="Category_products.html">Опалубка</a></li>
+                    <li><a href="Category_products.html">Объемные стойки</a></li>
+                    <li><a href="Category_products.html">Объемные опалубки</a></li>
+                    <li><a href="Category_products.html">Настил</a></li>
+                    <li><a href="Category_products.html">Леса</a></li>
+                    <li><a href="Category_products.html">Крюк</a></li>
+                    <li><a href="Category_products.html">Домкрат</a></li>
+                    <li><a href="Category_products.html">Клин</a></li>
+                    <li><a href="Category_products.html">Пружинный зажим</a></li>
+                </ul>
+                <!-- Конец ссылки меню категории товаров -->
+            </div>
+            <!-- Все категории в мобильном конец -->
+
+            <!-- Навигация арендуемух товаров в мобильном -->
+            <div class="mobile-category-nav">
+                <ul>
+                    <li class="mobile-nav-elem">
+                        <a href="Formwork_rental.html">Аренда опалубка</a>
+                        <!-- Начало выпадающего списка -->
+                        <ul>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                            <li class="mobile-nav-elem">
+                                <a href="#">Пример</a>
+                                <!-- Начало выпадающего списка -->
+                                <ul>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                    <li class="mobile-nav-elem">
+                                        <a href="#">Пример1</a>
+                                        <!-- Начало выпадающего списка -->
+                                        <ul>
+                                            <li class="mobile-nav-elem">
+                                                <a href="#">Пример2</a>
+                                                <!-- Начало выпадающего списка -->
+                                                <ul>
+                                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                                </ul>
+                                                <!-- Конец выпадающего списка -->
+                                            </li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                        </ul>
+                                        <!-- Конец выпадающего списка -->
+                                    </li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                </ul>
+                                <!-- Конец выпадающего списка -->
+                            </li>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                        </ul>
+                        <!-- Конец выпадающего списка -->
+                    </li>
+                    <li class="mobile-nav-elem">
+                        <a href="Formwork_rental.html">Продажа опалубка</a>
+                   </li>
+                    <li class="mobile-nav-elem">
+                        <a href="Formwork_rental.html">Аренда бытовок</a>
+                        <!-- Начало выпадающего списка -->
+                        <ul>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                            <li class="mobile-nav-elem">
+                                <a href="#">Пример1</a>
+                                <!-- Начало выпадающего списка -->
+                                <ul>
+                                    <li class="mobile-nav-elem">
+                                        <a href="#">Пример2</a>
+                                        <!-- Начало выпадающего списка -->
+                                        <ul>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                        </ul>
+                                        <!-- Конец выпадающего списка -->
+                                    </li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                </ul>
+                                <!-- Конец выпадающего списка -->
+                            </li>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                        </ul>
+                        <!-- Конец выпадающего списка -->
+                    </li>
+                    <li class="mobile-nav-elem"><a href="Formwork_rental.html">Аренда лесов</a></li>
+                </ul>
+            </div>
+            <!-- Навигация арендуемух товаров в мобильном конец -->
+        </div>
+        <!-- Навигация в мобильном -->
+        <div class="mobile_nav">
+            <!-- Начало ссылок навигации-->
+            <ul>
+                <li><a href="Company.html">О компании</a></li>
+                <li><a href="Contacts.html">Контакты</a></li>
+                <li><a href="Rent_terms.html">Условия аренды</a></li>
+                <li><a href="Delivery.html">Доставка</a></li>
+                <li><a href="Services.html">Услуги</a></li>
+            </ul>
+            <!-- Конец ссылок навигации -->
+        </div>
+        <!-- навигация в мобильном конец -->
+        <!-- Языки в мобильном  -->
+        <div class="mobile_lang">
+            <!-- Начало ссылки на языки -->
+            <ul>
+                <li><a class="active-lang" href="#">рус</a></li>
+                <li><a href="#">uzb</a></li>
+            </ul>
+            <!-- Конец ссылки на языки -->
+        </div>
+        <!-- Языки в мобильном конец -->
+
+        <!-- Кнопка закрыть мобильное меню  -->
+        <div class="menu-clouse">
+            <button class="menu-clouse-button">Закрыть меню</button>
+        </div>
+        <!-- Кнопка закрыть мобильное меню конец -->
+    </section>
+
+    <!-- Иконка открытия мобильного меню  -->
+    <div class="mobile-button">
+        <button><i class="fas fa-bars"></i></button>
+    </div>
+    <!-- Иконка открытия мобильного меню конец -->
+
+    <!-- Мобильное меню конец -->
+
+    <!-- Хэдэр -->
+    {% include 'header.html' %}
+    <!-- Хэдэр конец -->
+
+    <!-- Секция Баннера -->
+        <section class="banner">
+            <!-- Блок картинка сам Баннер -->
+            <div class="banner-img">
+                <img src="{% static 'img/slayder.png' %}" alt="slayder.png" />
+            </div>
+            <!-- Блок картинка сам Баннер -->
+
+            <!-- Блок текст баннера -->
+            <div class="banner-content">
+                <h1>{{ main_page.first_block_title_uz }}</h1>
+                <p>{{ main_page.first_block_description_uz }}</p>
+                <!-- Начало ссылки на страницу каталога товаров -->
+                <a href="Catalog.html">перейти</a>
+                <!-- Конец ссылки на страницу каталога товаров -->
+            </div>
+            <!-- Блок текст баннера -->
+        </section>
+    <!-- Секция Баннера конец -->
+
+        <!-- Секция как мы работаем -->
+            <section class="spad container-fluid">
+                <div class="how-work row">
+                    <!-- Заголовок -->
+                    <div class="col-12 header-content">
+                        <h2>Как мы работаем</h2>
+                    </div>
+                    <!-- Конец заголовока -->
+                    {% for workstep in worksteps %}
+                    <!-- Ячейка блока секции "Как мы работаем" -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item">
+                        <div class="how-work-elem">
+                            <img src="{{ workstep.img.url }}" alt=""/>
+                            <p>{{ workstep.name_uz }}</p>
+                        </div>
+                        <div class="how-work-arrow">
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <!-- Конец ячейки блока секции "Как мы работаем" -->
+                    {% endfor %}
+                </div>
+            </section>
+            <!-- Секция как мы работаем конец -->
+        <!-- Секция о компании -->
+        <section class="container-fluid spad about-company">
+            <div class="about-company-row row">
+                <!-- Загаловок о компании -->
+                <div class="col-12 header-content">
+                    <h2>О компании</h2>
+                </div>
+                <!-- Загаловок о компании -->
+                <!-- Текс "О компании" -->
+                <div class="company-text col-12">
+                    <img src="{{ main_page.about_img.url }}" alt="" />
+                    <p>{{ main_page.about_par_1_uz }}</p>
+
+                    <!-- Блок счетчик -->
+                    <div class="benefits">
+                        <div class="benefits__inner">
+                            <div class="benefits__element">
+                                <p class="benefits__number">{{ main_page.client }}</p>
+                                <p class="benefits__title">Клиентов</p>
+                            </div>
+                            <div class="benefits__element">
+                                <p class="benefits__number">{{ main_page.sold }}</p>
+                                <p class="benefits__title">Проданных товаров</p>
+                            </div>
+                            <div class="benefits__element">
+                                <p class="benefits__number">{{ main_page.success }}</p>
+                                <p class="benefits__title">
+                                    Успешно выполненных заказов
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Блок счетчик -->
+                    <p>{{ main_page.about_par_2_uz }}</p>
+                </div>
+                <!-- Конец блока с текстом "О компании" -->
+            </div>
+        </section>
+        <!-- Секция о компании конец -->
+
+        <!-- Секция примеры нашец продукции -->
+        <section class="spad container-fluid category-tile">
+            <!-- Загаловок примеровй нашей продукции -->
+            <div class="col-12 header-content right-header">
+                <h2>Примеры нашей продукции</h2>
+            </div>
+            <!-- Загаловок примеровй нашей продукции -->
+
+            <!-- Блок категории товаров -->
+            <div class="row category-tile-row category_bg">
+                <!-- Товар -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
+                    <!-- Изображение товара -->
+                    <div class="cat-img">
+                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
+                    </div>
+                    <!-- Конец изображение товара -->
+                    <!-- Заголовок с названием товара -->
+                    <h3>Стойка</h3>
+                    <!-- Конец заголовок с названием товара -->
+                    <!-- Характеристики товара -->
+                    <ul>
+                        <li>Ширина <span class="category-val">0,9m</span></li>
+                        <li>Длинна <span class="category-val">0,3m</span></li>
+                        <li>Высота <span class="category-val">3m</span></li>
+                    </ul>
+                    <!-- Конец характеристик товара -->
+                    <!-- Кнопка перейти -->
+                    <div class="category-button">
+                        <a href="#">перейти</a>
+                    </div>
+                    <!-- Конец кнопки перейти -->
+                </div>
+                <!-- Товар конец -->
+                <!-- Товар -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
+                    <!-- Изображение товара -->
+                    <div class="cat-img">
+                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
+                    </div>
+                    <!-- Конец изображение товара -->
+                    <!-- Заголовок с названием товара -->
+                    <h3>Стойка</h3>
+                    <!-- Конец заголовок с названием товара -->
+                    <!-- Характеристики товара -->
+                    <ul>
+                        <li>Ширина <span class="category-val">0,9m</span></li>
+                        <li>Длинна <span class="category-val">0,3m</span></li>
+                        <li>Высота <span class="category-val">3m</span></li>
+                    </ul>
+                    <!-- Конец характеристик товара -->
+                    <!-- Кнопка перейти -->
+                    <div class="category-button">
+                        <a href="#">перейти</a>
+                    </div>
+                    <!-- Конец кнопки перейти -->
+                </div>
+                <!-- Товар конец -->
+                <!-- Товар -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
+                    <!-- Изображение товара -->
+                    <div class="cat-img">
+                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
+                    </div>
+                    <!-- Конец изображение товара -->
+                    <!-- Заголовок с названием товара -->
+                    <h3>Стойка</h3>
+                    <!-- Конец заголовок с названием товара -->
+                    <!-- Характеристики товара -->
+                    <ul>
+                        <li>Ширина <span class="category-val">0,9m</span></li>
+                        <li>Длинна <span class="category-val">0,3m</span></li>
+                        <li>Высота <span class="category-val">3m</span></li>
+                    </ul>
+                    <!-- Конец характеристик товара -->
+                    <!-- Кнопка перейти -->
+                    <div class="category-button">
+                        <a href="#">перейти</a>
+                    </div>
+                    <!-- Конец кнопки перейти -->
+                </div>
+                <!-- Товар конец -->
+                 <!-- Товар -->
+                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
+                    <!-- Изображение товара -->
+                    <div class="cat-img">
+                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
+                    </div>
+                    <!-- Конец изображение товара -->
+                    <!-- Заголовок с названием товара -->
+                    <h3>Стойка</h3>
+                    <!-- Конец заголовок с названием товара -->
+                    <!-- Характеристики товара -->
+                    <ul>
+                        <li>Ширина <span class="category-val">0,9m</span></li>
+                        <li>Длинна <span class="category-val">0,3m</span></li>
+                        <li>Высота <span class="category-val">3m</span></li>
+                    </ul>
+                    <!-- Конец характеристик товара -->
+                    <!-- Кнопка перейти -->
+                    <div class="category-button">
+                        <a href="#">перейти</a>
+                    </div>
+                    <!-- Конец кнопки перейти -->
+                </div>
+                <!-- Товар конец -->
+                <!-- Товар -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
+                    <!-- Изображение товара -->
+                    <div class="cat-img">
+                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
+                    </div>
+                    <!-- Конец изображение товара -->
+                    <!-- Заголовок с названием товара -->
+                    <h3>Стойка</h3>
+                    <!-- Конец заголовок с названием товара -->
+                    <!-- Характеристики товара -->
+                    <ul>
+                        <li>Ширина <span class="category-val">0,9m</span></li>
+                        <li>Длинна <span class="category-val">0,3m</span></li>
+                        <li>Высота <span class="category-val">3m</span></li>
+                    </ul>
+                    <!-- Конец характеристик товара -->
+                    <!-- Кнопка перейти -->
+                    <div class="category-button">
+                        <a href="#">перейти</a>
+                    </div>
+                    <!-- Конец кнопки перейти -->
+                </div>
+                <!-- Товар конец -->
+                <!-- Товар -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
+                    <!-- Изображение товара -->
+                    <div class="cat-img">
+                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
+                    </div>
+                    <!-- Конец изображение товара -->
+                    <!-- Заголовок с названием товара -->
+                    <h3>Стойка</h3>
+                    <!-- Конец заголовок с названием товара -->
+                    <!-- Характеристики товара -->
+                    <ul>
+                        <li>Ширина <span class="category-val">0,9m</span></li>
+                        <li>Длинна <span class="category-val">0,3m</span></li>
+                        <li>Высота <span class="category-val">3m</span></li>
+                    </ul>
+                    <!-- Конец характеристик товара -->
+                    <!-- Кнопка перейти -->
+                    <div class="category-button">
+                        <a href="#">перейти</a>
+                    </div>
+                    <!-- Конец кнопки перейти -->
+                </div>
+                <!-- Товар конец -->
+                <!-- Товар -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
+                    <!-- Изображение товара -->
+                    <div class="cat-img">
+                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
+                    </div>
+                    <!-- Конец изображение товара -->
+                    <!-- Заголовок с названием товара -->
+                    <h3>Стойка</h3>
+                    <!-- Конец заголовок с названием товара -->
+                    <!-- Характеристики товара -->
+                    <ul>
+                        <li>Ширина <span class="category-val">0,9m</span></li>
+                        <li>Длинна <span class="category-val">0,3m</span></li>
+                        <li>Высота <span class="category-val">3m</span></li>
+                    </ul>
+                    <!-- Конец характеристик товара -->
+                    <!-- Кнопка перейти -->
+                    <div class="category-button">
+                        <a href="#">перейти</a>
+                    </div>
+                    <!-- Конец кнопки перейти -->
+                </div>
+                <!-- Товар конец -->
+                <!-- Товар -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
+                    <!-- Изображение товара -->
+                    <div class="cat-img">
+                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
+                    </div>
+                    <!-- Конец изображение товара -->
+                    <!-- Заголовок с названием товара -->
+                    <h3>Стойка</h3>
+                    <!-- Конец заголовок с названием товара -->
+                    <!-- Характеристики товара -->
+                    <ul>
+                        <li>Ширина <span class="category-val">0,9m</span></li>
+                        <li>Длинна <span class="category-val">0,3m</span></li>
+                        <li>Высота <span class="category-val">3m</span></li>
+                    </ul>
+                    <!-- Конец характеристик товара -->
+                    <!-- Кнопка перейти -->
+                    <div class="category-button">
+                        <a href="#">перейти</a>
+                    </div>
+                    <!-- Конец кнопки перейти -->
+                </div>
+                <!-- Товар конец -->
+            </div>
+            <!-- Блок категории товаров конец -->
+        </section>
+        <!-- Секция примеры нашец продукции конец -->
+
+        {% include 'blocks/reviews.html' %}
+
+        <!-- Секция наши партнеры -->
+    <section class="partners_blog container-fluid spad">
+        <!-- Загаловок Наши партнеры -->
+        <div class="header-content right-header">
+            <h2>Наши партнеры</h2>
+        </div>
+        <!-- Загаловок Наши партнеры конец -->
+
+        <!-- Контейнер наши партнеры элементы -->
+        <div class="partners_items row">
+            {% for partner in partners %}
+            <!-- Наши партнеры элемент  -->
+            <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3"><img src="{{ partner.img.url }}" alt=""></div>
+            <!-- Наши партнеры элемент конец -->
+            {% endfor %}
+            <!-- Элеменет с изображением лого партнера -->
+        </div>
+        <!-- Контейнер наши партнеры элементы конец -->
+    </section>
+    <!--  Секция наши партнеры конец -->
+
+
+
+        <!-- Футер  -->
+        {% include 'footer.html' %}
+        <!-- Футер конец -->
+
+        <!-- Окно оповещения -->
+        <div class="position-fixed top-0 right-0 p-3" style="z-index: 5; right: 0; top: 0;">
+          <div id="liveToast" class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+           <!-- Контент окна оповещения -->
+            <div class="toast-header">
+                <strong class="mr-auto">Товар добавлен в корзину</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!-- Контент окна оповещения -->
+            <div class="toast-body">
+                Ваш товар добавлен в корзину!
+            </div>
+          </div>
+      </div>
+      <!-- Конец окна оповещения -->
+{% endblock %}

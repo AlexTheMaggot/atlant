@@ -1,0 +1,545 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}Услуги (Узб){% endblock %}
+{% block content %}
+    <!-- Кнопка Обратоного Вызова -->
+    <button type="button" class="recall_btn btn btn-primary" data-toggle="modal" data-target="#myModal">
+        <img src="{% static 'img/phone_icon.svg' %}" alt="">
+    </button>
+    <!-- Кнопка Обратного Вызова конец -->
+
+    <!-- Модальное окно обратного звонка -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                        <h2 class="modal_title">Пожалуйста, заполните поля для обратной связи с Вами</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-6"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-6"><input type="text" placeholder="Срок:"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно обратного звонка конец -->
+
+    <!-- Мобильное меню -->
+    <div class="overlay"></div>
+    <section class="mobile_menu">
+        <!-- Логотип в мобильном -->
+        <div class="logo">
+            <a href="{% url 'mainapp:index_uz' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+        </div>
+        <!-- Логотип в мобильном конец -->
+
+        <!-- Поиск в мобильном -->
+        <div class="mobile_search">
+            <form action="#" method="POST">
+                <button><i class="fas fa-search"></i></button>
+                <input type="search">
+            </form>
+        </div>
+        <!-- Поиск в мобильном конец -->
+
+        <div class="mobile_cat_nav">
+            <!-- Все категории в мобильном -->
+            <div class="mobile_all-product">
+                <a class="mobile_all-product-link" href="#"><span><i class="fas fa-list"></i></span>каталог товаров</a><button class="open-cat-list"><i class="fas fa-chevron-right"></i></button>
+                <ul>
+                    <li><a href="Category_products.html">Шланги</a></li>
+                    <li><a href="Category_products.html">Фиксаторы для лесов</a></li>
+                    <li><a href="Category_products.html">Фанера</a></li>
+                    <li><a href="Category_products.html">Унивилки</a></li>
+                    <li><a href="Category_products.html">Уголки</a></li>
+                    <li><a href="Category_products.html">Трубы</a></li>
+                    <li><a href="Category_products.html">Тайрот</a></li>
+                    <li><a href="Category_products.html">Стойки</a></li>
+                    <li><a href="Category_products.html">Пружинный зажим</a></li>
+                    <li><a href="Category_products.html">Перемычка</a></li>
+                    <li><a href="Category_products.html">Опалубка</a></li>
+                    <li><a href="Category_products.html">Объемные стойки</a></li>
+                    <li><a href="Category_products.html">Объемные опалубки</a></li>
+                    <li><a href="Category_products.html">Настил</a></li>
+                    <li><a href="Category_products.html">Леса</a></li>
+                    <li><a href="Category_products.html">Крюк</a></li>
+                    <li><a href="Category_products.html">Домкрат</a></li>
+                    <li><a href="Category_products.html">Клин</a></li>
+                    <li><a href="Category_products.html">Пружинный зажим</a></li>
+                </ul>
+            </div>
+            <!-- Все категории в мобильном конец -->
+
+            <!-- Навигация арендуемух товаров в мобильном -->
+            <div class="mobile-category-nav">
+                <ul>
+                    <li class="mobile-nav-elem">
+                        <a href="Formwork_rental.html">Аренда опалубка</a>
+                        <ul>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                            <li class="mobile-nav-elem">
+                                <a href="#">Пример</a>
+                                <ul>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                    <li class="mobile-nav-elem">
+                                        <a href="#">Пример1</a>
+                                        <ul>
+                                            <li class="mobile-nav-elem">
+                                                <a href="#">Пример2</a>
+                                                <ul>
+                                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                </ul>
+                            </li>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-nav-elem">
+                        <a href="Formwork_rental.html">Продажа опалубка</a>
+                   </li>
+                    <li class="mobile-nav-elem">
+                        <a href="Formwork_rental.html">Аренда бытовок</a>
+                        <ul>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                            <li class="mobile-nav-elem">
+                                <a href="#">Пример1</a>
+                                <ul>
+                                    <li class="mobile-nav-elem">
+                                        <a href="#">Пример2</a>
+                                        <ul>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                </ul>
+                            </li>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-nav-elem"><a href="Formwork_rental.html">Аренда лесов</a></li>
+                </ul>
+            </div>
+            <!-- Навигация арендуемух товаров в мобильном конец -->
+        </div>
+
+        <!-- навигация в мобильном -->
+        <div class="mobile_nav">
+            <ul>
+                <li><a href="Company.html">О компании</a></li>
+                <li><a href="Contacts.html">Контакты</a></li>
+                <li><a href="Rent_terms.html">Условия аренды</a></li>
+                <li><a href="Delivery.html">Доставка</a></li>
+                <li><a href="Services.html">Услуги</a></li>
+            </ul>
+        </div>
+        <!-- навигация в мобильном конец -->
+
+        <!-- Языки в мобильном  -->
+        <div class="mobile_lang">
+            <ul>
+                <li><a class="active-lang" href="#">рус</a></li>
+                <li><a href="#">uzb</a></li>
+            </ul>
+        </div>
+        <!-- Языки в мобильном конец -->
+
+        <!-- Кнопка закрыть мобильное меню  -->
+        <div class="menu-clouse">
+            <button class="menu-clouse-button">Закрыть меню</button>
+        </div>
+        <!-- Кнопка закрыть мобильное меню конец -->
+    </section>
+    <!-- Мобильное меню конец -->
+
+    <!-- Иконка открытия мобильного меню  -->
+    <div class="mobile-button">
+        <button><i class="fas fa-bars"></i></button>
+    </div>
+    <!-- Иконка открытия мобильного меню конец -->
+
+
+    <!-- Хэдэр -->
+    {% include 'header.html' %}
+    <!-- Хэдэр конец -->
+
+    <!-- Загаловок страницы и хлебные крошки -->
+    <section class="title_page">
+        <!-- Заголовок страницы -->
+        <h1>Услуги</h1>
+        <!-- Конец заголовка страницы -->
+        <!-- Хлебные крошки -->
+        <div class="breadcrumb">
+            <ul>
+                <!-- Ссылка на первый уровень сайта -->
+                <li><a href="{% url 'mainapp:index_uz' %}">Главная</a></li>
+                <!-- Конец ссылки на второй уровень сайта -->
+                <!-- Страница на которой находится пользователь -->
+                <li>Услуги</li>
+                <!-- Конец страницы на которой находится пользователь -->
+            </ul>
+        </div>
+        <!-- Конец хлебных крошек -->
+    </section>
+    <!-- Загаловок страницы и хлебные крошки конец-->
+    {% for service in services %}
+    <!-- Секция Сервиса -->
+    <section class="Scaffolding_installation">
+        <!-- Загаловок блока сервиса -->
+        <div class="col-12 header-content">
+            <h2>{{ service.name_uz }}</h2>
+        </div>
+        <!-- Загаловок блока сервиса конец -->
+
+        <!-- Контейнер ифнормации сервиса -->
+        <div class="container-fluid spad installation_container">
+            <p>{{ service.desc_1_uz }}</p>
+            <!-- Блок с объектами  -->
+            <div class="our_object">
+                <!-- Загаловок объектов -->
+                <h3 class="terms_content_title">
+                    Наши Объекты
+                </h3>
+                <!-- Загаловок объектов конец -->
+                <div class="row">
+                    <!-- Объекты -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="object_item">
+                            <!-- Изображение элемента -->
+                            <div class="cat-img">
+                                <img src="{{ service.object_img_1.url }}" alt="">
+                            </div>
+                            <!-- Конец изображения элемента -->
+                            <!-- Название объекта -->
+                            <span class="object_name">{{ service.object_name_1_uz }}</span>
+                            <!-- Конец название объекта -->
+                            <!-- Предоставленные услуги -->
+                            <span class="territory_product">{{ service.object_desc_1_uz }}</span>
+                            <!-- Конец предоставленных услуг -->
+                            <!-- Кнопка вызова модального окна -->
+                            <div class="order_button">
+                                <button data-toggle="modal" data-target="#myModal_page" type="button">Заказать</button>
+                            </div>
+                            <!-- Конец кнопки вызова модального окна -->
+                        </div>
+                    </div>
+                    <!-- Объекты конец-->
+                    <!-- Объекты -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="object_item">
+                            <!-- Изображение элемента -->
+                            <div class="cat-img">
+                                <img src="{{ service.object_img_2.url }}" alt="">
+                            </div>
+                            <!-- Конец изображения элемента -->
+                            <!-- Название объекта -->
+                            <span class="object_name">{{ service.object_name_2_uz }}</span>
+                            <!-- Конец название объекта -->
+                            <!-- Предоставленные услуги -->
+                            <span class="territory_product">{{ service.object_desc_2_uz }}</span>
+                            <!-- Конец предоставленных услуг -->
+                            <!-- Кнопка вызова модального окна -->
+                            <div class="order_button">
+                                <button data-toggle="modal" data-target="#myModal_page" type="button">Заказать</button>
+                            </div>
+                            <!-- Конец кнопки вызова модального окна -->
+                        </div>
+                    </div>
+                    <!-- Объекты конец-->
+                    <!-- Объекты -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="object_item">
+                            <!-- Изображение элемента -->
+                            <div class="cat-img">
+                                <img src="{{ service.object_img_3.url }}" alt="">
+                            </div>
+                            <!-- Конец изображения элемента -->
+                            <!-- Название объекта -->
+                            <span class="object_name">{{ service.object_name_3_uz }}</span>
+                            <!-- Конец название объекта -->
+                            <!-- Предоставленные услуги -->
+                            <span class="territory_product">{{ service.object_desc_3_uz }}</span>
+                            <!-- Конец предоставленных услуг -->
+                            <!-- Кнопка вызова модального окна -->
+                            <div class="order_button">
+                                <button data-toggle="modal" data-target="#myModal_page" type="button">Заказать</button>
+                            </div>
+                            <!-- Конец кнопки вызова модального окна -->
+                        </div>
+                    </div>
+                    <!-- Объекты конец-->
+                    <!-- Объекты -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="object_item">
+                            <!-- Изображение элемента -->
+                            <div class="cat-img">
+                                <img src="{{ service.object_img_4.url }}" alt="">
+                            </div>
+                            <!-- Конец изображения элемента -->
+                            <!-- Название объекта -->
+                            <span class="object_name">{{ service.object_name_4_uz }}</span>
+                            <!-- Конец название объекта -->
+                            <!-- Предоставленные услуги -->
+                            <span class="territory_product">{{ service.object_desc_4_uz }}</span>
+                            <!-- Конец предоставленных услуг -->
+                            <!-- Кнопка вызова модального окна -->
+                            <div class="order_button">
+                                <button data-toggle="modal" data-target="#myModal_page" type="button">Заказать</button>
+                            </div>
+                            <!-- Конец кнопки вызова модального окна -->
+                        </div>
+                    </div>
+                    <!-- Объекты конец-->
+                </div>
+            </div>
+            <!-- Блок с объектами  -->
+            <div class="Scaffolding_installation_info">
+                <p>{{ service.desc_2_uz }}</p>
+            </div>
+        </div>
+        <!-- Контейнер ифнормации сервиса конец -->
+    </section>
+    <!-- Секция Сервиса конец -->
+    {% endfor %}
+
+    <!-- Секция обучения -->
+    <scetion class="training">
+        <div class="container-fluid spad">
+            <!-- Загаловок обучения -->
+            <h3 class="terms_content_title">
+                А также обучение монтажным работам
+            </h3>
+            <!-- Загаловок обучения конец -->
+            <div class="row trainig_content">
+                <!-- Блок с картинкой обучения пример -->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 trainig_img">
+                    <img src="{% static 'img/learn_image.png' %}" alt="">
+                </div>
+                <!-- Блок с картинкой обучения пример конец -->
+
+                <!--  -->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8  trainig_text">
+                    <!-- Блок информации об обучении -->
+                    <p>Монтаж - комплексный процесс сборки зданий и сооружений из укрупненных конструкций, деталей и узлов заводского изготовления. Монтаж является ведущим технологическим процессом строительного производства. Этому способствует наличие развитой промышленности по производству сборных конструкций, разнообразных и эффективных средств механизации, современные достижения в области технологии и организации строительного производства, возможность осуществлять монтаж поточными методами.</p>
+                    <!-- Блок информации об обучении конец -->
+
+                    <!-- Кнопка заказать -->
+                    <button class="trainig_btn">
+                        заказать
+                    </button>
+                    <!-- Кнопка заказать конец -->
+                </div>
+            </div>
+        </div>
+    </scetion>
+
+    <!-- Секция полная процедура монтажа -->
+    <section class="spad container-fluid ">
+        <div class="how-work row">
+            <!-- Загаловок процедур -->
+            <div class="col-12 header-content">
+                <h2>Полная процедура монтажа</h2>
+            </div>
+            <!-- Загаловок процедур конец -->
+
+            <!-- Блок элемента процедур  -->
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item">
+                <div class="how-work-elem">
+                    <!-- Изображение процедур -->
+                    <div class="icon_img">
+                        <img src="{% static 'img/1call_center_icon.svg' %}" alt="1equipment.png">
+                    </div>
+                    <!-- Конец изображения процедур -->
+                    <!-- Текст процедур -->
+                    <p>Звоните нам или оставляйте заявку на сайте, сообщайте квадратуру а параметры здания</p>
+                    <!-- Конец текста процедур -->
+                </div>
+                <!-- Декоративная стрелка -->
+                <div class="how-work-arrow arrow_center">
+                    <img src="{% static 'img/arrow_work.png' %}" alt="">
+                </div>
+                <!-- Конец декоративной стрелки -->
+            </div>
+            <!-- Блок элемента процедур конец -->
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item">
+                <div class="how-work-elem">
+                    <!-- Изображение процедур -->
+                    <div class="icon_img">
+                        <img src="{% static 'img/2appraisal_icon.svg' %}" alt="2calling.png">
+                    </div>
+                    <!-- Конец изображения процедур -->
+                    <!-- Текст процедур -->
+                    <p>Наш специалист выезжает на объект для оценки сложности работ и замеров</p>
+                    <!-- Конец текста процедур -->
+                </div>
+                <!-- Декоративная стрелка -->
+                <div class="how-work-arrow arrow_center">
+                    <img src="{% static 'img/arrow_work.png' %}" alt="">
+                </div>
+                <!-- Конец декоративной стрелка -->
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item">
+                <div class="how-work-elem">
+                    <!-- Изображение процедур -->
+                    <div class="icon_img">
+                        <img src="{% static 'img/3score_icon.svg' %}" alt="3warehouse.png">
+                    </div>
+                    <!-- Конец изображения процедур -->
+                    <!-- Текст процедур -->
+                    <p>мы выставляем счет на монтаж, вы его оплачиваете</p>
+                    <!-- Конец текста процедур -->
+                </div>
+                <!-- Декоративная стрелка -->
+                <div class="how-work-arrow arrow_center">
+                    <img src="{% static 'img/arrow_work.png' %}" alt="">
+                </div>
+                <!-- Конец декоративной стрелки -->
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item">
+                <div class="how-work-elem">
+                    <!-- Изображение процедур -->
+                    <div class="icon_img">
+                        <img src="{% static 'img/4courier_icon.svg' %}" alt="4documents.png">
+                    </div>
+                    <!-- Конец изображения процедур -->
+                    <!-- Текст процедур -->
+                    <p>В оговоренное время мы доставляем леса на строительную площадку (или используем ваши)</p>
+                    <!-- Конец текста процедур -->
+                </div>
+                <!-- Декоративная стрелка -->
+                <div class="how-work-arrow arrow_center how-work-arrow-four">
+                    <img src="{% static 'img/arrow_work.png' %}" alt="">
+                </div>
+                <!-- Конец декоративная стрелка -->
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item">
+                <!-- Изображение процедур -->
+                <div class="how-work-elem">
+                    <img src="{% static 'img/5design_icon.svg' %}" alt="5contract.png">
+                </div>
+                <!-- Конец изображение процедур -->
+                <!-- Текст процедур -->
+                <p>Выполняем монтаж конструкции и подписываем акт выполненных работ</p>
+                <!-- Конец текста процедур -->
+                <!-- Декоративная стрелка -->
+                <div class="how-work-arrow arrow_center">
+                    <img src="{% static 'img/arrow_work.png' %}" alt="">
+                </div>
+                <!-- Конец декоративной стрелки -->
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item">
+                <div class="how-work-elem">
+                    <!-- Изображение процедур -->
+                    <div class="icon_img">
+                        <img src="{% static 'img/6helmet_icon.svg' %}" alt="6money.png">
+                    </div>
+                    <!-- Конец изображения процедур -->
+                    <!-- Текст процедур -->
+                    <p>Выпрводите запланированные работы</p>
+                    <!-- Конец текста процедур -->
+                </div>
+                <!-- Декоративная стрелка -->
+                <div class="how-work-arrow arrow_center">
+                    <img src="{% static 'img/arrow_work.png' %}" alt="">
+                </div>
+                <!-- Конец декоративной стрелки -->
+            </div>
+        </div>
+        <div class="row ready_row">
+            <!-- Заголовок элемента -->
+                <div class=" ready_item col-12 col-md-8">
+                    <p class="ready_text ">Мы демонтируем леса, вывозим их с объекта и подписываем акт выполненных работ!</p>
+                </div>
+            <!-- Конец заголовка элемента -->
+            <!-- Изображение элемента -->
+                <div class=" ready_item col-12 col-md-4">
+                    <img src="{% static 'img/7list_icon.svg' %}" alt="">
+                </div>
+            <!-- Конец изображения элемента -->
+        </div>
+    </section>
+    <!-- Секция полная процедура монтажа конец -->
+        <!-- Секция с формой "Есть вопросы?" -->
+        <section class="form set-bg" data-setbg="{% static 'img/bg_leave.png' %}">
+            <div class="container-fluid spad">
+                <div class="row">
+                    <form class="form_container form_cont set-bg"  data-setbg="{% static 'img/bg_blur.png' %}" action="#">
+                        <!-- Загаловок форм -->
+                        <h3>Есть вопросы?! Пишите нам!</h3>
+                        <!-- Загаловок форм конец -->
+
+                        <!-- Поле для имени -->
+                        <input class="form_input" type="text" placeholder="Ваше имя">
+                        <!-- Поле для имени конец -->
+
+                        <!-- Поле для телефона -->
+                        <input class="form_input" type="tel" placeholder="Номер телефона">
+                        <!-- Поле для телефона конец -->
+
+                        <!-- Поле текста для вопроса -->
+                        <textarea class="textarea_input" name="message" placeholder="Текст вопроса:"></textarea>
+                        <!-- Поле текста для вопроса конец -->
+
+                        <!-- Блок отправки -->
+                        <div class="submit_block">
+                            <div class="checkbox_item">
+                                <label for="checkbox_page"><input id="checkbox_page" class="checkbox_input" type="checkbox">Соглашаюсь с политикой обработанных данных</label>
+                            </div>
+                            <button class="btn_submit" type="submit">Отправить</button>
+                        </div>
+                        <!-- Блок отправки конец -->
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- Секция с формой "Есть вопросы?" конец-->
+        <!-- Футер  -->
+        {% include 'footer.html' %}
+        <!-- Футер конец -->
+
+        <!-- Окно сообщения -->
+        <div class="position-fixed top-0 right-0 p-3" style="z-index: 5; right: 0; top: 0;">
+          <div id="liveToast" class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <div class="toast-header">
+            <strong class="mr-auto">Товар добавлен в корзину</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="toast-body">
+            Ваш товар добавлен в корзину!
+            </div>
+          </div>
+      </div>
+      <!-- Конец окна сообщения -->
+{% endblock %}

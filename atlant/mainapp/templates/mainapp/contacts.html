@@ -1,0 +1,331 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}Контакты{% endblock %}
+{% block content %}
+    <!-- Кнопка Обратоного Вызова -->
+    <button type="button" class="recall_btn btn btn-primary" data-toggle="modal" data-target="#myModal">
+        <img src="{% static 'img/phone_icon.svg' %}" alt="">
+    </button>
+    <!-- Кнопка Обратного Вызова конец -->
+
+    <!-- Модальное окно обратного звонка -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                        <h2 class="modal_title">Пожалуйста, заполните поля для обратной связи с Вами</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-6"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-6"><input type="text" placeholder="Срок:"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно обратного звонка конец -->
+
+    <!-- Мобильное меню -->
+    <div class="overlay"></div>
+    <section class="mobile_menu">
+        <!-- Логотип в мобильном -->
+        <div class="logo">
+            <a href="{% url 'mainapp:index' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+        </div>
+        <!-- Логотип в мобильном конец -->
+
+        <!-- Поиск в мобильном -->
+        <div class="mobile_search">
+            <form action="#" method="POST">
+                <button><i class="fas fa-search"></i></button>
+                <input type="search">
+            </form>
+        </div>
+        <!-- Поиск в мобильном конец -->
+
+        <div class="mobile_cat_nav">
+            <!-- Все категории в мобильном -->
+            <div class="mobile_all-product">
+                <a class="mobile_all-product-link" href="#"><span><i class="fas fa-list"></i></span>каталог товаров</a><button class="open-cat-list"><i class="fas fa-chevron-right"></i></button>
+                <ul>
+                    <li><a href="Category_products.html">Шланги</a></li>
+                    <li><a href="Category_products.html">Фиксаторы для лесов</a></li>
+                    <li><a href="Category_products.html">Фанера</a></li>
+                    <li><a href="Category_products.html">Унивилки</a></li>
+                    <li><a href="Category_products.html">Уголки</a></li>
+                    <li><a href="Category_products.html">Трубы</a></li>
+                    <li><a href="Category_products.html">Тайрот</a></li>
+                    <li><a href="Category_products.html">Стойки</a></li>
+                    <li><a href="Category_products.html">Пружинный зажим</a></li>
+                    <li><a href="Category_products.html">Перемычка</a></li>
+                    <li><a href="Category_products.html">Опалубка</a></li>
+                    <li><a href="Category_products.html">Объемные стойки</a></li>
+                    <li><a href="Category_products.html">Объемные опалубки</a></li>
+                    <li><a href="Category_products.html">Настил</a></li>
+                    <li><a href="Category_products.html">Леса</a></li>
+                    <li><a href="Category_products.html">Крюк</a></li>
+                    <li><a href="Category_products.html">Домкрат</a></li>
+                    <li><a href="Category_products.html">Клин</a></li>
+                    <li><a href="Category_products.html">Пружинный зажим</a></li>
+                </ul>
+            </div>
+            <!-- Все категории в мобильном конец -->
+
+            <!-- Навигация арендуемух товаров в мобильном -->
+            <div class="mobile-category-nav">
+                <ul>
+                    <li class="mobile-nav-elem">
+                        <a href="Formwork_rental.html">Аренда опалубка</a>
+                        <ul>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                            <li class="mobile-nav-elem">
+                                <a href="#">Пример</a>
+                                <ul>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                    <li class="mobile-nav-elem">
+                                        <a href="#">Пример1</a>
+                                        <ul>
+                                            <li class="mobile-nav-elem">
+                                                <a href="#">Пример2</a>
+                                                <ul>
+                                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                </ul>
+                            </li>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-nav-elem">
+                        <a href="Formwork_rental.html">Продажа опалубка</a>
+                   </li>
+                    <li class="mobile-nav-elem">
+                        <a href="Formwork_rental.html">Аренда бытовок</a>
+                        <ul>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                            <li class="mobile-nav-elem">
+                                <a href="#">Пример1</a>
+                                <ul>
+                                    <li class="mobile-nav-elem">
+                                        <a href="#">Пример2</a>
+                                        <ul>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                                </ul>
+                            </li>
+                            <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-nav-elem"><a href="Formwork_rental.html">Аренда лесов</a></li>
+                </ul>
+            </div>
+            <!-- Навигация арендуемух товаров в мобильном конец -->
+        </div>
+
+        <!-- навигация в мобильном -->
+        <div class="mobile_nav">
+            <ul>
+                <li><a href="Company.html">О компании</a></li>
+                <li><a href="Contacts.html">Контакты</a></li>
+                <li><a href="Rent_terms.html">Условия аренды</a></li>
+                <li><a href="Delivery.html">Доставка</a></li>
+                <li><a href="Services.html">Услуги</a></li>
+            </ul>
+        </div>
+        <!-- навигация в мобильном конец -->
+
+        <!-- Языки в мобильном  -->
+        <div class="mobile_lang">
+            <ul>
+                <li><a class="active-lang" href="#">рус</a></li>
+                <li><a href="#">uzb</a></li>
+            </ul>
+        </div>
+        <!-- Языки в мобильном конец -->
+
+        <!-- Кнопка закрыть мобильное меню  -->
+        <div class="menu-clouse">
+            <button class="menu-clouse-button">Закрыть меню</button>
+        </div>
+        <!-- Кнопка закрыть мобильное меню конец -->
+    </section>
+    <!-- Мобильное меню конец -->
+
+    <!-- Иконка открытия мобильного меню  -->
+    <div class="mobile-button">
+        <button><i class="fas fa-bars"></i></button>
+    </div>
+    <!-- Иконка открытия мобильного меню конец -->
+
+    <!-- Мобильное меню конец -->
+
+    <!-- Хэдэр -->
+    {% include 'header.html' %}
+    <!-- Хэдэр конец -->
+
+        <!-- Загаловок страницы и хлебные крошки -->
+	    <section class="title_page">
+        <h1>Контакты</h1>
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+                <li>Контакты</li>
+            </ul>
+        </div>
+    </section>
+        <!-- Загаловок страницы и хлебные крошки конец-->
+    <!-- Контент страницы -->
+	<main class="contact_page">
+        <!-- Блок с картой -->
+		<div class="map container-fluid spad">
+			<div class="map-responsive">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d24573.695279403233!2d66.92733094038778!3d39.65619767093911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2s!4v1622201100359!5m2!1sru!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+			</div>
+		</div>
+        <!-- Блок с картой -->
+
+        <!-- Секция контактов -->
+		<section class="contacts_info">
+			<div class="container-fluid spad">
+                <div class="row">
+                <!-- Блок с телефоном -->
+				<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+					<div class="contacts_item contact_num">
+                        <h3 class="contacts_title">Телефоны</h3>
+                        <ul>
+                            <li class="branch_item">{{ contact_page.phone_title_1_ru }}<span class="branch_link">{{ contact_page.phone_1 }}</span></li>
+                            {% if contact_page.phone_2 %}
+                                <li class="branch_item">{{ contact_page.phone_title_2_ru }}<span class="branch_link">{{ contact_page.phone_2 }}</span></li>
+                            {% endif %}
+                            {% if contact_page.phone_3 %}
+                                <li class="branch_item">{{ contact_page.phone_title_3_ru }}<span class="branch_link">{{ contact_page.phone_3 }}</span></li>
+                            {% endif %}
+                            {% if contact_page.phone_4 %}
+                                <li class="branch_item">{{ contact_page.phone_title_4_ru }}<span class="branch_link">{{ contact_page.phone_4 }}</span></li>
+                            {% endif %}
+                            {% if contact_page.phone_5 %}
+                                <li class="branch_item">{{ contact_page.phone_title_5_ru }}<span class="branch_link">{{ contact_page.phone_5 }}</span></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+				</div>
+                <!-- Блок с телефоном конец -->
+
+                <!-- Блок с Email -->
+				<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+					<div class="contacts_item contact_email">
+                        <h3 class="contacts_title">E-mail</h3>
+                        <ul>
+                            <li class="branch_item">{{ contact_page.mail_title_1_ru }}<span class="branch_link">{{ contact_page.mail_1 }}</span></li>
+                            {% if contact_page.mail_2 %}
+                                <li class="branch_item">{{ contact_page.mail_title_2_ru }}<span class="branch_link">{{ contact_page.mail_2 }}</span></li>
+                            {% endif %}
+                            {% if contact_page.mail_3 %}
+                                <li class="branch_item">{{ contact_page.mail_title_3_ru }}<span class="branch_link">{{ contact_page.mail_3 }}</span></li>
+                            {% endif %}
+                            {% if contact_page.mail_4 %}
+                                <li class="branch_item">{{ contact_page.mail_title_4_ru }}<span class="branch_link">{{ contact_page.mail_4 }}</span></li>
+                            {% endif %}
+                            {% if contact_page.mail_5 %}
+                                <li class="branch_item">{{ contact_page.mail_title_5_ru }}<span class="branch_link">{{ contact_page.mail_5 }}</span></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+				</div>
+                <!-- Блок с Email -->
+
+                <!-- Блок с адресом -->
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
+					<div class="contacts_item">
+                        <h3 class="contacts_title">Адреса</h3>
+                        <ul>
+                            <li class="branch_item">{{ contact_page.address_title_1_ru }}<span class="branch_link">{{ contact_page.address_1_ru }}</span></li>
+                            {% if contact_page.address_2_ru %}
+                                <li class="branch_item">{{ contact_page.address_title_2_ru }}<span class="branch_link">{{ contact_page.address_2_ru }}</span></li>
+                            {% endif %}
+                            {% if contact_page.address_3_ru %}
+                                <li class="branch_item">{{ contact_page.address_title_3_ru }}<span class="branch_link">{{ contact_page.address_3_ru }}</span></li>
+                            {% endif %}
+                            {% if contact_page.address_4_ru %}
+                                <li class="branch_item">{{ contact_page.address_title_4_ru }}<span class="branch_link">{{ contact_page.address_4_ru }}</span></li>
+                            {% endif %}
+                            {% if contact_page.address_5_ru %}
+                                <li class="branch_item">{{ contact_page.address_title_5_ru }}<span class="branch_link">{{ contact_page.address_5_ru }}</span></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+				</div>
+                <!-- Блок с адресом -->
+                </div>
+			</div>
+		</section>
+        <!-- Секция контактов конец -->
+
+        <!-- Блок обратной связи -->
+		<div class="feedback section_m-b">
+			<div class="feedback_container container-fliud spad">
+                <!-- Заголовок формы обратной связи -->
+				<div class="feedback_title">Обратная связь</div>
+                <!-- Конец заголовок формы обратной связи -->
+                <!-- Текст формы обратной связи -->
+				<p class="feedback_text">{{ contact_page.callback_text_ru }}</p>
+                <!-- Конец текста обратной связи -->
+                <!-- Кнопка вызова модального окна обратной связи -->
+				<button class="feedback_btn" type="button" data-toggle="modal" data-target="#myModal">Обратная связь</button>
+                <!-- Конец кнопки вызова модального окна обратной связи -->
+            </div>
+		</div>
+        <!-- Блок обратной связи конец -->
+	</main>
+    <!-- Конец контента страницы -->
+        <!-- Футер  -->
+        {% include 'footer.html' %}
+        <!-- Футер конец -->
+
+        <!-- Окно сообщения -->
+        <div class="position-fixed top-0 right-0 p-3" style="z-index: 5; right: 0; top: 0;">
+          <div id="liveToast" class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <div class="toast-header">
+            <strong class="mr-auto">Товар добавлен в корзину</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="toast-body">
+            Ваш товар добавлен в корзину!
+            </div>
+          </div>
+      </div>
+      <!-- Конец окна сообщения -->
+{% endblock %}

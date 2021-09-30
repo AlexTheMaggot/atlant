@@ -1,0 +1,454 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}О компании{% endblock %}
+{% block content %}
+    <!-- Кнопка Обратоного Вызова -->
+    <button
+      type="button"
+      class="recall_btn btn btn-primary"
+      data-toggle="modal"
+      data-target="#myModal"
+    >
+      <img src="{% static 'img/phone_icon.svg' %}" alt="" />
+    </button>
+    <!-- Кнопка Обратного Вызова конец -->
+
+    <!-- Модальное окно обратного звонка -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Текстовый контент модального окна обратной связи -->
+          <div class="modal-body">
+            <h2 class="modal_title">
+              Пожалуйста, заполните поля для обратной связи с Вами
+            </h2>
+            <!-- Форма отправки данных -->
+            <form action="#" class="modal_form">
+              <div class="row">
+                <div class="col-12">
+                  <input type="text" placeholder="Имя" />
+                </div>
+                <div class="col-12">
+                  <input type="tel" placeholder="Тел:" />
+                </div>
+                <div class="col-6">
+                  <input type="text" placeholder="Кол-во" />
+                </div>
+                <div class="col-6">
+                  <input type="text" placeholder="Срок:" />
+                </div>
+                <div class="col-12">
+                  <textarea placeholder="Коментарии"></textarea>
+                </div>
+                <div class="col-12 checkbox_modal">
+                  <label for="checkbox">
+                    <input
+                      id="checkbox"
+                      class="checkbox_input"
+                      type="checkbox"
+                    />
+                    Соглашаюсь с политикой обработанных данных</label
+                  >
+                </div>
+              </div>
+              <button type="submit" class="btn_modal_submit">
+                Узнать цену товара
+              </button>
+            </form>
+            <!-- Конец формы отправки данных -->
+          </div>
+          <!-- Конец текстового контента модального окна обратной связи -->
+        </div>
+      </div>
+    </div>
+    <!-- Модальное окно обратного звонка конец -->
+
+    <!-- Мобильное меню -->
+    <div class="overlay"></div>
+    <section class="mobile_menu">
+      <!-- Логотип в мобильном -->
+      <div class="logo">
+        <a href="index.html"><img src="{% static 'img/logo.png' %}" alt="logo" /></a>
+      </div>
+      <!-- Логотип в мобильном конец -->
+
+      <!-- Поиск в мобильном -->
+      <div class="mobile_search">
+        <form action="#" method="POST">
+          <button><i class="fas fa-search"></i></button>
+          <input type="search" />
+        </form>
+      </div>
+      <!-- Поиск в мобильном конец -->
+
+      <div class="mobile_cat_nav">
+        <!-- Все категории в мобильном -->
+        <div class="mobile_all-product">
+          <a class="mobile_all-product-link" href="#"
+            ><span><i class="fas fa-list"></i></span>каталог товаров</a
+          ><button class="open-cat-list">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <ul>
+            <li><a href="Category_products.html">Шланги</a></li>
+            <li><a href="Category_products.html">Фиксаторы для лесов</a></li>
+            <li><a href="Category_products.html">Фанера</a></li>
+            <li><a href="Category_products.html">Унивилки</a></li>
+            <li><a href="Category_products.html">Уголки</a></li>
+            <li><a href="Category_products.html">Трубы</a></li>
+            <li><a href="Category_products.html">Тайрот</a></li>
+            <li><a href="Category_products.html">Стойки</a></li>
+            <li><a href="Category_products.html">Пружинный зажим</a></li>
+            <li><a href="Category_products.html">Перемычка</a></li>
+            <li><a href="Category_products.html">Опалубка</a></li>
+            <li><a href="Category_products.html">Объемные стойки</a></li>
+            <li><a href="Category_products.html">Объемные опалубки</a></li>
+            <li><a href="Category_products.html">Настил</a></li>
+            <li><a href="Category_products.html">Леса</a></li>
+            <li><a href="Category_products.html">Крюк</a></li>
+            <li><a href="Category_products.html">Домкрат</a></li>
+            <li><a href="Category_products.html">Клин</a></li>
+            <li><a href="Category_products.html">Пружинный зажим</a></li>
+          </ul>
+        </div>
+        <!-- Все категории в мобильном конец -->
+
+        <!-- Навигация арендуемух товаров в мобильном -->
+        <div class="mobile-category-nav">
+          <ul>
+            <li class="mobile-nav-elem">
+              <a href="Formwork_rental.html">Аренда опалубка</a>
+              <ul>
+                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                <li class="mobile-nav-elem">
+                  <a href="#">Пример</a>
+                  <ul>
+                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                    <li class="mobile-nav-elem">
+                      <a href="#">Пример1</a>
+                      <ul>
+                        <li class="mobile-nav-elem">
+                          <a href="#">Пример2</a>
+                          <ul>
+                            <li class="mobile-nav-elem">
+                              <a href="#">Пример</a>
+                            </li>
+                            <li class="mobile-nav-elem">
+                              <a href="#">Пример</a>
+                            </li>
+                            <li class="mobile-nav-elem">
+                              <a href="#">Пример</a>
+                            </li>
+                            <li class="mobile-nav-elem">
+                              <a href="#">Пример</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                      </ul>
+                    </li>
+                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                  </ul>
+                </li>
+                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+              </ul>
+            </li>
+            <li class="mobile-nav-elem">
+              <a href="Formwork_rental.html">Продажа опалубка</a>
+            </li>
+            <li class="mobile-nav-elem">
+              <a href="Formwork_rental.html">Аренда бытовок</a>
+              <ul>
+                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                <li class="mobile-nav-elem">
+                  <a href="#">Пример1</a>
+                  <ul>
+                    <li class="mobile-nav-elem">
+                      <a href="#">Пример2</a>
+                      <ul>
+                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                      </ul>
+                    </li>
+                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                    <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                  </ul>
+                </li>
+                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+              </ul>
+            </li>
+            <li class="mobile-nav-elem">
+              <a href="Formwork_rental.html">Аренда лесов</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Навигация арендуемух товаров в мобильном конец -->
+      </div>
+
+      <!-- навигация в мобильном -->
+      <div class="mobile_nav">
+        <ul>
+          <li><a href="Company.html">О компании</a></li>
+          <li><a href="Contacts.html">Контакты</a></li>
+          <li><a href="Rent_terms.html">Условия аренды</a></li>
+          <li><a href="Delivery.html">Доставка</a></li>
+          <li><a href="Services.html">Услуги</a></li>
+        </ul>
+      </div>
+      <!-- навигация в мобильном конец -->
+
+      <!-- Языки в мобильном  -->
+      <div class="mobile_lang">
+        <ul>
+          <li><a class="active-lang" href="#">рус</a></li>
+          <li><a href="#">uzb</a></li>
+        </ul>
+      </div>
+      <!-- Языки в мобильном конец -->
+
+      <!-- Кнопка закрыть мобильное меню  -->
+      <div class="menu-clouse">
+        <button class="menu-clouse-button">Закрыть меню</button>
+      </div>
+      <!-- Кнопка закрыть мобильное меню конец -->
+    </section>
+    <!-- Мобильное меню конец -->
+
+    <!-- Иконка открытия мобильного меню  -->
+    <div class="mobile-button">
+      <button><i class="fas fa-bars"></i></button>
+    </div>
+    <!-- Иконка открытия мобильного меню конец -->
+
+    <!-- Мобильное меню конец -->
+
+    <!-- Хэдэр -->
+    {% include 'header.html' %}
+    <!-- Хэдэр конец -->
+
+    <!-- Загаловок страницы и хлебные крошки -->
+    <section class="title_page">
+      <!-- Заголовок страницы -->
+      <h1>О компании</h1>
+      <!-- Конец заголовка страницы -->
+      <!-- Хлебные крошки -->
+      <div class="breadcrumb">
+        <!-- Ссылки хлебных крошек -->
+        <ul>
+          <!-- Страница первого уровня -->
+          <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+          <!-- Конец страницы первого уровня -->
+          <!-- Страница на которой находится пользователь -->
+          <li>О компании</li>
+          <!-- Конец страницы на которой находиться пользователь -->
+        </ul>
+        <!-- Конец ссылок хлебных крошек -->
+      </div>
+      <!-- Конец хлебных крошек -->
+    </section>
+    <!-- Загаловок страницы и хлебные крошки конец-->
+    <!-- Контент страницы "О компании" -->
+    <main class="main-content set-bg" data-setbg="{% static 'img/bg_company.png' %}">
+      <!-- Секция О компании текст -->
+      <section class="company bg-pstn" data-bgpstn="{% static 'img/arrow_partners_down.png' %}">
+        <div class="container-fluid spad">
+          <div class="row">
+            <!-- Блок о компании текст -->
+            <div class="company_content">
+              <p>{{ about_page.text_1_ru }}</p>
+              <!-- Числовой блок страницы "О компании" -->
+              <div class="about_description">
+                <div class="desc_text">
+                    {% if about_page.year < 2 %}
+                    <h3>{{ about_page.year }} год</h3>
+                    {% elif about_page.year < 5 %}
+                    <h3>{{ about_page.year }} года</h3>
+                    {% else %}
+                    <h3>{{ about_page.year }} лет</h3>
+                    {% endif %}
+                  <p>на рынке</p>
+                </div>
+                <div class="desc_text">
+                  <h3>{{ about_page.order }}</h3>
+                  <p>и более заказов</p>
+                </div>
+                <div class="desc_text">
+                  <h3>{{ about_page.delivery }}</h3>
+                  <p>доставок</p>
+                </div>
+                <div class="desc_text">
+                  <h3>{{ about_page.repeated }}%</h3>
+                  <p>повторных обращений</p>
+                </div>
+              </div>
+              <!-- Числовой блок страницы "О компании" -->
+              <p>{{ about_page.text_2_ru }}</p>
+            </div>
+            <!-- Блок о компании текст конец -->
+          </div>
+        </div>
+      </section>
+      <!-- Секция О компании текст конец -->
+
+      <!-- Секция наши партнеры -->
+      <section class="partners_blog container-fluid spad">
+        <!-- Загаловок Наши партнеры -->
+        <div class="header-content right-header">
+          <h2>Наши партнеры</h2>
+        </div>
+        <!-- Загаловок Наши партнеры конец -->
+
+        <!-- Контейнер наши партнеры элементы -->
+        <div class="partners_items row">
+          <!-- Наши партнеры элемент  -->
+            {% for partner in partners %}
+                <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+          <!-- Изображение элемента -->
+            <img src="{{ partner.img.url }}" alt="" />
+            <!-- Конец изображения элемента -->
+          </div>
+            {% endfor %}
+          <!-- Наши партнеры элемент конец -->
+        </div>
+        <!-- Контейнер наши партнеры элементы конец -->
+      </section>
+      <!--  Секция наши партнеры конец -->
+
+      <!-- Секция отзывов -->
+      <section class="reviews_company spad no-bg">
+        <!-- Заголовок отзывов -->
+        <div class="header-content">
+          <h2>Отзывы</h2>
+        </div>
+        <!-- Заголовок отзывов конец -->
+
+        <!-- Главный контейнер слайдеров -->
+        <div class="swiper-container">
+          <!-- Оболочка слайдов -->
+          <div class="swiper-wrapper">
+            <!-- Слайды -->
+            <div class="swiper-slide reviews-slide spad">
+                {% for review in reviews %}
+                    <!-- Пункт отзыва -->
+                    <div class="rewiew-slider-item">
+                        <!-- Заголовок с именем пользователя -->
+                        <h3>{{ review.name }}</h3>
+                        <!-- Конец заголовок с именем пользователя -->
+                        <!-- Текст отзыва -->
+                        <p>{{ review.text }}</p>
+                        <!-- Конец текста с отзывом -->
+                    </div>
+                    <!-- Пункт отзыва конец -->
+                {% endfor %}
+            </div>
+            <!-- Слайды конец -->
+          </div>
+          <!-- Оболочка слайдов конец -->
+          <!-- Конпки слайдера -->
+          <!-- Кнопка переключения назад -->
+          <div class="swiper-button-prev"></div>
+          <!-- Конец кнопки переключения назад -->
+          <!-- Кнопка переключения вперед -->
+          <div class="swiper-button-next"></div>
+          <!-- Конец кнопки переключения вперед -->
+          <!-- Конец кнопок слайдера -->
+        </div>
+        <!-- Главный контейнер слайдеров конец-->
+      </section>
+      <!-- Секция отзывов конец -->
+
+      <!-- Секция с формой "Есть вопросы?" -->
+      <section class="form set-bg" data-setbg="{% static 'img/bg_leave.png' %}">
+        <div class="container-fluid spad">
+          <div class="row">
+            <form
+              class="form_container form_cont set-bg"
+              data-setbg="{% static 'img/bg_blur.png' %}"
+              action="#"
+            >
+              <!-- Загаловок форм -->
+              <h3>Есть вопросы?! Пишите нам!</h3>
+              <!-- Загаловок форм конец -->
+
+              <!-- Поле для имени -->
+              <input class="form_input" type="text" placeholder="Ваше имя" />
+              <!-- Поле для имени конец -->
+
+              <!-- Поле для телефона -->
+              <input
+                class="form_input"
+                type="tel"
+                placeholder="Номер телефона"
+              />
+              <!-- Поле для телефона конец -->
+
+              <!-- Поле текста для вопроса -->
+              <textarea
+                class="textarea_input"
+                name="message"
+                placeholder="Текст вопроса:"
+              ></textarea>
+              <!-- Поле текста для вопроса конец -->
+
+              <!-- Блок отправки -->
+              <div class="submit_block">
+                <div class="checkbox_item">
+                  <label for="checkbox_page"
+                    ><input
+                      id="checkbox_page"
+                      class="checkbox_input"
+                      type="checkbox"
+                    />Соглашаюсь с политикой обработанных данных</label
+                  >
+                </div>
+                <button class="btn_submit" type="submit">Отправить</button>
+              </div>
+              <!-- Блок отправки конец -->
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- Секция с формой "Есть вопросы?" конец-->
+    </main>
+
+    <!-- Футер  -->
+    {% include 'footer.html' %}
+    <!-- Футер конец -->
+
+    <!-- Окно сообщения -->
+    <div
+      class="position-fixed top-0 right-0 p-3"
+      style="z-index: 5; right: 0; top: 0"
+    >
+      <div
+        id="liveToast"
+        class="toast fade hide"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        data-delay="5000"
+      >
+        <div class="toast-header">
+          <strong class="mr-auto">Товар добавлен в корзину</strong>
+          <button
+            type="button"
+            class="ml-2 mb-1 close"
+            data-dismiss="toast"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="toast-body">Ваш товар добавлен в корзину!</div>
+      </div>
+    </div>
+    <!-- Конец окна сообщения -->
+{% endblock %}
