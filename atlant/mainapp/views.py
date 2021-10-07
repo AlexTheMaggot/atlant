@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from . import models
-from shop.models import Category
+from shop.models import Category, Product
 
 
 header = models.Header.objects.first()
@@ -18,11 +19,15 @@ def index(request):
     reviews = models.Reviews.objects.all()
     partners = models.Partner.objects.all()
     worksteps = models.WorkSteps.objects.all()
+    products = Product.objects.all()
+    paginator = Paginator(products, 8)
+    page_obj = paginator.get_page(1)
     context.update({
         'main_page': main_page,
         'reviews': reviews,
         'partners': partners,
         'worksteps': worksteps,
+        'page_obj': page_obj,
     })
     if '/uz/' in request.path:
         template = 'mainapp/index_uz.html'

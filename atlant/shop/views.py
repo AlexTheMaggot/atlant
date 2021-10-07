@@ -46,6 +46,15 @@ def category_detail(request, category_slug):
 def product_detail(request, category_slug, product_slug):
     product = get_object_or_404(models.Product, slug=product_slug)
     category = get_object_or_404(models.Category, slug=category_slug)
+    context.update({
+        'category': category,
+        'product': product,
+    })
+    if '/uz/' in request.path:
+        template = 'shop/product_detail_uz.html'
+    else:
+        template = 'shop/product_detail.html'
+    return render(request, template, context)
 
 
 def search(request):
