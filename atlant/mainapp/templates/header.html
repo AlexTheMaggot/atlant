@@ -224,7 +224,11 @@
 
                 <!-- Поле поиска -->
                 <div class="search">
-                    <form action="{% url 'catalog:search' %}" method="GET">
+                    {% if '/uz/' in request.path %}
+                        <form action="{% url 'catalog_uz:search_uz' %}" method="GET">
+                    {% else %}
+                        <form action="{% url 'catalog:search' %}" method="GET">
+                    {% endif %}
                         <button><i class="fas fa-search"></i></button>
                         <input type="search" required name="search">
                     </form>

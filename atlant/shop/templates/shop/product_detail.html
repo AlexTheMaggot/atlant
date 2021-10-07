@@ -1,0 +1,542 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}{{ product.name_ru }}{% endblock %}
+{% block content %}
+    {# Callback #}
+    <!-- Модальное окно обратного звонка -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                        <h2 class="modal_title">Пожалуйста, заполните поля для обратной связи с Вами</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-6"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-6"><input type="text" placeholder="Срок:"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно обратного звонка конец -->
+
+    <!-- Модальное окно узнать цену  -->
+    <div class="modal fade" id="myModal_price">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                        <h2 class="modal_title">Арендовать Рамные леса ЛР-10</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-6"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-6"><input type="text" placeholder="Срок:"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно узнать цену конец -->
+
+    <!-- Модальное окно покупки -->
+    <div class="modal fade" id="myModal_buy">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                        <h2 class="modal_title">Купить Рамные леса ЛР-10</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-12"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно покупки  конец-->
+
+
+    <!-- Модальное окно уззнать цену и условия -->
+    <div class="modal fade" id="myModal_page">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                        <h2 class="modal_title">Купить Рамные леса ЛР-10</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-12"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно уззнать цену и условия -->
+    {# End Callback #}
+    <!-- Мобильное меню -->
+    {% include 'blocks/mobile_menu.html' %}
+    <!-- Мобильное меню конец -->
+    <!-- Хэдэр -->
+    {% include 'header.html' %}
+    <!-- Хэдэр конец -->
+<main class="main-page">
+
+    <!-- Секция загаловок страницы и хлебные крошки -->
+    <section class="title_page">
+        <!-- Загаловок страницы -->
+        <h1>{{ product.name_ru }}</h1>
+        <!-- Загаловок страницы -->
+
+        <!-- Блок хлебные крошки -->
+        <div class="breadcrumb">
+            <ul>
+                <!-- Ссылка на страницу первого уровня -->
+                <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+                <!-- Конец ссылки на страницу первого уровня -->
+                <!-- Ссылка на страницу второго уровня -->
+                <li><a href="{% url 'catalog:product_list' %}">Каталог товаров</a></li>
+                <!-- Конец ссылки на страницу второго уровня -->
+                <!-- Ссылка на страницу третьего уровня -->
+                <li><a href="{% url 'catalog:category_detail' category.slug %}">{{ category.name_ru }}</a></li>
+                <!-- Конец ссылки на страницу третьего уровня -->
+                <!-- Страница на которой находится пользователь -->
+                <li>{{ product.name_ru }}</li>
+                <!-- Конец страницу четвертого уровня -->
+            </ul>
+        </div>
+        <!-- Хлебные крошки -->
+    </section>
+    <!-- Секция загаловок страницы и хлебные крошки конец-->
+
+    <!--Секция карточки товара -->
+    <section class="product_details">
+        <!-- Блок главный контейнер карточки продукта -->
+        <div class="product_details_container container-fluid spad">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <!-- Блок с картинкой товара зумированная -->
+                    <div class="zoom_img">
+                        <img src="{% static 'img/product.png' %}" alt="" />
+                    </div>
+                    <!-- Блок с картинкой товара зумированная -->
+
+                    <!-- Блок товаров в карусели -->
+                    <div class="gallery owl-carousel">
+                        <!-- Картинка товара галереи -->
+                        <a href="#" class="gallery_button"><img src="{% static 'img/product_1.jpg' %}" alt="" /></a>
+                        <!-- Картинка товара галереи конец -->
+
+                        <!-- Картинка товара галереи -->
+                        <a href="#" class="gallery_button"><img src="{% static 'img/product_2.jpg' %}" alt="" /></a>
+                        <!-- Картинка товара галереи конец -->
+
+                        <!-- Картинка товара галереи -->
+                        <a href="#" class="gallery_button"><img src="{% static 'img/product_3.jpg' %}" alt="" /></a>
+                        <!-- Картинка товара галереи конец -->
+
+                        <!-- Картинка товара галереи -->
+                        <a href="#" class="gallery_button"><img src="{% static 'img/product_4.jpg' %}" alt="" /></a>
+                        <!-- Картинка товара галереи конец -->
+                    </div>
+                    <!-- Блок товаров в карусели -->
+                </div>
+                <!-- Блок Характеристики -->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div class="specifications">
+                        <!-- Загаловок характеристик -->
+                        <h3 class="specifications_title">
+                            Краткие характеристики
+                        </h3>
+                        <!-- Загаловок характеристик конец -->
+
+                        <!-- Список Характеристик -->
+                        <ul>
+                            <li>Ширина<span>5м</span></li>
+                            <li>Высота<span>20м</span></li>
+                            <li>Макс. высота<span>30м</span></li>
+                            <li>Макс. нагрузка<span> 200кг.м2</span></li>
+                            <li>Кол-во в комплекте<span>3шт (1 рабочий + 2 страховых</span></li>
+                        </ul>
+                        <!-- Список Характеристик конец-->
+                    </div>
+                    <div class="specifications_down">
+                        <form action="#">
+                            <ul class="btns_rents_buy">
+                                <!-- Кнопка Арендовать -->
+                                <li>
+                                    <span>Арендовать:</span>
+                                    <button type="button" class="btn_rent" data-toggle="modal" data-target="#myModal_price">Узнать цену и условия</button>
+                                </li>
+                                <!-- Кнопка Арендовать конец -->
+
+                                <!-- Кнопка Купить -->
+                                <li>
+                                    <span>Купить:</span>
+                                    <button type="button" class="btn_buy" data-toggle="modal" data-target="#myModal_buy">Узнать цену и условия</button>
+                                </li>
+                                <!-- Кнопка Купить конец -->
+                            </ul>
+                            <p class="specifications_info_text">К сожалению,цены на товары и комплектующие постоянно меняются.Для получения информации по цене аренды или закупки пожалуйста обратитесь к нашим специалистам.Вы можете оставить заявку онлайн или позвонить в офис продаж</p>
+                            <!-- Копка узнать цену и условия  -->
+                            <button data-toggle="modal" data-target="#myModal_page" type="button" class="button_price">Узнать цену и условия</button>
+                            <!-- Копка узнать цену и условия конец  -->
+                        </form>
+                    </div>
+                </div>
+                <!-- Блок Характеристики конец -->
+            </div>
+        </div>
+        <!-- Блок главный контейнер карточки продукта конец -->
+    </section>
+    <!--Секция карточки товара конец -->
+
+    <!-- Секция вкладок -->
+    <section>
+        <div class="container-fluid spad tabs">
+            <div class="row tabs__nav">
+                <!-- Таб описание -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                    <button class="tabs__nav-btn" type="button" data-tab="#tab_1"><img src="{% static 'img/text.svg' %}" alt="" class="tab_icon">Описание</button>
+                </div>
+                <!-- Таб описание конец -->
+
+                <!-- Таб характеристики -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                    <button class="tabs__nav-btn" type="button" data-tab="#tab_2"><img src="{% static 'img/settings.svg' %}" alt="" class="tab_icon">Характеристики</button>
+                </div>
+                <!-- Таб характеристики конец -->
+
+                <!-- Таб документация -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                    <button class="tabs__nav-btn" type="button" data-tab="#tab_3"><img src="{% static 'img/document.svg' %}" alt="" class="tab_icon">Документация</button>
+                </div>
+                <!-- Таб документация конец -->
+
+                <!-- Таб отзывы -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                    <button class="tabs__nav-btn" type="button" data-tab="#tab_4"><img src="{% static 'img/cloud.svg' %}" alt="" class="tab_icon">Отзывы</button>
+                </div>
+                <!-- Таб отзывы конец -->
+            </div>
+
+            <!-- Блок содержимое таба Описание -->
+            <div class="tabs__item" id="tab_1">
+                <p>
+                    Быстровозводимые рамные леса марки ЛР-10 заслуженно можно назвать самыми распространенными среди фасадных разновидностей приставного оборудования, так как они характеризуются функциональностью и предельно низкой стоимостью!
+                </p>
+                <p>
+                    Несмотря на компактные габариты и небольшую высоту установки (10 м), многоярусные подмости используются не только для облицовочных и отделочных, но и кладочных работ. В основании конструкции лежат стальные рамы, малая металлоемкость которых упрощает монтаж рамных лесов и значительно снижает итоговую цену.
+                </p>
+                <p>
+                    Помимо продажи мы также предлагаем такую популярную на отечественном рынке услугу, как аренда строительных лесов. Таким образом, вы можете пользоваться профессиональным оборудованием на выгодных для вас условиях!
+                </p>
+            </div>
+            <!-- Блок содержимое таба Описание конец -->
+
+            <!-- Блок содердимое таба Характеристики -->
+            <div class="tabs__item" id="tab_2">
+                <div class="characteristics">
+                    <!-- Загаловок Характеристики -->
+                    <h3 class="characteristics_title">Характеристики</h3>
+                    <!-- Загаловок Характеристики -->
+
+                    <!-- Блок список характеристик -->
+                    <ul class="characteristics_list">
+                        <li>Материал<span>Сталь</span></li>
+                        <li>Гарантия<span>12 месяцев</span></li>
+                        <li>Сертификат<span>Имеется</span></li>
+                        <li>Страна производителя<span>Узбекистан</span></li>
+                        <li>Возможность самовывоза<span>Имеется</span></li>
+                        <li>Возможность доставки<span>Имеется</span></li>
+                    </ul>
+                    <!-- Блок список характеристик -->
+                </div>
+            </div>
+            <!-- Блок содердимое таба Характеристики конец -->
+
+            <!-- Блок содержимое таба Документация -->
+            <div class="tabs__item" id="tab_3">
+                <div class="file_row row">
+                    <!-- Файл для скачивания документации -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <!-- Ссылка на файлик документации -->
+                        <a href="#">
+                            <div class="file_item">
+                                <!-- Иконка прайс листа  -->
+                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист Рамные леса
+                                <!-- Иконка прайс листа конец -->
+
+                                <!-- Кнопка скачать прайс -->
+                                <span class="download_btn">скачать</span>
+                                <!-- Кнопка скачать прайс конец -->
+                            </div>
+                        </a>
+                        <!-- Ссылка на файлик документации конец -->
+                    </div>
+                    <!-- Файл для скачивания документации конец -->
+
+                    <!-- Файл для скачивания документации -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <!-- Ссылка на файлик документации -->
+                        <a href="#">
+                            <div class="file_item">
+                                <!-- Иконка прайс листа -->
+                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист Рамные леса
+                                <!-- Иконка прайс листа конец -->
+
+                                <!-- Кнопка скачать прайс -->
+                                <span class="download_btn">скачать</span>
+                                <!-- Кнопка скачать прайс конец -->
+                            </div>
+                        </a>
+                        <!-- Ссылка на файлик документации конец -->
+                    </div>
+                    <!-- Файл для скачивания документации конец -->
+
+                    <!-- Файл для скачивания документации -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <!-- Ссылка на файлик документации -->
+                        <a href="#">
+                            <div class="file_item">
+                                <!-- Иконка прайс листа -->
+                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист Рамные леса
+                                <!-- Иконка прайс листа конец -->
+
+                                <!-- Кнопка скачать прайс -->
+                                <span class="download_btn">скачать</span>
+                                <!-- Кнопка скачать прайс конец -->
+                            </div>
+                        </a>
+                        <!-- Ссылка на файлик документации конец -->
+                    </div>
+                    <!-- Файл для скачивания документации конец -->
+
+                    <!-- Файл для скачивания документации -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <!-- Ссылка на файлик документации -->
+                        <a href="#">
+                            <div class="file_item">
+                                <!-- Иконка прайс листа -->
+                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист рамные леса
+                                <!-- Иконка прайс листа конец -->
+
+                                <!-- Кнопка скачать прайс -->
+                                <span class="download_btn">скачать</span>
+                                <!-- Кнопка скачать прайс конец -->
+                            </div>
+                        </a>
+                        <!-- Ссылка на файлик документации конец -->
+                    </div>
+                    <!-- Файл для скачивания документации конец -->
+
+                    <!-- Файл для скачивания документации -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <!-- Ссылка на файлик документации -->
+                        <a href="#">
+                            <div class="file_item">
+                                <!-- Иконка прайс листа -->
+                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист рамные леса
+                                <!-- Иконка прайс листа конец -->
+
+                                <!-- Кнопка скачать прайс -->
+                                <span class="download_btn">скачать</span>
+                                <!-- Кнопка скачать прайс конец -->
+                            </div>
+                        </a>
+                        <!-- Ссылка на файлик документации конец -->
+                    </div>
+                    <!-- Файл для скачивания документации конец -->
+
+                    <!-- Файл для скачивания документации -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <!-- Ссылка на файлик документации -->
+                        <a href="#">
+                            <div class="file_item">
+                                <!-- Иконка прайс листа -->
+                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист рамные леса
+                                <!-- Иконка прайс листа конец -->
+
+                                <!-- Кнопка скачать прайс -->
+                                <span class="download_btn">скачать</span>
+                                <!-- Кнопка скачать прайс конец -->
+                            </div>
+                        </a>
+                        <!-- Ссылка на файлик документации конец -->
+                    </div>
+                    <!-- Файл для скачивания документации конец -->
+
+                    <!-- Файл для скачивания документации -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <!-- Ссылка на файлик документации -->
+                        <a href="#">
+                            <div class="file_item">
+                                <!-- Иконка прайс листа -->
+                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист рамные леса
+                                <!-- Иконка прайс листа конец -->
+
+                                <!-- Кнопка скачать прайс -->
+                                <span class="download_btn">скачать</span>
+                                <!-- Кнопка скачать прайс конец -->
+                            </div>
+                        </a>
+                        <!-- Ссылка на файлик документации конец -->
+                    </div>
+                    <!-- Файл для скачивания документации конец -->
+
+                    <!-- Файл для скачивания документации -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <!-- Ссылка на файлик документации -->
+                        <a href="#">
+                            <div class="file_item">
+                                <!-- Иконка прайс листа -->
+                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист рамные леса
+                                <!-- Иконка прайс листа конец -->
+
+                                <!-- Кнопка скачать прайс -->
+                                <span class="download_btn">скачать</span>
+                                <!-- Кнопка скачать прайс конец -->
+                            </div>
+                        </a>
+                        <!-- Ссылка на файлик документации конец -->
+                    </div>
+                    <!-- Файл для скачивания документации конец -->
+                </div>
+            </div>
+            <!-- Блок содержимое таба Документация конец -->
+
+            <!-- Блок содержимое таба Отзывы -->
+            <div class="tabs__item" id="tab_4">
+                <div class="reviews_company spad no-bg">
+                    <!-- Загаловок отзывов -->
+                    <div class="header-content">
+                        <h2>Отзывы</h2>
+                    </div>
+                    <!-- Загаловок отзывов -->
+
+                    <!-- Общий контейнер слайдеров -->
+                    <div class="swiper-container">
+                        <!-- Обертка слайдов -->
+                        <div class="swiper-wrapper">
+                            <!-- Слайд -->
+                            <div class="swiper-slide reviews-slide spad">
+                                <div class="rewiew-slider-item">
+                                    <h3>ООО Самстрой Раджабов</h3>
+                                    <p>
+                                        Значимость этих проблем настолько очевидна, что укрепление и развитие 
+                                        структуры требуют определения и уточнения систем массового участия. Таким
+                                        образом рамки и место обучения кадров требуют определения форм развития.
+                                    </p>
+                                </div>
+                                <div class="rewiew-slider-item">
+                                    <h3>Хамракулов Джасур</h3>
+                                    <p>
+                                        Значимость этих проблем настолько очевидна, что укрелпение и развитие структуры требуют
+                                        определения и уточнения систем массового участия. Таким образом рамки и место обучения кадров требуют
+                                        определения и уточнения форм развития. Не следует , однако забывать, что реализация намеченных плановых заданий 
+                                        спрособствует подготовки 
+                                        и реализации новых предложений
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Слайд -->
+                        </div>
+                        <!-- Обертка слайдов -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                    <!-- Общий контейнер слайдеров -->
+                </div>
+
+                <!-- Загаловок Оставить отзывы -->
+                <div class="review_form_title">
+                   <h2>Оставьте отзыв о товаре</h2>
+                </div>
+                <!-- Загаловок Оставить отзывы -->
+
+                <!-- Форма оставить отзыв -->
+                <form class="review_forms">
+                    <!-- Поле для ввода имени -->
+                    <input placeholder="Ваше имя" type="text">
+                    <!-- Поле для ввода имени конец -->
+
+                    <!-- Поле текста отзыва  -->
+                    <textarea placeholder="Текст"></textarea>
+                    <!-- Поле текста отзыва конец  -->
+
+                    <!-- Кнопка оставить отзыв -->
+                    <button>Оставьте отзыв</button>
+                    <!-- Кнопка оставить отзыв конец -->
+                </form>
+                <!-- Форма оставить отзыв -->
+            </div>
+            <!-- Блок содержимое таба Отзывы -->
+        </div>
+    </section>
+    <!-- Секция вкладок конец -->
+</main>
+
+        <!-- Футер  -->
+        {% include 'footer.html' %}
+        <!-- Футер конец -->
+
+        <!-- Окно сообщения -->
+        <div class="position-fixed top-0 right-0 p-3" style="z-index: 5; right: 0; top: 0;">
+          <div id="liveToast" class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <div class="toast-header">
+            <strong class="mr-auto">Товар добавлен в корзину</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="toast-body">
+            Ваш товар добавлен в корзину!
+            </div>
+          </div>
+      </div>
+      <!-- Конец окна сообщения -->
+{% endblock %}

@@ -1,0 +1,460 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}{{ category.name_uz }}{% endblock %}
+{% block content %}
+    {# Callback #}
+    {% include 'blocks/callback.html' %}
+    {# End Callback #}
+    <!-- Мобильное меню -->
+    {% include 'blocks/mobile_menu.html' %}
+    <!-- Мобильное меню конец -->
+        <!-- Хэдэр -->
+        {% include 'header.html' %}
+        <!-- Хэдэр конец -->
+
+        <!-- Загаловок страницы и хлебные крошки -->
+        <section class="title_page">
+            <!-- Заголовок страницы -->
+            <h1>{{ category.name_uz }}</h1>
+            <!-- Конец заголовока страницы -->
+            <!-- Хлебные крошки -->
+            <div class="breadcrumb">
+                <ul>
+                    <!-- Ссылка на первый уровень сайта -->
+                    <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+                    <!-- Конец ссылки на первый уровень сайта -->
+                    <!-- Ссылка на второй уровень сайта -->
+                    <li><a href="{% url 'catalog_uz:product_list_uz' %}">Каталог товаров</a></li>
+                    <!-- Конец ссылки на второй уровень сайта -->
+                    <!-- Страница на которой находится пользователь -->
+                    <li>{{ category.name_uz }}</li>
+                    <!-- Конец страницы на которой находится пользователь -->
+                </ul>
+            </div>
+            <!-- Конец хлебных крошек  -->
+        </section>
+        <!-- Загаловок страницы и хлебные крошки конец-->
+
+        <main class="category_main">
+            <!-- Секция категории товаров -->
+            <section class="spad container-fluid category-tile">
+                <!-- Категории товаров -->
+                <div class="row category-tile-row category_bg">
+                    {% for product in page_obj %}
+                    <!-- Товар  -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 category-item"
+                    >
+                        <!-- Картинка товара -->
+                        <div class="cat-img">
+                            <img src="{% static 'img/test.jpg' %}" alt="" />
+                        </div>
+                        <!-- Конец картинки товара -->
+                        <!-- Заголовок с названием товара -->
+                        <h3>{{ product.name_uz }}</h3>
+                        <!-- Конец заголовка с названием товара -->
+                        <!-- Список характеристик товара -->
+                        <ul>
+                            <li>
+                                Ширина <span class="category-val">0,9m</span>
+                            </li>
+                            <li>
+                                Длинна <span class="category-val">0,3m</span>
+                            </li>
+                            <li>Высота <span class="category-val">3m</span></li>
+                        </ul>
+                        <!-- Конец списка характеристик товара -->
+                        <!-- Кнопка перейти на страницу товара -->
+                        <div class="category-button">
+                            <a href="#">перейти</a>
+                        </div>
+                        <!-- Конец кнопки перейти на страницу товара -->
+                    </div>
+                    <!-- Товар конец -->
+                    {% endfor %}
+                </div>
+                <!-- Категории товаров -->
+
+                <!-- Пагинация -->
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <!-- Стрелка для перехода на предыдущую страницу -->
+                        <li><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">«</a></li>
+                        <!-- Конец стрелки для перехода на предыдущую страницу -->
+                    {% endif %}
+                    {% for page_number in page_obj.paginator.page_range %}
+                        {% if page_number == page_obj.number %}
+                            <!-- Ссылка на которой находиться пользователь -->
+                            <li><a class="active" href="#">{{ page_number }}</a></li>
+                            <!-- Конец ссылки на которой находится пользователь -->
+                        {% else %}
+                            <!-- Ссылка на другую страницу -->
+                            <li><a href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a></li>
+                            <!-- Конец ссылки на другую страницу -->
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <!-- Стрелка для перехода на следующую страницу -->
+                        <li><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">»</a></li>
+                        <!-- Конец стрелки для перехода на следующую страницу -->
+                    {% endif %}
+                </ul>
+                <!-- Пагинация конец-->
+            </section>
+            <!-- Секция категории товаров конец -->
+
+            <!-- Секция Call center (Форма обратной связи) -->
+            <section class="call_center set-bg container-fluid" data-setbg="img/bg_callcentre.png">
+                <div class="call_center_wrap row">
+                    <div class="call_center_container">
+                        <!-- Форма обратной связи -->
+                        <form action="#" class="call_center_forms">
+                            <!-- Заголовок формы обратной связи -->
+                            <h3 class="call_center_title">
+                                Не нашли нужный товар или вам требуется
+                                консультация?
+                            </h3>
+                            <!-- Конец заголовка формы обратной связи -->
+                            <!-- Текст формы обратной связи -->
+                            <span
+                                >Отправьте Ваши контактные данные и наши
+                                специалисты свяжутся с Вами в удобное для Вас
+                                время</span
+                            >
+                            <!-- Конец формы обратной связи -->
+                            <!-- Форма для ввода времени для звонки -->
+                            <input
+                                class="form_item"
+                                type="text"
+                                placeholder="Удобное время для звонка"
+                            />
+                            <!-- Конец формы для ввода времени для звонки -->
+                            <!-- Форма для ввода имени -->
+                            <input
+                                class="form_item"
+                                type="text"
+                                placeholder="Ваше имя"
+                            />
+                            <!-- Конец формы для ввода имени -->
+                            <!-- Форма для ввода номера телефона -->
+                            <input
+                                class="form_item"
+                                type="tel"
+                                placeholder="Номер телефона"
+                            />
+                            <!-- Форма для ввода номера телефона -->
+                            <textarea
+                                class="form__textarea"
+                                name="call_center_form"
+                                placeholder="Текст вопроса"
+                            ></textarea>
+                            <!-- Конец формы для ввода номера телефона -->
+                            <!-- Кнопка для отправки данных с формы -->
+                            <div class="bnt_call_center">
+                                <button class="call_center_btn" type="submit">
+                                    Отправить
+                                </button>
+                            </div>
+                            <!-- Конец кнопки для отправки данных с формы -->
+                        </form>
+                        <!-- Конец формы обратной связи -->
+                    </div>
+                </div>
+            </section>
+            <!-- Секция Call center конец (Форма обратной связи) -->
+
+            <!-- Секция как мы работаем -->
+            <section class="spad container-fluid">
+                <div class="how-work row">
+                    <!-- Заголовок секции -->
+                    <div class="col-12 header-content">
+                        <h2>Как мы работаем</h2>
+                    </div>
+                    <!-- Конец заголовка секции -->
+                    <!-- Элемент секции -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
+                    >
+                        <div class="how-work-elem">
+                            <!-- Изображение элемента -->
+                            <img
+                                src="img/1equipment.png"
+                                alt="1equipment.png"
+                            />
+                            <!-- Конец изображения элемента  -->
+                            <!-- Текст элемента -->
+                            <p>Выберите оборудование</p>
+                            <!-- Конец текста элемента -->
+                        </div>
+                        <!-- Декоративная стрелка -->
+                        <div class="how-work-arrow">
+                            <img src="img/arrow_work.png" alt="" />
+                        </div>
+                        <!-- Конец декоративной стрелки -->
+                    </div>
+                    <!-- Конец элемента секции -->
+                    <!-- Элемент секции -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
+                    >
+                        <div class="how-work-elem">
+                            <!-- Изображение элемента -->
+                            <img src="img/2calling.png" alt="2calling.png" />
+                            <!-- Конец изображения элемента  -->
+                            <!-- Текст элемента -->
+                            <p>Звоните нам или оставьте заявку на сайте</p>
+                            <!-- Конец текста элемента -->
+                        </div>
+                        <!-- Декоративная стрелка -->
+                        <div class="how-work-arrow">
+                            <img src="img/arrow_work.png" alt="" />
+                        </div>
+                        <!-- Конец декоративной стрелка -->
+                    </div>
+                    <!-- Конец элемента секции -->
+                    <!-- Элемент секции -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
+                    >
+                        <div class="how-work-elem">
+                            <!-- Изображение элемента -->
+                            <img
+                                src="img/3warehouse.png"
+                                alt="3warehouse.png"
+                            />
+                            <!-- Конец элемента изображения -->
+                            <!-- Текст элемента -->
+                            <p>Консультант передает Ваш заказ на склад</p>
+                            <!-- Конец текст элемента -->
+                        </div>
+                        <!-- Декоративная стрелка -->
+                        <div class="how-work-arrow">
+                            <img src="img/arrow_work.png" alt="" />
+                        </div>
+                        <!-- Конец деркоративной стрелки -->
+                    </div>
+                    <!-- Конец элемента секции -->
+                    <!-- Элемент секции -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
+                    >
+                        <div class="how-work-elem">
+                            <!-- Изображение секции -->
+                            <img
+                                src="img/4documents.png"
+                                alt="4documents.png"
+                            />
+                            <!-- Изображение секции -->
+                            <!-- Текст секции -->
+                            <p>Присылаете все необходимые документы</p>
+                            <!-- Конец текста секции -->
+                        </div>
+                        <!-- Декоративная стрелка -->
+                        <div class="how-work-arrow how-work-arrow-four">
+                            <img src="img/arrow_work.png" alt="" />
+                        </div>
+                        <!-- Конец декоративной стрелки -->
+                    </div>
+                    <!-- Конец элемента секции -->
+                    <!-- Элемент секции -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
+                    >
+                        <div class="how-work-elem">
+                            <!-- Изображение элемента -->
+                            <img src="img/5contract.png" alt="5contract.png" />
+                            <!-- Конец изображения элемента -->
+                            <!-- Текст элемента -->
+                            <p>Мы подготавливаем и высылаем вам договор</p>
+                            <!-- Конец текста элемента -->
+                        </div>
+                        <!-- Декоративная стрелка -->
+                        <div class="how-work-arrow">
+                            <img src="img/arrow_work.png" alt="" />
+                        </div>
+                        <!-- Конец декоративной стрелки -->
+                    </div>
+                    <!-- Конец элемента секции -->
+                    <!-- Элемент секции -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
+                    >
+                        <div class="how-work-elem">
+                            <!-- Изображение элемента -->
+                            <img src="img/6money.png" alt="6money.png" />
+                            <!-- Конец элемента секции -->
+                            <!-- Текст элемента -->
+                            <p>Получаем оплату, а вы товар</p>
+                            <!-- Конец текста элемента -->
+                        </div>
+                        <!-- Декоративная стрелка -->
+                        <div class="how-work-arrow">
+                            <img src="img/arrow_work.png" alt="" />
+                        </div>
+                        <!-- Конец декоративной стрелки -->
+                    </div>
+                    <!-- Конец элемента секции -->
+                </div>
+            </section>
+            <!-- Секция как мы работаем конец -->
+
+            <!-- Секция наши преимущества -->
+            <section class="our_adventages">
+                <div class="container-fluid spad">
+                    <div class="row">
+                        <!-- Загалов наши преимущества -->
+                        <div class="payment_title adventages_title">
+                            <h2>Наши преимущества</h2>
+                        </div>
+                        <!-- Загалов наши преимущества конец -->
+                    </div>
+                    <div class="row advantages_row">
+                        <!-- Наши преимущества пункт -->
+                        <div
+                            class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
+                        >
+                            <div class="adventages_item">
+                                <!-- Изображения элемента -->
+                                <img
+                                    class="adventages_img"
+                                    src="img/dollar.svg"
+                                    alt=""
+                                />
+                                <!-- Конец изображения элемента -->
+                                <!-- Заголовок элемента -->
+                                <h3 class="adventages_name">Экономия!</h3>
+                                <!-- Конец заголовка элемента -->
+                                <!-- Текст элемента -->
+                                <p class="adventages_text">
+                                    Вам требуется покупать дорогостоящее
+                                    оборудование
+                                </p>
+                                <!-- Конец текста элемента -->
+                            </div>
+                        </div>
+                        <!-- Наши преимущества пункт конец -->
+
+                        <!-- Наши преимущества пункт -->
+                        <div
+                            class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
+                        >
+                            <div class="adventages_item">
+                                <!-- Изображение элемента -->
+                                <img
+                                    class="adventages_img"
+                                    src="img/time.svg"
+                                    alt=""
+                                />
+                                <!-- Конец изображения элемента -->
+                                <!-- Заголовок элемента -->
+                                <h3 class="adventages_name">
+                                    Пользуйтесь сколько требуется!
+                                </h3>
+                                <!-- Конец заголовка элемента -->
+                                <!-- Текст элемента -->
+                                <p class="adventages_text">
+                                    Мы предостовляем неограниченный срок аренды
+                                    с гибкими и удобными условиями
+                                </p>
+                                <!-- Конец текста элемента -->
+                            </div>
+                        </div>
+                        <!-- Наши преимущества пункт конец -->
+
+                        <!-- Наши преимущества пункт -->
+                        <div
+                            class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
+                        >
+                            <div class="adventages_item">
+                                <!-- Изображение элемента -->
+                                <img
+                                    class="adventages_img"
+                                    src="img/like.svg"
+                                    alt=""
+                                />
+                                <!-- Конец изображения элемента -->
+                                <!-- Заголовок элемента -->
+                                <h3 class="adventages_name">
+                                    Лучшее качество на рынке
+                                </h3>
+                                <!-- Конец заголовка элемента -->
+                                <!-- Текст элемента -->
+                                <p class="adventages_text">
+                                    Все предоставляемые нами товары являются
+                                    сертифицированными, закупаются у проверенных
+                                    поставщиков, а произведенные нами товары
+                                    являются лучшими на рынке по цене и качеству
+                                </p>
+                                <!-- Конец текста элемента -->
+                            </div>
+                        </div>
+                        <!-- Наши преимущества пункт конец -->
+
+                        <!-- Наши преимущества пункт -->
+                        <div
+                            class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
+                        >
+                            <div class="adventages_item">
+                                <!-- Изображение элемента -->
+                                <img
+                                    class="adventages_img"
+                                    src="img/operator.svg"
+                                    alt=""
+                                />
+                                <!-- Конец изображения элемента -->
+                                <!-- Заголовок элемента -->
+                                <h3 class="adventages_name">
+                                    Проффесиональная поддержка
+                                </h3>
+                                <!-- Конец заголовка элемента -->
+                                <!-- Текст элемента -->
+                                <p class="adventages_text">
+                                    наши специалисты на связи 24 часа,которые
+                                    ждут ваших вопросов и с радостью
+                                    проконсультируют вас в любое время.
+                                </p>
+                                <!-- Конец текста элемента -->
+                            </div>
+                        </div>
+                        <!-- Наши преимущества пункт конец -->
+                    </div>
+                </div>
+            </section>
+            <!-- Секция наши преимущества конец -->
+
+        {% include 'blocks/reviews.html' %}
+        </main>
+
+        <!-- Футер  -->
+        {% include 'footer.html' %}
+        <!-- Футер конец -->
+
+        <!-- Окно сообщения -->
+        <div
+            class="position-fixed top-0 right-0 p-3"
+            style="z-index: 5; right: 0; top: 0"
+        >
+            <div
+                id="liveToast"
+                class="toast fade hide"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
+                data-delay="5000"
+            >
+                <div class="toast-header">
+                    <strong class="mr-auto">Товар добавлен в корзину</strong>
+                    <button
+                        type="button"
+                        class="ml-2 mb-1 close"
+                        data-dismiss="toast"
+                        aria-label="Close"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="toast-body">Ваш товар добавлен в корзину!</div>
+            </div>
+        </div>
+        <!-- Конец окна сообщения -->
+{% endblock %}

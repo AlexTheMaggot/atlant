@@ -106,6 +106,7 @@
 
             <!-- Блок категории товаров -->
             <div class="row category-tile-row category_bg">
+                {% for product in page_obj %}
                 <!-- Товар -->
                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
                     <!-- Изображение товара -->
@@ -114,7 +115,7 @@
                     </div>
                     <!-- Конец изображение товара -->
                     <!-- Заголовок с названием товара -->
-                    <h3>Стойка</h3>
+                    <h3>{{ product.name_ru }}</h3>
                     <!-- Конец заголовок с названием товара -->
                     <!-- Характеристики товара -->
                     <ul>
@@ -125,179 +126,12 @@
                     <!-- Конец характеристик товара -->
                     <!-- Кнопка перейти -->
                     <div class="category-button">
-                        <a href="#">перейти</a>
+                        <a href="{% url 'catalog:product_detail' product.category.slug product.slug %}">перейти</a>
                     </div>
                     <!-- Конец кнопки перейти -->
                 </div>
                 <!-- Товар конец -->
-                <!-- Товар -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
-                    <!-- Изображение товара -->
-                    <div class="cat-img">
-                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
-                    </div>
-                    <!-- Конец изображение товара -->
-                    <!-- Заголовок с названием товара -->
-                    <h3>Стойка</h3>
-                    <!-- Конец заголовок с названием товара -->
-                    <!-- Характеристики товара -->
-                    <ul>
-                        <li>Ширина <span class="category-val">0,9m</span></li>
-                        <li>Длинна <span class="category-val">0,3m</span></li>
-                        <li>Высота <span class="category-val">3m</span></li>
-                    </ul>
-                    <!-- Конец характеристик товара -->
-                    <!-- Кнопка перейти -->
-                    <div class="category-button">
-                        <a href="#">перейти</a>
-                    </div>
-                    <!-- Конец кнопки перейти -->
-                </div>
-                <!-- Товар конец -->
-                <!-- Товар -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
-                    <!-- Изображение товара -->
-                    <div class="cat-img">
-                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
-                    </div>
-                    <!-- Конец изображение товара -->
-                    <!-- Заголовок с названием товара -->
-                    <h3>Стойка</h3>
-                    <!-- Конец заголовок с названием товара -->
-                    <!-- Характеристики товара -->
-                    <ul>
-                        <li>Ширина <span class="category-val">0,9m</span></li>
-                        <li>Длинна <span class="category-val">0,3m</span></li>
-                        <li>Высота <span class="category-val">3m</span></li>
-                    </ul>
-                    <!-- Конец характеристик товара -->
-                    <!-- Кнопка перейти -->
-                    <div class="category-button">
-                        <a href="#">перейти</a>
-                    </div>
-                    <!-- Конец кнопки перейти -->
-                </div>
-                <!-- Товар конец -->
-                 <!-- Товар -->
-                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
-                    <!-- Изображение товара -->
-                    <div class="cat-img">
-                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
-                    </div>
-                    <!-- Конец изображение товара -->
-                    <!-- Заголовок с названием товара -->
-                    <h3>Стойка</h3>
-                    <!-- Конец заголовок с названием товара -->
-                    <!-- Характеристики товара -->
-                    <ul>
-                        <li>Ширина <span class="category-val">0,9m</span></li>
-                        <li>Длинна <span class="category-val">0,3m</span></li>
-                        <li>Высота <span class="category-val">3m</span></li>
-                    </ul>
-                    <!-- Конец характеристик товара -->
-                    <!-- Кнопка перейти -->
-                    <div class="category-button">
-                        <a href="#">перейти</a>
-                    </div>
-                    <!-- Конец кнопки перейти -->
-                </div>
-                <!-- Товар конец -->
-                <!-- Товар -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
-                    <!-- Изображение товара -->
-                    <div class="cat-img">
-                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
-                    </div>
-                    <!-- Конец изображение товара -->
-                    <!-- Заголовок с названием товара -->
-                    <h3>Стойка</h3>
-                    <!-- Конец заголовок с названием товара -->
-                    <!-- Характеристики товара -->
-                    <ul>
-                        <li>Ширина <span class="category-val">0,9m</span></li>
-                        <li>Длинна <span class="category-val">0,3m</span></li>
-                        <li>Высота <span class="category-val">3m</span></li>
-                    </ul>
-                    <!-- Конец характеристик товара -->
-                    <!-- Кнопка перейти -->
-                    <div class="category-button">
-                        <a href="#">перейти</a>
-                    </div>
-                    <!-- Конец кнопки перейти -->
-                </div>
-                <!-- Товар конец -->
-                <!-- Товар -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
-                    <!-- Изображение товара -->
-                    <div class="cat-img">
-                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
-                    </div>
-                    <!-- Конец изображение товара -->
-                    <!-- Заголовок с названием товара -->
-                    <h3>Стойка</h3>
-                    <!-- Конец заголовок с названием товара -->
-                    <!-- Характеристики товара -->
-                    <ul>
-                        <li>Ширина <span class="category-val">0,9m</span></li>
-                        <li>Длинна <span class="category-val">0,3m</span></li>
-                        <li>Высота <span class="category-val">3m</span></li>
-                    </ul>
-                    <!-- Конец характеристик товара -->
-                    <!-- Кнопка перейти -->
-                    <div class="category-button">
-                        <a href="#">перейти</a>
-                    </div>
-                    <!-- Конец кнопки перейти -->
-                </div>
-                <!-- Товар конец -->
-                <!-- Товар -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
-                    <!-- Изображение товара -->
-                    <div class="cat-img">
-                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
-                    </div>
-                    <!-- Конец изображение товара -->
-                    <!-- Заголовок с названием товара -->
-                    <h3>Стойка</h3>
-                    <!-- Конец заголовок с названием товара -->
-                    <!-- Характеристики товара -->
-                    <ul>
-                        <li>Ширина <span class="category-val">0,9m</span></li>
-                        <li>Длинна <span class="category-val">0,3m</span></li>
-                        <li>Высота <span class="category-val">3m</span></li>
-                    </ul>
-                    <!-- Конец характеристик товара -->
-                    <!-- Кнопка перейти -->
-                    <div class="category-button">
-                        <a href="#">перейти</a>
-                    </div>
-                    <!-- Конец кнопки перейти -->
-                </div>
-                <!-- Товар конец -->
-                <!-- Товар -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
-                    <!-- Изображение товара -->
-                    <div class="cat-img">
-                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
-                    </div>
-                    <!-- Конец изображение товара -->
-                    <!-- Заголовок с названием товара -->
-                    <h3>Стойка</h3>
-                    <!-- Конец заголовок с названием товара -->
-                    <!-- Характеристики товара -->
-                    <ul>
-                        <li>Ширина <span class="category-val">0,9m</span></li>
-                        <li>Длинна <span class="category-val">0,3m</span></li>
-                        <li>Высота <span class="category-val">3m</span></li>
-                    </ul>
-                    <!-- Конец характеристик товара -->
-                    <!-- Кнопка перейти -->
-                    <div class="category-button">
-                        <a href="#">перейти</a>
-                    </div>
-                    <!-- Конец кнопки перейти -->
-                </div>
-                <!-- Товар конец -->
+                {% endfor %}
             </div>
             <!-- Блок категории товаров конец -->
         </section>
