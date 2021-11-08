@@ -1,0 +1,70 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}Index{% endblock %}
+{% block content %}
+    {# Callback #}
+    {% include 'blocks/callback.html' %}
+    {# End Callback #}
+    <!-- Мобильное меню -->
+    {% include 'blocks/mobile_menu.html' %}
+    <!-- Мобильное меню конец -->
+    <!-- Хэдэр -->
+    {% include 'header.html' %}
+    <!-- Хэдэр конец -->
+
+ <!-- Секция заголовка и хлебных крошек -->
+	<section class="title_page">
+        <!-- Заголовок -->
+        <h1>Ошибка 404</h1>
+        <!-- Конец заголовка -->
+        <!-- Хлебные крошки -->
+        <div class="breadcrumb">
+            <!-- Сслыки хлебных крошек -->
+            <ul>
+                <!-- Ссылка на предыдущую страницу -->
+                <li><a href="Index.html">Главная</a></li>
+                <!-- Конец ссылки на предыдущую страницу -->
+                <!-- Ссылка на которой находится пользователь -->
+                <li>Ошибка 404</li>
+                <!-- конец ссылки на которой находится пользователь -->
+            </ul>
+            <!-- Конец ссылок хлебных крошек -->
+        </div>
+        <!-- Конец хлебных крошек -->
+    </section>
+ <!-- Конец секции заголовка и хлебных крошек -->
+
+    <!-- Секция с текстом страница не найдена -->
+	<main class="not_found_page spad">
+        <p>Страница, на которую Вы пытаетесь попасть, не существует!
+        <p>Ошибка могла произойти по нескольким причинам:</p>
+        <p>Вы ввели неправильный адрес.</p>
+        <p>Страница, на которую вы хотели зайти, устарела и была удалена.</p>
+        <p>На сервере произошла ошибка.</p>
+        <p>Если так, то мы уже знаем о ней и обязательно исправим.</p>
+	</main>
+    <!-- Секция с текстом страница не найдена -->
+
+    <!-- Футер  -->
+    {% include 'footer.html' %}
+    <!-- Футер конец -->
+
+        <!-- Окно сообщения -->
+        <div class="position-fixed top-0 right-0 p-3" style="z-index: 5; right: 0; top: 0;">
+           <!-- Контент окна оповещения -->
+            <div id="liveToast" class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <!-- Контент окна оповещения -->
+            <div class="toast-header">
+            <strong class="mr-auto">Товар добавлен в корзину</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="toast-body">
+            Ваш товар добавлен в корзину!
+            </div>
+          </div>
+          <!-- Конец окна оповещения -->
+      </div>
+      <!-- Конец окна сообщения -->
+{% endblock %}

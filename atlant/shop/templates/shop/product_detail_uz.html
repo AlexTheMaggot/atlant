@@ -21,10 +21,10 @@
             <div class="breadcrumb">
                 <ul>
                     <!-- Ссылка на первый уровень сайта -->
-                    <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+                    <li><a href="{% url 'mainapp_uz:index' %}">Главная</a></li>
                     <!-- Конец ссылки на первый уровень сайта -->
                     <!-- Ссылка на второй уровень сайта -->
-                    <li><a href="{% url 'catalog:product_list' %}">Каталог товаров</a></li>
+                    <li><a href="{% url 'catalog_uz:product_list' %}">Каталог товаров</a></li>
                     <!-- Конец ссылки на второй уровень сайта -->
                     <!-- Страница на которой находится пользователь -->
                     <li>{{ category.name_uz }}</li>
@@ -422,7 +422,6 @@
             </section>
             <!-- Секция наши преимущества конец -->
 
-        {% include 'blocks/reviews.html' %}
         </main>
 
         <!-- Футер  -->

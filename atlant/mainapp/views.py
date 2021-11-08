@@ -1,20 +1,25 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from . import models
-from shop.models import Category, Product
+from shop.models import Category, Product, RentCategory, RentProduct
 
 
-header = models.Header.objects.first()
-footer = models.Footer.objects.first()
-categories = Category.objects.all()
-context = {
-    'header': header,
-    'footer': footer,
-    'categories': categories,
-}
+def get_context():
+    header = models.Header.objects.first()
+    footer = models.Footer.objects.first()
+    categories = Category.objects.all()
+    rent_categories = RentCategory.objects.all()
+    context = {
+        'header': header,
+        'footer': footer,
+        'categories': categories,
+        'rent_categories': rent_categories,
+    }
+    return context
 
 
 def index(request):
+    context = get_context()
     main_page = models.MainPage.objects.first()
     reviews = models.Reviews.objects.all()
     partners = models.Partner.objects.all()
@@ -37,6 +42,7 @@ def index(request):
 
 
 def about(request):
+    context = get_context()
     partners = models.Partner.objects.all()
     reviews = models.Reviews.objects.all()
     about_page = models.AboutPage.objects.first()
@@ -53,6 +59,7 @@ def about(request):
 
 
 def rent_terms(request):
+    context = get_context()
     rent_terms_page = models.RentTermPage.objects.first()
     reviews = models.Reviews.objects.all()
     context.update({
@@ -67,6 +74,7 @@ def rent_terms(request):
 
 
 def contacts(request):
+    context = get_context()
     contact_page = models.ContactPage.objects.first()
     context.update({
         'contact_page': contact_page,
@@ -79,6 +87,7 @@ def contacts(request):
 
 
 def delivery(request):
+    context = get_context()
     delivery_page = models.DeliveryPage.objects.first()
     reviews = models.Reviews.objects.all()
     context.update({
@@ -93,6 +102,7 @@ def delivery(request):
 
 
 def services(request):
+    context = get_context()
     services = models.Service.objects.all()
     context.update({
             'services': services,
@@ -102,3 +112,10 @@ def services(request):
     else:
         template = 'mainapp/services.html'
     return render(request, template, context)
+
+
+def custom_404(request, exception):
+    context = get_context()
+    template = 'custom_404.html'
+    return render(request, template, context)
+

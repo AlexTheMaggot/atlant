@@ -3,13 +3,22 @@
 <section class="mobile_menu">
     <!-- Логотип в мобильном -->
     <div class="logo">
-        <a href="{% url 'mainapp:index' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+        {% if '/uz/' in request.path %}
+            <a href="{% url 'mainapp_uz:index' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+        {% else %}
+            <a href="{% url 'mainapp:index' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+        {% endif %}
+
     </div>
     <!-- Логотип в мобильном конец -->
 
     <!-- Поиск в мобильном -->
     <div class="mobile_search">
-        <form action="{% url 'catalog:search' %}" method="GET">
+        {% if '/uz/' in request.path %}
+            <form action="{% url 'catalog_uz:search' %}" method="GET">
+        {% else %}
+            <form action="{% url 'catalog:search' %}" method="GET">
+        {% endif %}
             <button><i class="fas fa-search"></i></button>
             <input type="search" required name="search">
         </form>
@@ -25,7 +34,7 @@
             <ul>
                 {% if '/uz/' in request.path %}
                     {% for category in categories %}
-                        <li><a href="{% url 'catalog_uz:category_detail_uz' category.slug %}">{{ category.name_uz }}</a></li>
+                        <li><a href="{% url 'catalog_uz:category_detail' category.slug %}">{{ category.name_uz }}</a></li>
                     {% endfor %}
                 {% else %}
                     {% for category in categories %}
@@ -40,82 +49,26 @@
         <!-- Навигация арендуемух товаров в мобильном -->
         <div class="mobile-category-nav">
             <ul>
+                {% for rent_category in rent_categories %}
                 <li class="mobile-nav-elem">
-                    <a href="Formwork_rental.html">Аренда опалубка</a>
+                    {% if '/uz/' in request.path %}
+                        <a href="{% url 'rent_uz:rent_category_detail' rent_category.slug %}">{{ rent_category.name_uz }}</a>
+                    {% else %}
+                        <a href="{% url 'rent:rent_category_detail' rent_category.slug %}">{{ rent_category.name_ru }}</a>
+                    {% endif %}
                     <!-- Начало выпадающего списка -->
                     <ul>
-                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                        <li class="mobile-nav-elem">
-                            <a href="#">Пример</a>
-                            <!-- Начало выпадающего списка -->
-                            <ul>
-                                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                <li class="mobile-nav-elem">
-                                    <a href="#">Пример1</a>
-                                    <!-- Начало выпадающего списка -->
-                                    <ul>
-                                        <li class="mobile-nav-elem">
-                                            <a href="#">Пример2</a>
-                                            <!-- Начало выпадающего списка -->
-                                            <ul>
-                                                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                            </ul>
-                                            <!-- Конец выпадающего списка -->
-                                        </li>
-                                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                    </ul>
-                                    <!-- Конец выпадающего списка -->
-                                </li>
-                                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                            </ul>
-                            <!-- Конец выпадающего списка -->
-                        </li>
-                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
+                        {% for rent_product in rent_category.products.all %}
+                            {% if '/uz/' in request.path %}
+                                <li class="mobile-nav-elem"><a href="{% url 'rent_uz:rent_product_detail' rent_category.slug rent_product.slug %}">{{ rent_product.name_uz }}</a></li>
+                            {% else %}
+                                <li class="mobile-nav-elem"><a href="{% url 'rent:rent_product_detail' rent_category.slug rent_product.slug %}">{{ rent_product.name_ru }}</a></li>
+                            {% endif %}
+                        {% endfor %}
                     </ul>
                     <!-- Конец выпадающего списка -->
                 </li>
-                <li class="mobile-nav-elem">
-                    <a href="Formwork_rental.html">Продажа опалубка</a>
-                </li>
-                <li class="mobile-nav-elem">
-                    <a href="Formwork_rental.html">Аренда бытовок</a>
-                    <!-- Начало выпадающего списка -->
-                    <ul>
-                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                        <li class="mobile-nav-elem">
-                            <a href="#">Пример1</a>
-                            <!-- Начало выпадающего списка -->
-                            <ul>
-                                <li class="mobile-nav-elem">
-                                    <a href="#">Пример2</a>
-                                    <!-- Начало выпадающего списка -->
-                                    <ul>
-                                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                    </ul>
-                                    <!-- Конец выпадающего списка -->
-                                </li>
-                                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                                <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                            </ul>
-                            <!-- Конец выпадающего списка -->
-                        </li>
-                        <li class="mobile-nav-elem"><a href="#">Пример</a></li>
-                    </ul>
-                    <!-- Конец выпадающего списка -->
-                </li>
-                <li class="mobile-nav-elem"><a href="Formwork_rental.html">Аренда лесов</a></li>
+                {% endfor %}
             </ul>
         </div>
         <!-- Навигация арендуемух товаров в мобильном конец -->
@@ -125,11 +78,11 @@
         <!-- Начало ссылок навигации-->
         {% if '/uz/' in request.path %}
             <ul>
-                <li><a href="{% url 'mainapp:about_uz' %}">Kompaniya haqida</a></li>
-                <li><a href="{% url 'mainapp:contacts_uz' %}">Kontaktlar</a></li>
-                <li><a href="{% url 'mainapp:rent_terms_uz' %}">Ijara shartlari</a></li>
-                <li><a href="{% url 'mainapp:delivery_uz' %}">Yetkazib berish</a></li>
-                <li><a href="{% url 'mainapp:services_uz' %}">Xizmatlar</a></li>
+                <li><a href="{% url 'mainapp_uz:about' %}">Kompaniya haqida</a></li>
+                <li><a href="{% url 'mainapp_uz:contacts' %}">Kontaktlar</a></li>
+                <li><a href="{% url 'mainapp_uz:rent_terms' %}">Ijara shartlari</a></li>
+                <li><a href="{% url 'mainapp_uz:delivery' %}">Yetkazib berish</a></li>
+                <li><a href="{% url 'mainapp_uz:services' %}">Xizmatlar</a></li>
             </ul>
         {% else %}
             <ul>

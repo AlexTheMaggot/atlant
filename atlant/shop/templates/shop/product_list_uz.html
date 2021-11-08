@@ -21,7 +21,7 @@
             <div class="breadcrumb">
                 <ul>
                     <!-- Ссылка на первый уровень сайта -->
-                    <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+                    <li><a href="{% url 'mainapp_uz:index' %}">Главная</a></li>
                     <!-- Конец ссылки на первый уровень сайта -->
                     <!-- Ссылка на второй уровень сайта -->
                     <li>Каталог товаров</li>
@@ -61,7 +61,7 @@
                         <!-- Конец списка характеристик товара -->
                         <!-- Кнопка перейти на страницу товара -->
                         <div class="category-button">
-                            <a href="{% url 'catalog:product_detail' product.category.slug product.slug %}">перейти</a>
+                            <a href="{% url 'catalog_uz:product_detail' product.category.slug product.slug %}">перейти</a>
                         </div>
                         <!-- Конец кнопки перейти на страницу товара -->
                     </div>

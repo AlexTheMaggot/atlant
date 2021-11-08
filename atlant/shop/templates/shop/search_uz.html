@@ -40,7 +40,7 @@
                 <ul>
                     {% if search_categories %}
                         {% for category in search_categories %}
-                            <li><a href="{% url 'catalog:category_detail' category.slug %}">{{ category.name_uz }}</a></li>
+                            <li><a href="{% url 'catalog_uz:category_detail' category.slug %}">{{ category.name_uz }}</a></li>
                         {% endfor %}
                     {% else %}
                         <li>Не найдено</li>

@@ -161,27 +161,39 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                     <!-- Блок с картинкой товара зумированная -->
                     <div class="zoom_img">
-                        <img src="{% static 'img/product.png' %}" alt="" />
+                        <img src="{{ product.img_1.url }}" alt="" />
                     </div>
                     <!-- Блок с картинкой товара зумированная -->
 
                     <!-- Блок товаров в карусели -->
                     <div class="gallery owl-carousel">
                         <!-- Картинка товара галереи -->
-                        <a href="#" class="gallery_button"><img src="{% static 'img/product_1.jpg' %}" alt="" /></a>
+                        <a href="#" class="gallery_button"><img src="{{ product.img_1.url }}" alt="" /></a>
                         <!-- Картинка товара галереи конец -->
 
-                        <!-- Картинка товара галереи -->
-                        <a href="#" class="gallery_button"><img src="{% static 'img/product_2.jpg' %}" alt="" /></a>
-                        <!-- Картинка товара галереи конец -->
+                        {% if product.img_2 %}
+                            <!-- Картинка товара галереи -->
+                            <a href="#" class="gallery_button"><img src="{{ product.img_2.url }}" alt="" /></a>
+                            <!-- Картинка товара галереи конец -->
+                        {% endif %}
 
-                        <!-- Картинка товара галереи -->
-                        <a href="#" class="gallery_button"><img src="{% static 'img/product_3.jpg' %}" alt="" /></a>
-                        <!-- Картинка товара галереи конец -->
+                        {% if product.img_3 %}
+                            <!-- Картинка товара галереи -->
+                            <a href="#" class="gallery_button"><img src="{{ product.img_3.url }}" alt="" /></a>
+                            <!-- Картинка товара галереи конец -->
+                        {% endif %}
 
-                        <!-- Картинка товара галереи -->
-                        <a href="#" class="gallery_button"><img src="{% static 'img/product_4.jpg' %}" alt="" /></a>
-                        <!-- Картинка товара галереи конец -->
+                        {% if product.img_4 %}
+                            <!-- Картинка товара галереи -->
+                            <a href="#" class="gallery_button"><img src="{{ product.img_4.url }}" alt="" /></a>
+                            <!-- Картинка товара галереи конец -->
+                        {% endif %}
+
+                        {% if product.img_5 %}
+                            <!-- Картинка товара галереи -->
+                            <a href="#" class="gallery_button"><img src="{{ product.img_5.url }}" alt="" /></a>
+                            <!-- Картинка товара галереи конец -->
+                        {% endif %}
                     </div>
                     <!-- Блок товаров в карусели -->
                 </div>
@@ -207,19 +219,23 @@
                     <div class="specifications_down">
                         <form action="#">
                             <ul class="btns_rents_buy">
-                                <!-- Кнопка Арендовать -->
-                                <li>
-                                    <span>Арендовать:</span>
-                                    <button type="button" class="btn_rent" data-toggle="modal" data-target="#myModal_price">Узнать цену и условия</button>
-                                </li>
-                                <!-- Кнопка Арендовать конец -->
+                                {% if product.rent == True %}
+                                    <!-- Кнопка Арендовать -->
+                                    <li>
+                                        <span>Арендовать:</span>
+                                        <button type="button" class="btn_rent" data-toggle="modal" data-target="#myModal_price">Узнать цену и условия</button>
+                                    </li>
+                                    <!-- Кнопка Арендовать конец -->
+                                {% endif %}
 
-                                <!-- Кнопка Купить -->
-                                <li>
-                                    <span>Купить:</span>
-                                    <button type="button" class="btn_buy" data-toggle="modal" data-target="#myModal_buy">Узнать цену и условия</button>
-                                </li>
-                                <!-- Кнопка Купить конец -->
+                                {% if product.sell == True %}
+                                    <!-- Кнопка Купить -->
+                                    <li>
+                                        <span>Купить:</span>
+                                        <button type="button" class="btn_buy" data-toggle="modal" data-target="#myModal_buy">Узнать цену и условия</button>
+                                    </li>
+                                    <!-- Кнопка Купить конец -->
+                                {% endif %}
                             </ul>
                             <p class="specifications_info_text">К сожалению,цены на товары и комплектующие постоянно меняются.Для получения информации по цене аренды или закупки пожалуйста обратитесь к нашим специалистам.Вы можете оставить заявку онлайн или позвонить в офис продаж</p>
                             <!-- Копка узнать цену и условия  -->
@@ -266,15 +282,7 @@
 
             <!-- Блок содержимое таба Описание -->
             <div class="tabs__item" id="tab_1">
-                <p>
-                    Быстровозводимые рамные леса марки ЛР-10 заслуженно можно назвать самыми распространенными среди фасадных разновидностей приставного оборудования, так как они характеризуются функциональностью и предельно низкой стоимостью!
-                </p>
-                <p>
-                    Несмотря на компактные габариты и небольшую высоту установки (10 м), многоярусные подмости используются не только для облицовочных и отделочных, но и кладочных работ. В основании конструкции лежат стальные рамы, малая металлоемкость которых упрощает монтаж рамных лесов и значительно снижает итоговую цену.
-                </p>
-                <p>
-                    Помимо продажи мы также предлагаем такую популярную на отечественном рынке услугу, как аренда строительных лесов. Таким образом, вы можете пользоваться профессиональным оборудованием на выгодных для вас условиях!
-                </p>
+                <p>{{ product.description_ru }}</p>
             </div>
             <!-- Блок содержимое таба Описание конец -->
 
@@ -287,12 +295,22 @@
 
                     <!-- Блок список характеристик -->
                     <ul class="characteristics_list">
-                        <li>Материал<span>Сталь</span></li>
-                        <li>Гарантия<span>12 месяцев</span></li>
-                        <li>Сертификат<span>Имеется</span></li>
-                        <li>Страна производителя<span>Узбекистан</span></li>
-                        <li>Возможность самовывоза<span>Имеется</span></li>
-                        <li>Возможность доставки<span>Имеется</span></li>
+                        <li>{{ product.spec_1_ru }}<span>{{ product.val_1_ru }}</span></li>
+                        {% if product.spec_2_ru %}
+                            <li>{{ product.spec_2_ru }}<span>{{ product.val_2_ru }}</span></li>
+                        {% endif %}
+                        {% if product.spec_3_ru %}
+                            <li>{{ product.spec_3_ru }}<span>{{ product.val_3_ru }}</span></li>
+                        {% endif %}
+                        {% if product.spec_4_ru %}
+                            <li>{{ product.spec_4_ru }}<span>{{ product.val_4_ru }}</span></li>
+                        {% endif %}
+                        {% if product.spec_5_ru %}
+                            <li>{{ product.spec_5_ru }}<span>{{ product.val_5_ru }}</span></li>
+                        {% endif %}
+                        {% if product.spec_6_ru %}
+                            <li>{{ product.spec_6_ru }}<span>{{ product.val_6_ru }}</span></li>
+                        {% endif %}
                     </ul>
                     <!-- Блок список характеристик -->
                 </div>
@@ -305,14 +323,14 @@
                     <!-- Файл для скачивания документации -->
                     <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                         <!-- Ссылка на файлик документации -->
-                        <a href="#">
+                        <a href="{{ product.file_1.url }}">
                             <div class="file_item">
                                 <!-- Иконка прайс листа  -->
-                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист Рамные леса
+                                <img src="{% static 'img/price.svg' %}" alt="">Документация
                                 <!-- Иконка прайс листа конец -->
 
                                 <!-- Кнопка скачать прайс -->
-                                <span class="download_btn">скачать</span>
+                                <a class="download_btn">скачать</a>
                                 <!-- Кнопка скачать прайс конец -->
                             </div>
                         </a>
@@ -320,131 +338,66 @@
                     </div>
                     <!-- Файл для скачивания документации конец -->
 
+                    {% if product.file_2 %}
                     <!-- Файл для скачивания документации -->
                     <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                         <!-- Ссылка на файлик документации -->
-                        <a href="#">
+                        <a href="{{ product.file_2.url }}">
                             <div class="file_item">
-                                <!-- Иконка прайс листа -->
-                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист Рамные леса
+                                <!-- Иконка прайс листа  -->
+                                <img src="{% static 'img/price.svg' %}" alt="">Документация
                                 <!-- Иконка прайс листа конец -->
 
                                 <!-- Кнопка скачать прайс -->
-                                <span class="download_btn">скачать</span>
+                                <a class="download_btn">скачать</a>
                                 <!-- Кнопка скачать прайс конец -->
                             </div>
                         </a>
                         <!-- Ссылка на файлик документации конец -->
                     </div>
                     <!-- Файл для скачивания документации конец -->
+                    {% endif %}
 
+                    {% if product.file_3 %}
                     <!-- Файл для скачивания документации -->
                     <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                         <!-- Ссылка на файлик документации -->
-                        <a href="#">
+                        <a href="{{ product.file_3.url }}">
                             <div class="file_item">
-                                <!-- Иконка прайс листа -->
-                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист Рамные леса
+                                <!-- Иконка прайс листа  -->
+                                <img src="{% static 'img/price.svg' %}" alt="">Документация
                                 <!-- Иконка прайс листа конец -->
 
                                 <!-- Кнопка скачать прайс -->
-                                <span class="download_btn">скачать</span>
+                                <a class="download_btn">скачать</a>
                                 <!-- Кнопка скачать прайс конец -->
                             </div>
                         </a>
                         <!-- Ссылка на файлик документации конец -->
                     </div>
                     <!-- Файл для скачивания документации конец -->
+                    {% endif %}
 
+                    {% if product.file_4 %}
                     <!-- Файл для скачивания документации -->
                     <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                         <!-- Ссылка на файлик документации -->
-                        <a href="#">
+                        <a href="{{ product.file_4.url }}">
                             <div class="file_item">
-                                <!-- Иконка прайс листа -->
-                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист рамные леса
+                                <!-- Иконка прайс листа  -->
+                                <img src="{% static 'img/price.svg' %}" alt="">Документация
                                 <!-- Иконка прайс листа конец -->
 
                                 <!-- Кнопка скачать прайс -->
-                                <span class="download_btn">скачать</span>
+                                <a class="download_btn">скачать</a>
                                 <!-- Кнопка скачать прайс конец -->
                             </div>
                         </a>
                         <!-- Ссылка на файлик документации конец -->
                     </div>
                     <!-- Файл для скачивания документации конец -->
+                    {% endif %}
 
-                    <!-- Файл для скачивания документации -->
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
-                        <!-- Ссылка на файлик документации -->
-                        <a href="#">
-                            <div class="file_item">
-                                <!-- Иконка прайс листа -->
-                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист рамные леса
-                                <!-- Иконка прайс листа конец -->
-
-                                <!-- Кнопка скачать прайс -->
-                                <span class="download_btn">скачать</span>
-                                <!-- Кнопка скачать прайс конец -->
-                            </div>
-                        </a>
-                        <!-- Ссылка на файлик документации конец -->
-                    </div>
-                    <!-- Файл для скачивания документации конец -->
-
-                    <!-- Файл для скачивания документации -->
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
-                        <!-- Ссылка на файлик документации -->
-                        <a href="#">
-                            <div class="file_item">
-                                <!-- Иконка прайс листа -->
-                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист рамные леса
-                                <!-- Иконка прайс листа конец -->
-
-                                <!-- Кнопка скачать прайс -->
-                                <span class="download_btn">скачать</span>
-                                <!-- Кнопка скачать прайс конец -->
-                            </div>
-                        </a>
-                        <!-- Ссылка на файлик документации конец -->
-                    </div>
-                    <!-- Файл для скачивания документации конец -->
-
-                    <!-- Файл для скачивания документации -->
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
-                        <!-- Ссылка на файлик документации -->
-                        <a href="#">
-                            <div class="file_item">
-                                <!-- Иконка прайс листа -->
-                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист рамные леса
-                                <!-- Иконка прайс листа конец -->
-
-                                <!-- Кнопка скачать прайс -->
-                                <span class="download_btn">скачать</span>
-                                <!-- Кнопка скачать прайс конец -->
-                            </div>
-                        </a>
-                        <!-- Ссылка на файлик документации конец -->
-                    </div>
-                    <!-- Файл для скачивания документации конец -->
-
-                    <!-- Файл для скачивания документации -->
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
-                        <!-- Ссылка на файлик документации -->
-                        <a href="#">
-                            <div class="file_item">
-                                <!-- Иконка прайс листа -->
-                                <img src="{% static 'img/price.svg' %}" alt="">Прайс-лист рамные леса
-                                <!-- Иконка прайс листа конец -->
-
-                                <!-- Кнопка скачать прайс -->
-                                <span class="download_btn">скачать</span>
-                                <!-- Кнопка скачать прайс конец -->
-                            </div>
-                        </a>
-                        <!-- Ссылка на файлик документации конец -->
-                    </div>
-                    <!-- Файл для скачивания документации конец -->
                 </div>
             </div>
             <!-- Блок содержимое таба Документация конец -->

@@ -1,0 +1,281 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}{{ rent_category.name_ru }}{% endblock %}
+{% block content %}
+    {# Callback #}
+    {% include 'blocks/callback.html' %}
+    {# End Callback #}
+    <!-- Мобильное меню -->
+    {% include 'blocks/mobile_menu.html' %}
+    <!-- Мобильное меню конец -->
+    <!-- Хэдэр -->
+    {% include 'header.html' %}
+    <!-- Хэдэр конец -->
+
+        <!-- Загаловок страницы и хлебные крошки -->
+	    <section class="title_page">
+        <h1>{{  rent_category.name_ru}}</h1>
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+                <li>{{  rent_category.name_ru}}</li>
+            </ul>
+        </div>
+    </section>
+        <!-- Загаловок страницы и хлебные крошки конец-->
+
+
+    <main class="main-page">
+
+    <!-- Секция товаров -->
+    <section class="spad container-fluid category-tile">
+        <div class="row category-tile-row no-bg">
+            <!-- Товар -->
+            {% for product in page_obj %}
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                    <div class="category-item">
+                        <!-- Изображение товара -->
+                        <div class="cat-img">
+                            <img src="{{ product.img_1.url }}" alt="">
+                        </div>
+                        <!-- Конец изображения товара -->
+                        <!-- Заголовок товара -->
+                        <h3>{{ product.name_ru }}</h3>
+                        <!-- Конец заголовка товара -->
+                        <!-- Список характеристик -->
+                        <ul>
+                            {% if product.term < 2 %}
+                                <li>Срок<span class="category-val">от {{ product.term }} дня</span></li>
+                            {% else %}
+                                <li>Срок<span class="category-val">от {{ product.term }} дней</span></li>
+                            {% endif %}
+                        </ul>
+                        <!-- Конец списка характеристик -->
+                        <!-- Ссылка для перехода на страницу товара -->
+                        <div class="category-button">
+                            <a href="{% url 'rent:rent_product_detail' rent_category.slug product.slug %}">перейти</a>
+                        </div>
+                        <!-- Конец ссылки для перехода на страницу товара -->
+                    </div>
+                </div>
+            {% endfor %}
+            <!-- Товар конец -->
+        </div>
+        <!-- пагинация -->
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <!-- Стрелка для перехода на предыдущую страницу -->
+                <li><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">«</a></li>
+                <!-- Конец стрелки для перехода на предыдущую страницу -->
+            {% endif %}
+            {% for page_number in page_obj.paginator.page_range %}
+                {% if page_number == page_obj.number %}
+                    <!-- Ссылка на которой находиться пользователь -->
+                    <li><a class="active" href="#">{{ page_number }}</a></li>
+                    <!-- Конец ссылки на которой находится пользователь -->
+                {% else %}
+                    <!-- Ссылка на другую страницу -->
+                    <li><a href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a></li>
+                    <!-- Конец ссылки на другую страницу -->
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <!-- Стрелка для перехода на следующую страницу -->
+                <li><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">»</a></li>
+                <!-- Конец стрелки для перехода на следующую страницу -->
+            {% endif %}
+      </ul>
+      <!-- пагинация конец -->
+    </section>
+    <!-- Секция товаров конец -->
+
+    <!-- Блок Информации Аренды опалубки -->
+    <div class="formwork_rental_info bg-center" data-bgcenter="{% static 'img/logo_for_text.png' %}">
+    	<div class="container-fluid spad">
+                <!-- Текст информационного блока -->
+                <p class="text_info">С другой стороны консультация с широким активом влечет за собой процесс внедрения и модернизации систем массового участия. Идейные соображения высшего порядка, а также укрепление и развитие структуры позволяет выполнять важные задания по разработке форм развития.
+                Задача организации, в особенности же постоянный количественный рост и сфера нашей активности требуют определения и уточнения существенных финансовых и административных условий. Таким образом рамки и место обучения кадров требуют от нас анализа соответствующий условий активизации.</p>
+                <!-- Конец текста информационного блока -->
+                <!-- Список информационного блока -->
+                <ul class="text_list">
+                    <li>Качество обслуживания</li>
+                    <li>Отличная консультация</li>
+                    <li>Низкие цены</li>
+                    <li>Быстрая доставка</li>
+                    <li>Ответственность за арендуемый товар</li>
+               </ul>
+               <!-- Конец списка информационного блока -->
+               <!-- Текст информационного блока -->
+                <p class="text_info">С другой стороны консультация с широким активом влечет за собой процесс внедрения и модернизации систем массового участия. Идейные соображения высшего порядка, а также укрепление и развитие структуры позволяет выполнять важные задания по разработке форм развития.
+                </p>
+                <!-- Конец текста информационного блока -->
+    	</div>
+    </div>
+     <!-- Блок Информации Аренды опалубки конец-->
+
+     <!-- Секция способы оплаты -->
+    <section class="payment set-bg" data-setbg="{% static 'img/bg_by.png' %}">
+    	<div class="container-fluid spad">
+            <!-- Загаловок способы оплаты -->
+            <div class="payment_title">
+                <h2>Способы оплаты</h2>
+            </div>
+            <!-- Загаловок способы оплаты -->
+
+            <!-- Способы оплаты -->
+            <div class="payment_change">
+                <!-- Блок оплата наличными -->
+                <div class="payment_item col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                    <img src="{% static 'img/nal.png' %}" alt="">
+                    <span>Наличный расчет</span>
+                </div>
+                <!-- Блок оплата наличными конец -->
+
+                <!-- Блок оплата безнала -->
+                <div class="payment_item col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                    <img src="{% static 'img/bank.png' %}" alt="">
+                    <span>Безналичный расчет</span>
+                </div>
+                <!-- Блок оплата безнала -->
+
+                <!-- Блок перечислениями -->
+                <div class="payment_item col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <img src="{% static 'img/cart.png' %}" alt="">
+                    <span>Перечисление</span>
+                </div>
+                <!-- Блок перечислениями -->
+            </div>
+            <!-- Способы оплаты конец -->
+        </div>
+    </section>
+    <!-- Секция способы оплаты конец -->
+
+    <!-- Секция информация о доставке -->
+    <section class="delivery set-bg" data-setbg="{% static 'img/bg_delivery.png' %}">
+        <div class="container-fluid spad">
+            <div class="row">
+                <div class="delivery_info">
+                    <!-- Загаловок информации доставки -->
+                    <h2 class="delivery__title">Доставка товаров</h2>
+                    <!-- Загаловок информации доставки конец -->
+
+                    <!-- Блок информации о доставке -->
+                    <div class="delivery_text">
+                        <p>Стремясь свести Ваши заботы до минимума и с максимальным удобством сотрудничать с нашей компанией, мы предлагаем не только услуги аренды, но и доставку арендуемого или покупаемого у нас оборудования для строительства на Ваш рабочий объект или склад.</p>
+                        <p>Товар отгружается в течение суток после поступления денежных средств на счет компании.
+                        При отгрузке продукции в регионы сроки доставки включают время доставки товара на наш склад (до 2 рабочих дней) и время доставки до транспортной компании. Далее сроки доставки зависят от условий ТК.
+                        Доставку в город и близлежащего района мы осуществляем собственным транспортом или с привлечением транспортных компаний. Бытовки и люльки в собранном виде мы доставляем автомобилями с манипулятором или грузовым КАМАЗ. Приблизительную стоимость Вы можете рассчитать исходя из таблицы или позвонив по телефону.</p>
+                        <p>Так же стоимость услуг будет зависеть от многих факторов, таких как:</p>
+                            <ul>
+                            <li>- объем заказываемого оборудования,</li>
+                            <li>- дальность объекта от МКАД, </li>
+                            <li>- срочность заказа. </li>
+                            <li>а следовательно, рассчитывается индивидуально по каждому заказу!</li>
+                        </ul>
+                    </div>
+                    <!-- Блок информации о доставке -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Секция информация о доставке конец -->
+
+    <!-- Секция отзывов -->
+    {% include 'blocks/reviews.html' %}
+    <!-- Секция отзывов конец -->
+
+
+        <!-- Секция наши партнеры -->
+    <section class="partners_blog container-fluid spad">
+        <!-- Загаловок Наши партнеры -->
+        <div class="header-content right-header">
+            <h2>Наши партнеры</h2>
+        </div>
+        <!-- Загаловок Наши партнеры конец -->
+
+        <!-- Контейнер наши партнеры элементы -->
+        <div class="partners_items row">
+            <!-- Наши партнеры элемент  -->
+            <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3"><img src="{% static 'img/logo_1.png' %}" alt=""></div>
+            <!-- Наши партнеры элемент конец -->
+            <!-- Наши партнеры элемент  -->
+            <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3"><img src="{% static 'img/logo_2.png' %}" alt=""></div>
+            <!-- Наши партнеры элемент конец -->
+            <!-- Наши партнеры элемент  -->
+            <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3"><img src="{% static 'img/logo_3.png' %}" alt=""></div>
+            <!-- Наши партнеры элемент конец -->
+            <!-- Наши партнеры элемент  -->
+            <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3"><img src="{% static 'img/logo_4.png' %}" alt=""></div>
+            <!-- Наши партнеры элемент конец -->
+            <!-- Наши партнеры элемент  -->
+            <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3"><img src="{% static 'img/logo_1.png' %}" alt=""></div>
+            <!-- Наши партнеры элемент конец -->
+            <!-- Наши партнеры элемент  -->
+            <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3"><img src="{% static 'img/logo_2.png' %}" alt=""></div>
+            <!-- Наши партнеры элемент конец -->
+            <!-- Наши партнеры элемент  -->
+            <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3"><img src="{% static 'img/logo_3.png' %}" alt=""></div>
+            <!-- Наши партнеры элемент конец -->
+            <!-- Наши партнеры элемент  -->
+            <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3"><img src="{% static 'img/logo_4.png' %}" alt=""></div>
+            <!-- Наши партнеры элемент конец -->
+        </div>
+        <!-- Контейнер наши партнеры элементы конец -->
+    </section>
+    <!--  Секция наши партнеры конец -->
+        <!-- Секция с формой "Есть вопросы?" -->
+        <section class="form set-bg" data-setbg="{% static 'img/bg_leave.png' %}">
+            <div class="container-fluid spad">
+                <div class="row">
+                    <form class="form_container form_cont set-bg"  data-setbg="{% static 'img/bg_blur.png' %}" action="#">
+                        <!-- Загаловок форм -->
+                        <h3>Есть вопросы?! Пишите нам!</h3>
+                        <!-- Загаловок форм конец -->
+
+                        <!-- Поле для имени -->
+                        <input class="form_input" type="text" placeholder="Ваше имя">
+                        <!-- Поле для имени конец -->
+
+                        <!-- Поле для телефона -->
+                        <input class="form_input" type="tel" placeholder="Номер телефона">
+                        <!-- Поле для телефона конец -->
+
+                        <!-- Поле текста для вопроса -->
+                        <textarea class="textarea_input" name="message" placeholder="Текст вопроса:"></textarea>
+                        <!-- Поле текста для вопроса конец -->
+
+                        <!-- Блок отправки -->
+                        <div class="submit_block">
+                            <div class="checkbox_item">
+                                <label for="checkbox_page"><input id="checkbox_page" class="checkbox_input" type="checkbox">Соглашаюсь с политикой обработанных данных</label>
+                            </div>
+                            <button class="btn_submit" type="submit">Отправить</button>
+                        </div>
+                        <!-- Блок отправки конец -->
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- Секция с формой "Есть вопросы?" конец-->
+    </main>
+
+    <!-- Футер  -->
+    {% include 'footer.html' %}
+    <!-- Футер конец -->
+
+        <!-- Окно сообщения -->
+        <div class="position-fixed top-0 right-0 p-3" style="z-index: 5; right: 0; top: 0;">
+          <div id="liveToast" class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <div class="toast-header">
+            <strong class="mr-auto">Товар добавлен в корзину</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="toast-body">
+            Ваш товар добавлен в корзину!
+            </div>
+          </div>
+      </div>
+      <!-- Конец окна сообщения -->
+{% endblock %}

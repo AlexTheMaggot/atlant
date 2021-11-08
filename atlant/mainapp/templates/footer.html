@@ -6,11 +6,11 @@
                     <!-- Ссылки навигации -->
                     <ul>
                         {% if '/uz/' in request.path %}
-                            <li><a href="{% url 'mainapp:about_uz' %}">О компании</a></li>
-                            <li><a href="{% url 'mainapp:contacts_uz' %}">Контакты</a></li>
-                            <li><a href="{% url 'mainapp:rent_terms_uz' %}">Условия аренды</a></li>
-                            <li><a href="{% url 'mainapp:delivery_uz' %}">Доставка</a></li>
-                            <li><a href="{% url 'mainapp:services_uz' %}">Услуги</a></li>
+                            <li><a href="{% url 'mainapp_uz:about' %}">О компании</a></li>
+                            <li><a href="{% url 'mainapp_uz:contacts' %}">Контакты</a></li>
+                            <li><a href="{% url 'mainapp_uz:rent_terms' %}">Условия аренды</a></li>
+                            <li><a href="{% url 'mainapp_uz:delivery' %}">Доставка</a></li>
+                            <li><a href="{% url 'mainapp_uz:services' %}">Услуги</a></li>
                         {% else %}
                             <li><a href="{% url 'mainapp:about' %}">О компании</a></li>
                             <li><a href="{% url 'mainapp:contacts' %}">Контакты</a></li>

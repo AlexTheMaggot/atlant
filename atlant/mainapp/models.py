@@ -1,4 +1,5 @@
 from django.db import models
+from shop.models import Category
 
 
 class Header(models.Model):

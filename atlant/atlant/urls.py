@@ -21,11 +21,15 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls', namespace='mainapp')),
+    path('uz/', include('mainapp.urls_uz', namespace='mainapp_uz')),
     path('catalog/', include('shop.urls', namespace='catalog')),
     path('uz/catalog/', include('shop.urls_uz', namespace='catalog_uz'),),
+    path('rent/', include('shop.urls_rent', namespace='rent')),
+    path('uz/rent/', include('shop.urls_rent_uz', namespace='rent_uz'),),
     path('summernote/', include('django_summernote.urls')),
 ]
 
+handler404 = 'mainapp.views.custom_404'
 
 # DebugConfig
 if settings.DEBUG:

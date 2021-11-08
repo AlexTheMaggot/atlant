@@ -1,0 +1,342 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}{{ rent_product.name_ru }}{% endblock %}
+{% block content %}
+    {# Callback #}
+    {% include 'blocks/callback.html' %}
+    {# End Callback #}
+    <!-- Мобильное меню -->
+    {% include 'blocks/mobile_menu.html' %}
+    <!-- Мобильное меню конец -->
+    <!-- Хэдэр -->
+    {% include 'header.html' %}
+    <!-- Хэдэр конец -->
+
+    <!-- Загаловок страницы и хлебные крошки -->
+    <section class="title_page">
+        <!-- Заголовок страницы -->
+        <h1>{{ rent_product.name_ru }}</h1>
+        <!-- Конец заголовка страницы -->
+        <!-- Хлебные крошки -->
+        <div class="breadcrumb">
+            <ul>
+                <!-- Ссылка на страницу первого уровня -->
+                <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+                <!-- Конец ссылки на страницу первого уровня -->
+                <!-- Ссылка на страницу второго уровня -->
+                <li><a href="{% url 'rent:rent_category_detail' rent_category.slug %}">{{ rent_category.name_ru }}</a></li>
+                <!-- Конец ссылки на страницу второго уровня -->
+                <!-- Страница на которой находится пользователь -->
+                <li>{{ rent_product.name_ru }}</li>
+                <!-- Конец страницы на которой находится пользователь -->
+            </ul>
+        </div>
+        <!-- Конец хлебный крошек -->
+    </section>
+    <!-- Загаловок страницы и хлебные крошки конец-->
+
+
+        <!--Секция карточки товара -->
+    <section class="product_details">
+        <div class="product_details_container container-fluid spad">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <!-- Блок с картинкой товара зумированная -->
+                    <div class="zoom_img">
+                        <img src="{{ rent_product.img_1.url }}" alt="" />
+                    </div>
+                    <!-- Блок с картинкой товара зумированная -->
+
+                    <!-- Блок товаров в карусели -->
+                    <div class="gallery owl-carousel">
+                        <!-- Картинка товара галереи -->
+                        <a href="#" class="gallery_button"><img src="{{ rent_product.img_1.url }}" alt="" /></a>
+                        <!-- Картинка товара галереи конец -->
+
+                        {% if rent_product.img_2 %}
+                            <!-- Картинка товара галереи -->
+                            <a href="#" class="gallery_button"><img src="{{ rent_product.img_2.url }}" alt="" /></a>
+                            <!-- Картинка товара галереи конец -->
+                        {% endif %}
+                        {% if rent_product.img_3 %}
+                            <!-- Картинка товара галереи -->
+                            <a href="#" class="gallery_button"><img src="{{ rent_product.img_3.url }}" alt="" /></a>
+                            <!-- Картинка товара галереи конец -->
+                        {% endif %}
+                        {% if rent_product.img_4 %}
+                            <!-- Картинка товара галереи -->
+                            <a href="#" class="gallery_button"><img src="{{ rent_product.img_4.url }}" alt="" /></a>
+                            <!-- Картинка товара галереи конец -->
+                        {% endif %}
+                        {% if rent_product.img_5 %}
+                            <!-- Картинка товара галереи -->
+                            <a href="#" class="gallery_button"><img src="{{ rent_product.img_5.url }}" alt="" /></a>
+                            <!-- Картинка товара галереи конец -->
+                        {% endif %}
+                    </div>
+                    <!-- Блок товаров в карусели -->
+                </div>
+                <!-- Блок Характеристики -->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div class="specifications">
+                        <!-- Загаловок характеристик -->
+                        <h3 class="specifications_title">
+                            Краткие характеристики
+                        </h3>
+                        <!-- Загаловок характеристик конец -->
+
+                        <!-- Список Характеристик -->
+                        <ul>
+                            <li>Ширина<span>{{ rent_product.width }}м</span></li>
+                            <li>Высота<span>{{ rent_product.height }}м</span></li>
+                            <li>Длинна<span>{{ rent_product.length }}м</span></li>
+                            <li>Макс. высота<span>{{ rent_product.max_height }}м</span></li>
+                            <li>Макс. нагрузка<span> {{ rent_product.max_load }}кг.м2</span></li>
+                            <li>Кол-во в комплекте<span>{{ rent_product.quantity }}шт</span></li>
+                            <li>Материал<span>{{ rent_product.material_ru }}</span></li>
+                            <li>Страна производителя<span>{{ rent_product.country_ru }}</span></li>
+                            {% if rent_product.self_pickup is True %}
+                                <li>Возможность самовывоза<span>Имеется</span></li>
+                            {% else %}
+                                <li>Возможность самовывоза<span>Не имеется</span></li>
+                            {% endif %}
+                            {% if rent_product.delivery is True %}
+                                <li>Возможность доставки<span>Имеется</span></li>
+                            {% else %}
+                                <li>Возможность доставки<span>Не имеется</span></li>
+                            {% endif %}
+                            {% if product.term < 2 %}
+                                <li>Мин. срок аренды<span>от {{ rent_product.term }} дня</span></li>
+                            {% else %}
+                                <li>Мин. срок аренды<span>от {{ rent_product.term }} дней</span></li>
+                            {% endif %}
+                        </ul>
+                        <!-- Список Характеристик конец-->
+                </div>
+                <!-- Блок Характеристики конец -->
+                        <div class="specifications_down">
+                            <form action="#">
+                                <p class="specifications_info_text">К сожалению,цены на товары и комплектующие постоянно меняются.Для получения информации по цене аренды или закупки пожалуйста обратитесь к нашим специалистам.Вы можете оставить заявку онлайн или позвонить в офис продаж</p>
+                                <!-- Копка узнать цену и условия  -->
+                                <button data-toggle="modal" data-target="#myModal_page" type="button" class="button_price">Узнать цену и условия</button>
+                                <!-- Копка узнать цену и условия конец  -->
+                            </form>
+                        </div>
+            </div>
+        </div>
+    </section>
+        <!--Секция карточки товара конец -->
+
+
+        <!-- Блок Информации Аренды опалубки -->
+    <div class="formwork_rental_info bg-center" data-bgcenter="{% static 'img/logo_for_text.png' %}">
+        <div class="container-fluid spad">
+                <p class="text_info">С другой стороны консультация с широким активом влечет за собой процесс внедрения и модернизации систем массового участия. Идейные соображения высшего порядка, а также укрепление и развитие структуры позволяет выполнять важные задания по разработке форм развития.
+                Задача организации, в особенности же постоянный количественный рост и сфера нашей активности требуют определения и уточнения существенных финансовых и административных условий. Таким образом рамки и место обучения кадров требуют от нас анализа соответствующий условий активизации.</p>
+                <ul class="text_list">
+                    <li>Качество обслуживания</li>
+                    <li>Отличная консультация</li>
+                    <li>Низкие цены</li>
+                    <li>Быстрая доставка</li>
+                    <li>Ответственность за арендуемый товар</li>
+               </ul>
+
+                <p class="text_info">С другой стороны консультация с широким активом влечет за собой процесс внедрения и модернизации систем массового участия. Идейные соображения высшего порядка, а также укрепление и развитие структуры позволяет выполнять важные задания по разработке форм развития.
+                </p>
+        </div>
+    </div>
+     <!-- Блок Информации Аренды опалубки конец-->
+
+
+        <!-- Секция как мы работаем -->
+            <section class="spad container-fluid">
+                <div class="how-work row">
+                    <!-- Заголовок -->
+                    <div class="col-12 header-content">
+                        <h2>Как мы работаем</h2>
+                    </div>
+                    <!-- Конец заголовока -->
+
+                    <!-- Ячейка блока секции "Как мы работаем" -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
+                    >
+                        <div class="how-work-elem">
+                            <img
+                                src="{% static 'img/1equipment.png' %}"
+                                alt="1equipment.png"
+                            />
+                            <p>Выберите оборудование</p>
+                        </div>
+                        <div class="how-work-arrow">
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <!-- Конец ячейки блока секции "Как мы работаем" -->
+                    <!-- Ячейка блока секции "Как мы работаем" -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
+                    >
+                        <div class="how-work-elem">
+                            <img src="{% static 'img/2calling.png' %}" alt="2calling.png" />
+                            <p>Звоните нам или оставьте заявку на сайте</p>
+                        </div>
+                        <div class="how-work-arrow">
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <!-- Конец ячейки блока секции "Как мы работаем" -->
+                    <!-- Ячейка блока секции "Как мы работаем" -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
+                    >
+                        <div class="how-work-elem">
+                            <img
+                                src="{% static 'img/3warehouse.png' %}"
+                                alt="3warehouse.png"
+                            />
+                            <p>Консультант передает Ваш заказ на склад</p>
+                        </div>
+                        <div class="how-work-arrow">
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <!-- Конец ячейки блока секции "Как мы работаем" -->
+                    <!-- Ячейка блока секции "Как мы работаем" -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
+                    >
+                        <div class="how-work-elem">
+                            <img
+                                src="{% static 'img/4documents.png' %}"
+                                alt="4documents.png"
+                            />
+                            <p>Присылаете все необходимые документы</p>
+                        </div>
+                        <div class="how-work-arrow how-work-arrow-four">
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <!-- Конец ячейки блока секции "Как мы работаем" -->
+                    <!-- Ячейка блока секции "Как мы работаем" -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
+                    >
+                        <div class="how-work-elem">
+                            <img src="{% static 'img/5contract.png' %}" alt="5contract.png" />
+                            <p>Мы подготавливаем и высылаем вам договор</p>
+                        </div>
+                        <div class="how-work-arrow">
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <!-- Конец ячейки блока секции "Как мы работаем" -->
+                    <!-- Ячейка блока секции "Как мы работаем" -->
+                    <div
+                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
+                    >
+                        <div class="how-work-elem">
+                            <img src="{% static 'img/6money.png' %}" alt="6money.png" />
+                            <p>Получаем оплату, а вы товар</p>
+                        </div>
+                        <div class="how-work-arrow">
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <!-- Конец ячейки блока секции "Как мы работаем" -->
+                </div>
+            </section>
+            <!-- Секция как мы работаем конец -->
+        <!-- Секция о компании -->
+
+
+        <!-- Секция отзывов -->
+        {% include 'blocks/reviews.html' %}
+        <!-- Секция отзывов конец -->
+
+        <!-- Секция с формой "Есть вопросы?" -->
+        <section class="form set-bg" data-setbg="{% static 'img/bg_leave.png' %}">
+            <div class="container-fluid spad">
+                <div class="row">
+                    <form class="form_container form_cont set-bg"  data-setbg="{% static 'img/bg_blur.png' %}" action="#">
+                        <!-- Загаловок форм -->
+                        <h3>Есть вопросы?! Пишите нам!</h3>
+                        <!-- Загаловок форм конец -->
+
+                        <!-- Поле для имени -->
+                        <input class="form_input" type="text" placeholder="Ваше имя">
+                        <!-- Поле для имени конец -->
+
+                        <!-- Поле для телефона -->
+                        <input class="form_input" type="tel" placeholder="Номер телефона">
+                        <!-- Поле для телефона конец -->
+
+                        <!-- Поле текста для вопроса -->
+                        <textarea class="textarea_input" name="message" placeholder="Текст вопроса:"></textarea>
+                        <!-- Поле текста для вопроса конец -->
+
+                        <!-- Блок отправки -->
+                        <div class="submit_block">
+                            <div class="checkbox_item">
+                                <label for="checkbox_page"><input id="checkbox_page" class="checkbox_input" type="checkbox">Соглашаюсь с политикой обработанных данных</label>
+                            </div>
+                            <button class="btn_submit" type="submit">Отправить</button>
+                        </div>
+                        <!-- Блок отправки конец -->
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- Секция с формой "Есть вопросы?" конец-->
+
+
+    <!-- Футер  -->
+    {% include 'footer.html' %}
+    <!-- Футер конец -->
+
+
+        <!-- Окно сообщения -->
+        <div class="position-fixed top-0 right-0 p-3" style="z-index: 5; right: 0; top: 0;">
+          <div id="liveToast" class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <div class="toast-header">
+            <strong class="mr-auto">Товар добавлен в корзину</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="toast-body">
+            Ваш товар добавлен в корзину!
+            </div>
+          </div>
+      </div>
+      <!-- Конец окна сообщения -->
+
+        <!-- Модальное окно узнать цену и условия -->
+        <div class="modal fade" id="myModal_page">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                            <h2 class="modal_title">Рамные леса ЛР-10</h2>
+                            <form action="#" class="modal_form">
+                                <div class="row">
+                                    <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                    <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                    <div class="col-12"><input type="text" placeholder="Кол-во"></div>
+                                    <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                    <div class="col-12 checkbox_modal">
+                                        <label for="checkbox">
+                                            <input id="checkbox" class="checkbox_input" type="checkbox">
+                                            Соглашаюсь с политикой обработанных данных</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn_modal_submit">
+                                    Узнать цену товара
+                                </button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Модальное окно узнать цену и условия -->
+
+{% endblock %}
