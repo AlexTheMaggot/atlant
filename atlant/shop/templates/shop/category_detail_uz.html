@@ -8,9 +8,9 @@
     <!-- Мобильное меню -->
     {% include 'blocks/mobile_menu.html' %}
     <!-- Мобильное меню конец -->
-    <!-- Хэдэр -->
-    {% include 'header.html' %}
-    <!-- Хэдэр конец -->
+        <!-- Хэдэр -->
+        {% include 'header.html' %}
+        <!-- Хэдэр конец -->
 
         <!-- Загаловок страницы и хлебные крошки -->
         <section class="title_page">
@@ -66,7 +66,7 @@
                         <!-- Конец списка характеристик товара -->
                         <!-- Кнопка перейти на страницу товара -->
                         <div class="category-button">
-                            <a href="#">перейти</a>
+                            <a href="{% url 'catalog_uz:product_detail' category.slug product.slug %}">перейти</a>
                         </div>
                         <!-- Конец кнопки перейти на страницу товара -->
                     </div>
@@ -104,7 +104,7 @@
             <!-- Секция категории товаров конец -->
 
             <!-- Секция Call center (Форма обратной связи) -->
-            <section class="call_center set-bg container-fluid" data-setbg="img/bg_callcentre.png">
+            <section class="call_center set-bg container-fluid" data-setbg="{% static 'img/bg_callcentre.png' %}">
                 <div class="call_center_wrap row">
                     <div class="call_center_container">
                         <!-- Форма обратной связи -->
@@ -178,7 +178,7 @@
                         <div class="how-work-elem">
                             <!-- Изображение элемента -->
                             <img
-                                src="img/1equipment.png"
+                                src="{% static 'img/1equipment.png' %}"
                                 alt="1equipment.png"
                             />
                             <!-- Конец изображения элемента  -->
@@ -188,7 +188,7 @@
                         </div>
                         <!-- Декоративная стрелка -->
                         <div class="how-work-arrow">
-                            <img src="img/arrow_work.png" alt="" />
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
                         </div>
                         <!-- Конец декоративной стрелки -->
                     </div>
@@ -199,7 +199,7 @@
                     >
                         <div class="how-work-elem">
                             <!-- Изображение элемента -->
-                            <img src="img/2calling.png" alt="2calling.png" />
+                            <img src="{% static 'img/2calling.png' %}" alt="2calling.png" />
                             <!-- Конец изображения элемента  -->
                             <!-- Текст элемента -->
                             <p>Звоните нам или оставьте заявку на сайте</p>
@@ -207,7 +207,7 @@
                         </div>
                         <!-- Декоративная стрелка -->
                         <div class="how-work-arrow">
-                            <img src="img/arrow_work.png" alt="" />
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
                         </div>
                         <!-- Конец декоративной стрелка -->
                     </div>
@@ -219,7 +219,7 @@
                         <div class="how-work-elem">
                             <!-- Изображение элемента -->
                             <img
-                                src="img/3warehouse.png"
+                                src="{% static 'img/3warehouse.png' %}"
                                 alt="3warehouse.png"
                             />
                             <!-- Конец элемента изображения -->
@@ -229,7 +229,7 @@
                         </div>
                         <!-- Декоративная стрелка -->
                         <div class="how-work-arrow">
-                            <img src="img/arrow_work.png" alt="" />
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
                         </div>
                         <!-- Конец деркоративной стрелки -->
                     </div>
@@ -241,7 +241,7 @@
                         <div class="how-work-elem">
                             <!-- Изображение секции -->
                             <img
-                                src="img/4documents.png"
+                                src="{% static 'img/4documents.png' %}"
                                 alt="4documents.png"
                             />
                             <!-- Изображение секции -->
@@ -251,7 +251,7 @@
                         </div>
                         <!-- Декоративная стрелка -->
                         <div class="how-work-arrow how-work-arrow-four">
-                            <img src="img/arrow_work.png" alt="" />
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
                         </div>
                         <!-- Конец декоративной стрелки -->
                     </div>
@@ -262,7 +262,7 @@
                     >
                         <div class="how-work-elem">
                             <!-- Изображение элемента -->
-                            <img src="img/5contract.png" alt="5contract.png" />
+                            <img src="{% static 'img/5contract.png' %}" alt="5contract.png" />
                             <!-- Конец изображения элемента -->
                             <!-- Текст элемента -->
                             <p>Мы подготавливаем и высылаем вам договор</p>
@@ -270,7 +270,7 @@
                         </div>
                         <!-- Декоративная стрелка -->
                         <div class="how-work-arrow">
-                            <img src="img/arrow_work.png" alt="" />
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
                         </div>
                         <!-- Конец декоративной стрелки -->
                     </div>
@@ -281,7 +281,7 @@
                     >
                         <div class="how-work-elem">
                             <!-- Изображение элемента -->
-                            <img src="img/6money.png" alt="6money.png" />
+                            <img src="{% static 'img/6money.png' %}" alt="6money.png" />
                             <!-- Конец элемента секции -->
                             <!-- Текст элемента -->
                             <p>Получаем оплату, а вы товар</p>
@@ -289,7 +289,7 @@
                         </div>
                         <!-- Декоративная стрелка -->
                         <div class="how-work-arrow">
-                            <img src="img/arrow_work.png" alt="" />
+                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
                         </div>
                         <!-- Конец декоративной стрелки -->
                     </div>
@@ -317,7 +317,7 @@
                                 <!-- Изображения элемента -->
                                 <img
                                     class="adventages_img"
-                                    src="img/dollar.svg"
+                                    src="{% static 'img/dollar.svg' %}"
                                     alt=""
                                 />
                                 <!-- Конец изображения элемента -->
@@ -342,7 +342,7 @@
                                 <!-- Изображение элемента -->
                                 <img
                                     class="adventages_img"
-                                    src="img/time.svg"
+                                    src="{% static 'img/time.svg' %}"
                                     alt=""
                                 />
                                 <!-- Конец изображения элемента -->
@@ -369,7 +369,7 @@
                                 <!-- Изображение элемента -->
                                 <img
                                     class="adventages_img"
-                                    src="img/like.svg"
+                                    src="{% static 'img/like.svg' %}"
                                     alt=""
                                 />
                                 <!-- Конец изображения элемента -->
@@ -398,7 +398,7 @@
                                 <!-- Изображение элемента -->
                                 <img
                                     class="adventages_img"
-                                    src="img/operator.svg"
+                                    src="{% static 'img/operator.svg' %}"
                                     alt=""
                                 />
                                 <!-- Конец изображения элемента -->
