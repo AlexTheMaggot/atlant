@@ -60,10 +60,22 @@ class Product(models.Model):
     val_5_uz = models.CharField(verbose_name='Значение 5 (узб)', max_length=200, null=True, blank=True)
     spec_6_uz = models.CharField(verbose_name='Характеристика 6 (узб)', max_length=200, null=True, blank=True)
     val_6_uz = models.CharField(verbose_name='Значение 6 (узб)', max_length=200, null=True, blank=True)
-    file_1 = models.FileField(verbose_name='Файл 1', upload_to='product_files/')
+    file_1 = models.FileField(verbose_name='Файл 1', upload_to='product_files/', null=True, blank=True)
+    file_1_name_ru = models.CharField(verbose_name='Название файла 1 на русском', max_length=200, null=True, blank=True)
+    file_1_name_uz = models.CharField(verbose_name='Название файла 1 на узбекском', max_length=200,
+                                      null=True, blank=True)
     file_2 = models.FileField(verbose_name='Файл 2', upload_to='product_files/', null=True, blank=True)
+    file_2_name_ru = models.CharField(verbose_name='Название файла 2 на русском', max_length=200, null=True, blank=True)
+    file_2_name_uz = models.CharField(verbose_name='Название файла 2 на узбекском', max_length=200,
+                                      null=True, blank=True)
     file_3 = models.FileField(verbose_name='Файл 3', upload_to='product_files/', null=True, blank=True)
+    file_3_name_ru = models.CharField(verbose_name='Название файла 3 на русском', max_length=200, null=True, blank=True)
+    file_3_name_uz = models.CharField(verbose_name='Название файла 3 на узбекском', max_length=200,
+                                      null=True, blank=True)
     file_4 = models.FileField(verbose_name='Файл 4', upload_to='product_files/', null=True, blank=True)
+    file_4_name_ru = models.CharField(verbose_name='Название файла 4 на русском', max_length=200, null=True, blank=True)
+    file_4_name_uz = models.CharField(verbose_name='Название файла 4 на узбекском', max_length=200,
+                                      null=True, blank=True)
 
     def __str__(self):
         return self.name_ru

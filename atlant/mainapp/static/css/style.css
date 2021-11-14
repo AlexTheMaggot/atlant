@@ -268,9 +268,15 @@ textarea{
     text-transform: uppercase;
     text-decoration: none;
     transition-duration: .3s;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     padding:  0 5px;
+    text-align: center;
 }
+/*добавил*/
+.all-category button{
+    white-space: nowrap;
+}
+/*добавил конец*/
 .renta-list{
     flex: 0 0 65%;
 }
@@ -358,6 +364,10 @@ textarea{
     scrollbar-width: thin;
     left: -35px;
 }
+.all-category ul li{
+    word-break: break-all;
+    padding: 0 20px;
+}
 /* полоса прокрутки (скроллбар) */
 ::-webkit-scrollbar {
     width: 6px; /* ширина для вертикального скролла */
@@ -392,7 +402,9 @@ textarea{
     background: none;
     border: none;
     color: #fff;
-    padding: 10px 0px;
+    /*изменил*/
+    padding: 10px 20px;
+    /*изменил конец*/
 }
 .all-category ul li a:hover{
     background-color: #fff;

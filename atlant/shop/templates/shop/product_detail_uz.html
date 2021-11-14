@@ -1,459 +1,480 @@
 {% extends 'wrapper.html' %}
 {% load static %}
-{% block title %}{{ category.name_uz }}{% endblock %}
+{% block title %}{{ product.name_uz }}{% endblock %}
 {% block content %}
     {# Callback #}
     {% include 'blocks/callback.html' %}
     {# End Callback #}
+
+    <!-- Модальное окно узнать цену  -->
+    <div class="modal fade" id="myModal_price">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                        <h2 class="modal_title">Арендовать Рамные леса ЛР-10</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-6"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-6"><input type="text" placeholder="Срок:"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно узнать цену конец -->
+
+    <!-- Модальное окно покупки -->
+    <div class="modal fade" id="myModal_buy">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                        <h2 class="modal_title">Купить Рамные леса ЛР-10</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-12"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно покупки  конец-->
+
+
+    <!-- Модальное окно уззнать цену и условия -->
+    <div class="modal fade" id="myModal_page">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                        <h2 class="modal_title">Купить Рамные леса ЛР-10</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-12"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно уззнать цену и условия -->
+
     <!-- Мобильное меню -->
     {% include 'blocks/mobile_menu.html' %}
     <!-- Мобильное меню конец -->
-        <!-- Хэдэр -->
-        {% include 'header.html' %}
-        <!-- Хэдэр конец -->
+    <!-- Хэдэр -->
+    {% include 'header.html' %}
+    <!-- Хэдэр конец -->
+<main class="main-page">
 
-        <!-- Загаловок страницы и хлебные крошки -->
-        <section class="title_page">
-            <!-- Заголовок страницы -->
-            <h1>{{ category.name_uz }}</h1>
-            <!-- Конец заголовока страницы -->
-            <!-- Хлебные крошки -->
-            <div class="breadcrumb">
-                <ul>
-                    <!-- Ссылка на первый уровень сайта -->
-                    <li><a href="{% url 'mainapp_uz:index' %}">Главная</a></li>
-                    <!-- Конец ссылки на первый уровень сайта -->
-                    <!-- Ссылка на второй уровень сайта -->
-                    <li><a href="{% url 'catalog_uz:product_list' %}">Каталог товаров</a></li>
-                    <!-- Конец ссылки на второй уровень сайта -->
-                    <!-- Страница на которой находится пользователь -->
-                    <li>{{ category.name_uz }}</li>
-                    <!-- Конец страницы на которой находится пользователь -->
-                </ul>
-            </div>
-            <!-- Конец хлебных крошек  -->
-        </section>
-        <!-- Загаловок страницы и хлебные крошки конец-->
+    <!-- Секция загаловок страницы и хлебные крошки -->
+    <section class="title_page">
+        <!-- Загаловок страницы -->
+        <h1>{{ product.name_uz }}</h1>
+        <!-- Загаловок страницы -->
 
-        <main class="category_main">
-            <!-- Секция категории товаров -->
-            <section class="spad container-fluid category-tile">
-                <!-- Категории товаров -->
-                <div class="row category-tile-row category_bg">
-                    {% for product in page_obj %}
-                    <!-- Товар  -->
-                    <div
-                        class="col-lg-3 col-md-4 col-sm-6 col-12 category-item"
-                    >
-                        <!-- Картинка товара -->
-                        <div class="cat-img">
-                            <img src="{% static 'img/test.jpg' %}" alt="" />
-                        </div>
-                        <!-- Конец картинки товара -->
-                        <!-- Заголовок с названием товара -->
-                        <h3>{{ product.name_uz }}</h3>
-                        <!-- Конец заголовка с названием товара -->
-                        <!-- Список характеристик товара -->
-                        <ul>
-                            <li>
-                                Ширина <span class="category-val">0,9m</span>
-                            </li>
-                            <li>
-                                Длинна <span class="category-val">0,3m</span>
-                            </li>
-                            <li>Высота <span class="category-val">3m</span></li>
-                        </ul>
-                        <!-- Конец списка характеристик товара -->
-                        <!-- Кнопка перейти на страницу товара -->
-                        <div class="category-button">
-                            <a href="#">перейти</a>
-                        </div>
-                        <!-- Конец кнопки перейти на страницу товара -->
+        <!-- Блок хлебные крошки -->
+        <div class="breadcrumb">
+            <ul>
+                <!-- Ссылка на страницу первого уровня -->
+                <li><a href="{% url 'mainapp_uz:index' %}">Главная</a></li>
+                <!-- Конец ссылки на страницу первого уровня -->
+                <!-- Ссылка на страницу второго уровня -->
+                <li><a href="{% url 'catalog_uz:product_list' %}">Каталог товаров</a></li>
+                <!-- Конец ссылки на страницу второго уровня -->
+                <!-- Ссылка на страницу третьего уровня -->
+                <li><a href="{% url 'catalog_uz:category_detail' category.slug %}">{{ category.name_uz }}</a></li>
+                <!-- Конец ссылки на страницу третьего уровня -->
+                <!-- Страница на которой находится пользователь -->
+                <li>{{ product.name_uz }}</li>
+                <!-- Конец страницу четвертого уровня -->
+            </ul>
+        </div>
+        <!-- Хлебные крошки -->
+    </section>
+    <!-- Секция загаловок страницы и хлебные крошки конец-->
+
+    <!--Секция карточки товара -->
+    <section class="product_details">
+        <!-- Блок главный контейнер карточки продукта -->
+        <div class="product_details_container container-fluid spad">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <!-- Блок с картинкой товара зумированная -->
+                    <div class="zoom_img">
+                        <img src="{{ product.img_1.url }}" alt="" />
                     </div>
-                    <!-- Товар конец -->
-                    {% endfor %}
-                </div>
-                <!-- Категории товаров -->
+                    <!-- Блок с картинкой товара зумированная -->
 
-                <!-- Пагинация -->
-                <ul class="pagination">
-                    {% if page_obj.has_previous %}
-                        <!-- Стрелка для перехода на предыдущую страницу -->
-                        <li><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">«</a></li>
-                        <!-- Конец стрелки для перехода на предыдущую страницу -->
-                    {% endif %}
-                    {% for page_number in page_obj.paginator.page_range %}
-                        {% if page_number == page_obj.number %}
-                            <!-- Ссылка на которой находиться пользователь -->
-                            <li><a class="active" href="#">{{ page_number }}</a></li>
-                            <!-- Конец ссылки на которой находится пользователь -->
-                        {% else %}
-                            <!-- Ссылка на другую страницу -->
-                            <li><a href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a></li>
-                            <!-- Конец ссылки на другую страницу -->
+                    <!-- Блок товаров в карусели -->
+                    <div class="gallery owl-carousel">
+                        <!-- Картинка товара галереи -->
+                        <a href="#" class="gallery_button"><img src="{{ product.img_1.url }}" alt="" /></a>
+                        <!-- Картинка товара галереи конец -->
+
+                        {% if product.img_2 %}
+                            <!-- Картинка товара галереи -->
+                            <a href="#" class="gallery_button"><img src="{{ product.img_2.url }}" alt="" /></a>
+                            <!-- Картинка товара галереи конец -->
                         {% endif %}
-                    {% endfor %}
-                    {% if page_obj.has_next %}
-                        <!-- Стрелка для перехода на следующую страницу -->
-                        <li><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">»</a></li>
-                        <!-- Конец стрелки для перехода на следующую страницу -->
-                    {% endif %}
-                </ul>
-                <!-- Пагинация конец-->
-            </section>
-            <!-- Секция категории товаров конец -->
 
-            <!-- Секция Call center (Форма обратной связи) -->
-            <section class="call_center set-bg container-fluid" data-setbg="img/bg_callcentre.png">
-                <div class="call_center_wrap row">
-                    <div class="call_center_container">
-                        <!-- Форма обратной связи -->
-                        <form action="#" class="call_center_forms">
-                            <!-- Заголовок формы обратной связи -->
-                            <h3 class="call_center_title">
-                                Не нашли нужный товар или вам требуется
-                                консультация?
-                            </h3>
-                            <!-- Конец заголовка формы обратной связи -->
-                            <!-- Текст формы обратной связи -->
-                            <span
-                                >Отправьте Ваши контактные данные и наши
-                                специалисты свяжутся с Вами в удобное для Вас
-                                время</span
-                            >
-                            <!-- Конец формы обратной связи -->
-                            <!-- Форма для ввода времени для звонки -->
-                            <input
-                                class="form_item"
-                                type="text"
-                                placeholder="Удобное время для звонка"
-                            />
-                            <!-- Конец формы для ввода времени для звонки -->
-                            <!-- Форма для ввода имени -->
-                            <input
-                                class="form_item"
-                                type="text"
-                                placeholder="Ваше имя"
-                            />
-                            <!-- Конец формы для ввода имени -->
-                            <!-- Форма для ввода номера телефона -->
-                            <input
-                                class="form_item"
-                                type="tel"
-                                placeholder="Номер телефона"
-                            />
-                            <!-- Форма для ввода номера телефона -->
-                            <textarea
-                                class="form__textarea"
-                                name="call_center_form"
-                                placeholder="Текст вопроса"
-                            ></textarea>
-                            <!-- Конец формы для ввода номера телефона -->
-                            <!-- Кнопка для отправки данных с формы -->
-                            <div class="bnt_call_center">
-                                <button class="call_center_btn" type="submit">
-                                    Отправить
-                                </button>
-                            </div>
-                            <!-- Конец кнопки для отправки данных с формы -->
+                        {% if product.img_3 %}
+                            <!-- Картинка товара галереи -->
+                            <a href="#" class="gallery_button"><img src="{{ product.img_3.url }}" alt="" /></a>
+                            <!-- Картинка товара галереи конец -->
+                        {% endif %}
+
+                        {% if product.img_4 %}
+                            <!-- Картинка товара галереи -->
+                            <a href="#" class="gallery_button"><img src="{{ product.img_4.url }}" alt="" /></a>
+                            <!-- Картинка товара галереи конец -->
+                        {% endif %}
+
+                        {% if product.img_5 %}
+                            <!-- Картинка товара галереи -->
+                            <a href="#" class="gallery_button"><img src="{{ product.img_5.url }}" alt="" /></a>
+                            <!-- Картинка товара галереи конец -->
+                        {% endif %}
+                    </div>
+                    <!-- Блок товаров в карусели -->
+                </div>
+                <!-- Блок Характеристики -->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div class="specifications">
+                        <!-- Загаловок характеристик -->
+                        <h3 class="specifications_title">
+                            Краткие характеристики
+                        </h3>
+                        <!-- Загаловок характеристик конец -->
+
+                        <!-- Список Характеристик -->
+                        <ul>
+                            {% if product.spec_1_uz %}
+                                <li>{{ product.spec_1_uz }}<span>{{ product.val_1_uz }}</span></li>
+                            {% endif %}
+                            {% if product.spec_2_uz %}
+                                <li>{{ product.spec_2_uz }}<span>{{ product.val_2_uz }}</span></li>
+                            {% endif %}
+                            {% if product.spec_3_uz %}
+                                <li>{{ product.spec_3_uz }}<span>{{ product.val_3_uz }}</span></li>
+                            {% endif %}
+                            {% if product.spec_4_uz %}
+                                <li>{{ product.spec_4_uz }}<span>{{ product.val_4_uz }}</span></li>
+                            {% endif %}
+                            {% if product.spec_5_uz %}
+                                <li>{{ product.spec_5_uz }}<span>{{ product.val_5_uz }}</span></li>
+                            {% endif %}
+                            {% if product.spec_6_uz %}
+                                <li>{{ product.spec_6_uz }}<span>{{ product.val_6_uz }}</span></li>
+                            {% endif %}
+                        </ul>
+                        <!-- Список Характеристик конец-->
+                    </div>
+                    <div class="specifications_down">
+                        <form action="#">
+                            <ul class="btns_rents_buy">
+                                {% if product.rent == True %}
+                                    <!-- Кнопка Арендовать -->
+                                    <li>
+                                        <span>Арендовать:</span>
+                                        <button type="button" class="btn_rent" data-toggle="modal" data-target="#myModal_price">Узнать цену и условия</button>
+                                    </li>
+                                    <!-- Кнопка Арендовать конец -->
+                                {% endif %}
+
+                                {% if product.sell == True %}
+                                    <!-- Кнопка Купить -->
+                                    <li>
+                                        <span>Купить:</span>
+                                        <button type="button" class="btn_buy" data-toggle="modal" data-target="#myModal_buy">Узнать цену и условия</button>
+                                    </li>
+                                    <!-- Кнопка Купить конец -->
+                                {% endif %}
+                            </ul>
+                            <p class="specifications_info_text">К сожалению,цены на товары и комплектующие постоянно меняются.Для получения информации по цене аренды или закупки пожалуйста обратитесь к нашим специалистам.Вы можете оставить заявку онлайн или позвонить в офис продаж</p>
+                            <!-- Копка узнать цену и условия  -->
+                            <button data-toggle="modal" data-target="#myModal_page" type="button" class="button_price">Узнать цену и условия</button>
+                            <!-- Копка узнать цену и условия конец  -->
                         </form>
-                        <!-- Конец формы обратной связи -->
                     </div>
                 </div>
-            </section>
-            <!-- Секция Call center конец (Форма обратной связи) -->
+                <!-- Блок Характеристики конец -->
+            </div>
+        </div>
+        <!-- Блок главный контейнер карточки продукта конец -->
+    </section>
+    <!--Секция карточки товара конец -->
 
-            <!-- Секция как мы работаем -->
-            <section class="spad container-fluid">
-                <div class="how-work row">
-                    <!-- Заголовок секции -->
-                    <div class="col-12 header-content">
-                        <h2>Как мы работаем</h2>
-                    </div>
-                    <!-- Конец заголовка секции -->
-                    <!-- Элемент секции -->
-                    <div
-                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
-                    >
-                        <div class="how-work-elem">
-                            <!-- Изображение элемента -->
-                            <img
-                                src="img/1equipment.png"
-                                alt="1equipment.png"
-                            />
-                            <!-- Конец изображения элемента  -->
-                            <!-- Текст элемента -->
-                            <p>Выберите оборудование</p>
-                            <!-- Конец текста элемента -->
-                        </div>
-                        <!-- Декоративная стрелка -->
-                        <div class="how-work-arrow">
-                            <img src="img/arrow_work.png" alt="" />
-                        </div>
-                        <!-- Конец декоративной стрелки -->
-                    </div>
-                    <!-- Конец элемента секции -->
-                    <!-- Элемент секции -->
-                    <div
-                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
-                    >
-                        <div class="how-work-elem">
-                            <!-- Изображение элемента -->
-                            <img src="img/2calling.png" alt="2calling.png" />
-                            <!-- Конец изображения элемента  -->
-                            <!-- Текст элемента -->
-                            <p>Звоните нам или оставьте заявку на сайте</p>
-                            <!-- Конец текста элемента -->
-                        </div>
-                        <!-- Декоративная стрелка -->
-                        <div class="how-work-arrow">
-                            <img src="img/arrow_work.png" alt="" />
-                        </div>
-                        <!-- Конец декоративной стрелка -->
-                    </div>
-                    <!-- Конец элемента секции -->
-                    <!-- Элемент секции -->
-                    <div
-                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
-                    >
-                        <div class="how-work-elem">
-                            <!-- Изображение элемента -->
-                            <img
-                                src="img/3warehouse.png"
-                                alt="3warehouse.png"
-                            />
-                            <!-- Конец элемента изображения -->
-                            <!-- Текст элемента -->
-                            <p>Консультант передает Ваш заказ на склад</p>
-                            <!-- Конец текст элемента -->
-                        </div>
-                        <!-- Декоративная стрелка -->
-                        <div class="how-work-arrow">
-                            <img src="img/arrow_work.png" alt="" />
-                        </div>
-                        <!-- Конец деркоративной стрелки -->
-                    </div>
-                    <!-- Конец элемента секции -->
-                    <!-- Элемент секции -->
-                    <div
-                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
-                    >
-                        <div class="how-work-elem">
-                            <!-- Изображение секции -->
-                            <img
-                                src="img/4documents.png"
-                                alt="4documents.png"
-                            />
-                            <!-- Изображение секции -->
-                            <!-- Текст секции -->
-                            <p>Присылаете все необходимые документы</p>
-                            <!-- Конец текста секции -->
-                        </div>
-                        <!-- Декоративная стрелка -->
-                        <div class="how-work-arrow how-work-arrow-four">
-                            <img src="img/arrow_work.png" alt="" />
-                        </div>
-                        <!-- Конец декоративной стрелки -->
-                    </div>
-                    <!-- Конец элемента секции -->
-                    <!-- Элемент секции -->
-                    <div
-                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
-                    >
-                        <div class="how-work-elem">
-                            <!-- Изображение элемента -->
-                            <img src="img/5contract.png" alt="5contract.png" />
-                            <!-- Конец изображения элемента -->
-                            <!-- Текст элемента -->
-                            <p>Мы подготавливаем и высылаем вам договор</p>
-                            <!-- Конец текста элемента -->
-                        </div>
-                        <!-- Декоративная стрелка -->
-                        <div class="how-work-arrow">
-                            <img src="img/arrow_work.png" alt="" />
-                        </div>
-                        <!-- Конец декоративной стрелки -->
-                    </div>
-                    <!-- Конец элемента секции -->
-                    <!-- Элемент секции -->
-                    <div
-                        class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item"
-                    >
-                        <div class="how-work-elem">
-                            <!-- Изображение элемента -->
-                            <img src="img/6money.png" alt="6money.png" />
-                            <!-- Конец элемента секции -->
-                            <!-- Текст элемента -->
-                            <p>Получаем оплату, а вы товар</p>
-                            <!-- Конец текста элемента -->
-                        </div>
-                        <!-- Декоративная стрелка -->
-                        <div class="how-work-arrow">
-                            <img src="img/arrow_work.png" alt="" />
-                        </div>
-                        <!-- Конец декоративной стрелки -->
-                    </div>
-                    <!-- Конец элемента секции -->
+    <!-- Секция вкладок -->
+    <section>
+        <div class="container-fluid spad tabs">
+            <div class="row tabs__nav">
+                <!-- Таб описание -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                    <button class="tabs__nav-btn" type="button" data-tab="#tab_1"><img src="{% static 'img/text.svg' %}" alt="" class="tab_icon">Описание</button>
                 </div>
-            </section>
-            <!-- Секция как мы работаем конец -->
+                <!-- Таб описание конец -->
 
-            <!-- Секция наши преимущества -->
-            <section class="our_adventages">
-                <div class="container-fluid spad">
-                    <div class="row">
-                        <!-- Загалов наши преимущества -->
-                        <div class="payment_title adventages_title">
-                            <h2>Наши преимущества</h2>
-                        </div>
-                        <!-- Загалов наши преимущества конец -->
-                    </div>
-                    <div class="row advantages_row">
-                        <!-- Наши преимущества пункт -->
-                        <div
-                            class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
-                        >
-                            <div class="adventages_item">
-                                <!-- Изображения элемента -->
-                                <img
-                                    class="adventages_img"
-                                    src="img/dollar.svg"
-                                    alt=""
-                                />
-                                <!-- Конец изображения элемента -->
-                                <!-- Заголовок элемента -->
-                                <h3 class="adventages_name">Экономия!</h3>
-                                <!-- Конец заголовка элемента -->
-                                <!-- Текст элемента -->
-                                <p class="adventages_text">
-                                    Вам требуется покупать дорогостоящее
-                                    оборудование
-                                </p>
-                                <!-- Конец текста элемента -->
-                            </div>
-                        </div>
-                        <!-- Наши преимущества пункт конец -->
-
-                        <!-- Наши преимущества пункт -->
-                        <div
-                            class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
-                        >
-                            <div class="adventages_item">
-                                <!-- Изображение элемента -->
-                                <img
-                                    class="adventages_img"
-                                    src="img/time.svg"
-                                    alt=""
-                                />
-                                <!-- Конец изображения элемента -->
-                                <!-- Заголовок элемента -->
-                                <h3 class="adventages_name">
-                                    Пользуйтесь сколько требуется!
-                                </h3>
-                                <!-- Конец заголовка элемента -->
-                                <!-- Текст элемента -->
-                                <p class="adventages_text">
-                                    Мы предостовляем неограниченный срок аренды
-                                    с гибкими и удобными условиями
-                                </p>
-                                <!-- Конец текста элемента -->
-                            </div>
-                        </div>
-                        <!-- Наши преимущества пункт конец -->
-
-                        <!-- Наши преимущества пункт -->
-                        <div
-                            class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
-                        >
-                            <div class="adventages_item">
-                                <!-- Изображение элемента -->
-                                <img
-                                    class="adventages_img"
-                                    src="img/like.svg"
-                                    alt=""
-                                />
-                                <!-- Конец изображения элемента -->
-                                <!-- Заголовок элемента -->
-                                <h3 class="adventages_name">
-                                    Лучшее качество на рынке
-                                </h3>
-                                <!-- Конец заголовка элемента -->
-                                <!-- Текст элемента -->
-                                <p class="adventages_text">
-                                    Все предоставляемые нами товары являются
-                                    сертифицированными, закупаются у проверенных
-                                    поставщиков, а произведенные нами товары
-                                    являются лучшими на рынке по цене и качеству
-                                </p>
-                                <!-- Конец текста элемента -->
-                            </div>
-                        </div>
-                        <!-- Наши преимущества пункт конец -->
-
-                        <!-- Наши преимущества пункт -->
-                        <div
-                            class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
-                        >
-                            <div class="adventages_item">
-                                <!-- Изображение элемента -->
-                                <img
-                                    class="adventages_img"
-                                    src="img/operator.svg"
-                                    alt=""
-                                />
-                                <!-- Конец изображения элемента -->
-                                <!-- Заголовок элемента -->
-                                <h3 class="adventages_name">
-                                    Проффесиональная поддержка
-                                </h3>
-                                <!-- Конец заголовка элемента -->
-                                <!-- Текст элемента -->
-                                <p class="adventages_text">
-                                    наши специалисты на связи 24 часа,которые
-                                    ждут ваших вопросов и с радостью
-                                    проконсультируют вас в любое время.
-                                </p>
-                                <!-- Конец текста элемента -->
-                            </div>
-                        </div>
-                        <!-- Наши преимущества пункт конец -->
-                    </div>
+                <!-- Таб характеристики -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                    <button class="tabs__nav-btn" type="button" data-tab="#tab_2"><img src="{% static 'img/settings.svg' %}" alt="" class="tab_icon">Характеристики</button>
                 </div>
-            </section>
-            <!-- Секция наши преимущества конец -->
+                <!-- Таб характеристики конец -->
 
-        </main>
+                <!-- Таб документация -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                    <button class="tabs__nav-btn" type="button" data-tab="#tab_3"><img src="{% static 'img/document.svg' %}" alt="" class="tab_icon">Документация</button>
+                </div>
+                <!-- Таб документация конец -->
+
+                <!-- Таб отзывы -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                    <button class="tabs__nav-btn" type="button" data-tab="#tab_4"><img src="{% static 'img/cloud.svg' %}" alt="" class="tab_icon">Отзывы</button>
+                </div>
+                <!-- Таб отзывы конец -->
+            </div>
+
+            <!-- Блок содержимое таба Описание -->
+            <div class="tabs__item" id="tab_1">
+                <p>{{ product.description_uz }}</p>
+            </div>
+            <!-- Блок содержимое таба Описание конец -->
+
+            <!-- Блок содердимое таба Характеристики -->
+            <div class="tabs__item" id="tab_2">
+                <div class="characteristics">
+                    <!-- Загаловок Характеристики -->
+                    <h3 class="characteristics_title">Характеристики</h3>
+                    <!-- Загаловок Характеристики -->
+
+                    <!-- Блок список характеристик -->
+                    <ul class="characteristics_list">
+                        <li>{{ product.spec_1_uz }}<span>{{ product.val_1_uz }}</span></li>
+                        {% if product.spec_2_uz %}
+                            <li>{{ product.spec_2_uz }}<span>{{ product.val_2_uz }}</span></li>
+                        {% endif %}
+                        {% if product.spec_3_uz %}
+                            <li>{{ product.spec_3_uz }}<span>{{ product.val_3_uz }}</span></li>
+                        {% endif %}
+                        {% if product.spec_4_uz %}
+                            <li>{{ product.spec_4_uz }}<span>{{ product.val_4_uz }}</span></li>
+                        {% endif %}
+                        {% if product.spec_5_uz %}
+                            <li>{{ product.spec_5_uz }}<span>{{ product.val_5_uz }}</span></li>
+                        {% endif %}
+                        {% if product.spec_6_uz %}
+                            <li>{{ product.spec_6_uz }}<span>{{ product.val_6_uz }}</span></li>
+                        {% endif %}
+                    </ul>
+                    <!-- Блок список характеристик -->
+                </div>
+            </div>
+            <!-- Блок содердимое таба Характеристики конец -->
+
+            <!-- Блок содержимое таба Документация -->
+            <div class="tabs__item" id="tab_3">
+                <div class="file_row row">
+                    {% if product.file_1 %}
+                    <!-- Файл для скачивания документации -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <!-- Ссылка на файлик документации -->
+                        <a href="{{ product.file_1.url }}">
+                            <div class="file_item">
+                                <!-- Иконка прайс листа  -->
+                                <img src="{% static 'img/price.svg' %}" alt="">{{ product.file_1_name_uz }}
+                                <!-- Иконка прайс листа конец -->
+
+                                <!-- Кнопка скачать прайс -->
+                                <a class="download_btn">скачать</a>
+                                <!-- Кнопка скачать прайс конец -->
+                            </div>
+                        </a>
+                        <!-- Ссылка на файлик документации конец -->
+                    </div>
+                    <!-- Файл для скачивания документации конец -->
+                    {% endif %}
+                    {% if product.file_2 %}
+                    <!-- Файл для скачивания документации -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <!-- Ссылка на файлик документации -->
+                        <a href="{{ product.file_2.url }}">
+                            <div class="file_item">
+                                <!-- Иконка прайс листа  -->
+                                <img src="{% static 'img/price.svg' %}" alt="">{{ product.file_2_name_uz }}
+                                <!-- Иконка прайс листа конец -->
+
+                                <!-- Кнопка скачать прайс -->
+                                <a class="download_btn">скачать</a>
+                                <!-- Кнопка скачать прайс конец -->
+                            </div>
+                        </a>
+                        <!-- Ссылка на файлик документации конец -->
+                    </div>
+                    <!-- Файл для скачивания документации конец -->
+                    {% endif %}
+                    {% if product.file_3 %}
+                    <!-- Файл для скачивания документации -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <!-- Ссылка на файлик документации -->
+                        <a href="{{ product.file_3.url }}">
+                            <div class="file_item">
+                                <!-- Иконка прайс листа  -->
+                                <img src="{% static 'img/price.svg' %}" alt="">{{ product.file_3_name_uz }}
+                                <!-- Иконка прайс листа конец -->
+
+                                <!-- Кнопка скачать прайс -->
+                                <a class="download_btn">скачать</a>
+                                <!-- Кнопка скачать прайс конец -->
+                            </div>
+                        </a>
+                        <!-- Ссылка на файлик документации конец -->
+                    </div>
+                    <!-- Файл для скачивания документации конец -->
+                    {% endif %}
+                    {% if product.file_4 %}
+                    <!-- Файл для скачивания документации -->
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <!-- Ссылка на файлик документации -->
+                        <a href="{{ product.file_4.url }}">
+                            <div class="file_item">
+                                <!-- Иконка прайс листа  -->
+                                <img src="{% static 'img/price.svg' %}" alt="">{{ product.file_4_name_uz }}
+                                <!-- Иконка прайс листа конец -->
+
+                                <!-- Кнопка скачать прайс -->
+                                <a class="download_btn">скачать</a>
+                                <!-- Кнопка скачать прайс конец -->
+                            </div>
+                        </a>
+                        <!-- Ссылка на файлик документации конец -->
+                    </div>
+                    <!-- Файл для скачивания документации конец -->
+                    {% endif %}
+                </div>
+            </div>
+            <!-- Блок содержимое таба Документация конец -->
+
+            <!-- Блок содержимое таба Отзывы -->
+            <div class="tabs__item" id="tab_4">
+                <div class="reviews_company spad no-bg">
+                    <!-- Загаловок отзывов -->
+                    <div class="header-content">
+                        <h2>Отзывы</h2>
+                    </div>
+                    <!-- Загаловок отзывов -->
+
+                    <!-- Общий контейнер слайдеров -->
+                    <div class="swiper-container">
+                        <!-- Обертка слайдов -->
+                        <div class="swiper-wrapper">
+                            <!-- Слайд -->
+                            <div class="swiper-slide reviews-slide spad">
+                                <div class="rewiew-slider-item">
+                                    <h3>ООО Самстрой Раджабов</h3>
+                                    <p>
+                                        Значимость этих проблем настолько очевидна, что укрепление и развитие
+                                        структуры требуют определения и уточнения систем массового участия. Таким
+                                        образом рамки и место обучения кадров требуют определения форм развития.
+                                    </p>
+                                </div>
+                                <div class="rewiew-slider-item">
+                                    <h3>Хамракулов Джасур</h3>
+                                    <p>
+                                        Значимость этих проблем настолько очевидна, что укрелпение и развитие структуры требуют
+                                        определения и уточнения систем массового участия. Таким образом рамки и место обучения кадров требуют
+                                        определения и уточнения форм развития. Не следует , однако забывать, что реализация намеченных плановых заданий
+                                        спрособствует подготовки
+                                        и реализации новых предложений
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Слайд -->
+                        </div>
+                        <!-- Обертка слайдов -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                    <!-- Общий контейнер слайдеров -->
+                </div>
+
+                <!-- Загаловок Оставить отзывы -->
+                <div class="review_form_title">
+                   <h2>Оставьте отзыв о товаре</h2>
+                </div>
+                <!-- Загаловок Оставить отзывы -->
+
+                <!-- Форма оставить отзыв -->
+                <form class="review_forms">
+                    <!-- Поле для ввода имени -->
+                    <input placeholder="Ваше имя" type="text">
+                    <!-- Поле для ввода имени конец -->
+
+                    <!-- Поле текста отзыва  -->
+                    <textarea placeholder="Текст"></textarea>
+                    <!-- Поле текста отзыва конец  -->
+
+                    <!-- Кнопка оставить отзыв -->
+                    <button>Оставьте отзыв</button>
+                    <!-- Кнопка оставить отзыв конец -->
+                </form>
+                <!-- Форма оставить отзыв -->
+            </div>
+            <!-- Блок содержимое таба Отзывы -->
+        </div>
+    </section>
+    <!-- Секция вкладок конец -->
+</main>
 
         <!-- Футер  -->
         {% include 'footer.html' %}
         <!-- Футер конец -->
 
         <!-- Окно сообщения -->
-        <div
-            class="position-fixed top-0 right-0 p-3"
-            style="z-index: 5; right: 0; top: 0"
-        >
-            <div
-                id="liveToast"
-                class="toast fade hide"
-                role="alert"
-                aria-live="assertive"
-                aria-atomic="true"
-                data-delay="5000"
-            >
-                <div class="toast-header">
-                    <strong class="mr-auto">Товар добавлен в корзину</strong>
-                    <button
-                        type="button"
-                        class="ml-2 mb-1 close"
-                        data-dismiss="toast"
-                        aria-label="Close"
-                    >
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="toast-body">Ваш товар добавлен в корзину!</div>
+        <div class="position-fixed top-0 right-0 p-3" style="z-index: 5; right: 0; top: 0;">
+          <div id="liveToast" class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <div class="toast-header">
+            <strong class="mr-auto">Товар добавлен в корзину</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
             </div>
-        </div>
-        <!-- Конец окна сообщения -->
+            <div class="toast-body">
+            Ваш товар добавлен в корзину!
+            </div>
+          </div>
+      </div>
+      <!-- Конец окна сообщения -->
 {% endblock %}

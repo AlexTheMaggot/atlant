@@ -5,6 +5,93 @@
     {# Callback #}
     {% include 'blocks/callback.html' %}
     {# End Callback #}
+
+    <!-- Модальное окно узнать цену  -->
+    <div class="modal fade" id="myModal_price">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                        <h2 class="modal_title">Арендовать Рамные леса ЛР-10</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-6"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-6"><input type="text" placeholder="Срок:"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно узнать цену конец -->
+
+    <!-- Модальное окно покупки -->
+    <div class="modal fade" id="myModal_buy">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                        <h2 class="modal_title">Купить Рамные леса ЛР-10</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-12"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно покупки  конец-->
+
+
+    <!-- Модальное окно уззнать цену и условия -->
+    <div class="modal fade" id="myModal_page">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                        <h2 class="modal_title">Купить Рамные леса ЛР-10</h2>
+                        <form action="#" class="modal_form">
+                            <div class="row">
+                                <div class="col-12"><input type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
+                                <div class="col-12"><input type="text" placeholder="Кол-во"></div>
+                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12 checkbox_modal">
+                                    <label for="checkbox">
+                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        Соглашаюсь с политикой обработанных данных</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn_modal_submit">
+                                Узнать цену товара
+                            </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальное окно уззнать цену и условия -->
+
     <!-- Мобильное меню -->
     {% include 'blocks/mobile_menu.html' %}
     <!-- Мобильное меню конец -->
@@ -95,11 +182,24 @@
 
                         <!-- Список Характеристик -->
                         <ul>
-                            <li>Ширина<span>5м</span></li>
-                            <li>Высота<span>20м</span></li>
-                            <li>Макс. высота<span>30м</span></li>
-                            <li>Макс. нагрузка<span> 200кг.м2</span></li>
-                            <li>Кол-во в комплекте<span>3шт (1 рабочий + 2 страховых</span></li>
+                            {% if product.spec_1_ru %}
+                                <li>{{ product.spec_1_ru }}<span>{{ product.val_1_ru }}</span></li>
+                            {% endif %}
+                            {% if product.spec_2_ru %}
+                                <li>{{ product.spec_2_ru }}<span>{{ product.val_2_ru }}</span></li>
+                            {% endif %}
+                            {% if product.spec_3_ru %}
+                                <li>{{ product.spec_3_ru }}<span>{{ product.val_3_ru }}</span></li>
+                            {% endif %}
+                            {% if product.spec_4_ru %}
+                                <li>{{ product.spec_4_ru }}<span>{{ product.val_4_ru }}</span></li>
+                            {% endif %}
+                            {% if product.spec_5_ru %}
+                                <li>{{ product.spec_5_ru }}<span>{{ product.val_5_ru }}</span></li>
+                            {% endif %}
+                            {% if product.spec_6_ru %}
+                                <li>{{ product.spec_6_ru }}<span>{{ product.val_6_ru }}</span></li>
+                            {% endif %}
                         </ul>
                         <!-- Список Характеристик конец-->
                     </div>
@@ -207,13 +307,14 @@
             <!-- Блок содержимое таба Документация -->
             <div class="tabs__item" id="tab_3">
                 <div class="file_row row">
+                    {% if product.file_1 %}
                     <!-- Файл для скачивания документации -->
                     <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                         <!-- Ссылка на файлик документации -->
                         <a href="{{ product.file_1.url }}">
                             <div class="file_item">
                                 <!-- Иконка прайс листа  -->
-                                <img src="{% static 'img/price.svg' %}" alt="">Документация
+                                <img src="{% static 'img/price.svg' %}" alt="">{{ product.file_1_name_ru }}
                                 <!-- Иконка прайс листа конец -->
 
                                 <!-- Кнопка скачать прайс -->
@@ -224,7 +325,7 @@
                         <!-- Ссылка на файлик документации конец -->
                     </div>
                     <!-- Файл для скачивания документации конец -->
-
+                    {% endif %}
                     {% if product.file_2 %}
                     <!-- Файл для скачивания документации -->
                     <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
@@ -232,7 +333,7 @@
                         <a href="{{ product.file_2.url }}">
                             <div class="file_item">
                                 <!-- Иконка прайс листа  -->
-                                <img src="{% static 'img/price.svg' %}" alt="">Документация
+                                <img src="{% static 'img/price.svg' %}" alt="">{{ product.file_2_name_ru }}
                                 <!-- Иконка прайс листа конец -->
 
                                 <!-- Кнопка скачать прайс -->
@@ -244,7 +345,6 @@
                     </div>
                     <!-- Файл для скачивания документации конец -->
                     {% endif %}
-
                     {% if product.file_3 %}
                     <!-- Файл для скачивания документации -->
                     <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
@@ -252,7 +352,7 @@
                         <a href="{{ product.file_3.url }}">
                             <div class="file_item">
                                 <!-- Иконка прайс листа  -->
-                                <img src="{% static 'img/price.svg' %}" alt="">Документация
+                                <img src="{% static 'img/price.svg' %}" alt="">{{ product.file_3_name_ru }}
                                 <!-- Иконка прайс листа конец -->
 
                                 <!-- Кнопка скачать прайс -->
@@ -264,7 +364,6 @@
                     </div>
                     <!-- Файл для скачивания документации конец -->
                     {% endif %}
-
                     {% if product.file_4 %}
                     <!-- Файл для скачивания документации -->
                     <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
@@ -272,7 +371,7 @@
                         <a href="{{ product.file_4.url }}">
                             <div class="file_item">
                                 <!-- Иконка прайс листа  -->
-                                <img src="{% static 'img/price.svg' %}" alt="">Документация
+                                <img src="{% static 'img/price.svg' %}" alt="">{{ product.file_4_name_ru }}
                                 <!-- Иконка прайс листа конец -->
 
                                 <!-- Кнопка скачать прайс -->
@@ -284,7 +383,6 @@
                     </div>
                     <!-- Файл для скачивания документации конец -->
                     {% endif %}
-
                 </div>
             </div>
             <!-- Блок содержимое таба Документация конец -->
@@ -302,28 +400,40 @@
                     <div class="swiper-container">
                         <!-- Обертка слайдов -->
                         <div class="swiper-wrapper">
-                            <!-- Слайд -->
-                            <div class="swiper-slide reviews-slide spad">
+                            {% for review in reviews %}
+                            {% if review.pk|divisibleby:2 %}
+                                <!-- Пункт отзыва -->
                                 <div class="rewiew-slider-item">
-                                    <h3>ООО Самстрой Раджабов</h3>
-                                    <p>
-                                        Значимость этих проблем настолько очевидна, что укрепление и развитие 
-                                        структуры требуют определения и уточнения систем массового участия. Таким
-                                        образом рамки и место обучения кадров требуют определения форм развития.
-                                    </p>
+                                    <!-- Имя пользователя -->
+                                    <h3>{{ review.name }}</h3>
+                                    <!-- Конец имени пользователя -->
+                                    <!-- Текст отзыва пользователя -->
+                                    <p>{{ review.text }}</p>
+                                    <!-- Конец текста отзыва пользователя -->
                                 </div>
+                                <!-- Пункт отзыва конец -->
+                                </div>
+                                <!-- Слайды конец -->
+                            {% else %}
+                                <!-- Слайды -->
+                                <div class="swiper-slide reviews-slide spad">
+                                <!-- Пункт отзыва -->
                                 <div class="rewiew-slider-item">
-                                    <h3>Хамракулов Джасур</h3>
-                                    <p>
-                                        Значимость этих проблем настолько очевидна, что укрелпение и развитие структуры требуют
-                                        определения и уточнения систем массового участия. Таким образом рамки и место обучения кадров требуют
-                                        определения и уточнения форм развития. Не следует , однако забывать, что реализация намеченных плановых заданий 
-                                        спрособствует подготовки 
-                                        и реализации новых предложений
-                                    </p>
+                                    <!-- Имя пользователя -->
+                                    <h3>{{ review.name }}</h3>
+                                    <!-- Конец имени пользователя -->
+                                    <!-- Текст отзыва пользователя -->
+                                    <p>{{ review.text }}</p>
+                                    <!-- Конец текста отзыва пользователя -->
                                 </div>
+                                <!-- Пункт отзыва конец -->
+                            {% endif %}
+                        {% endfor %}
+                        {% if reviews.count|divisibleby:2 %}
+                        {% else %}
                             </div>
-                            <!-- Слайд -->
+                            <!-- Слайды конец -->
+                        {% endif %}
                         </div>
                         <!-- Обертка слайдов -->
                         <div class="swiper-button-prev"></div>

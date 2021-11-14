@@ -7,7 +7,6 @@ from mainapp import models as mainapp_models
 
 def product_list(request):
     context = get_context()
-    reviews = mainapp_models.Reviews.objects.all()
     products = models.Product.objects.all()
     paginator = Paginator(products, 8)
     page_number = request.GET.get('page')
@@ -15,7 +14,6 @@ def product_list(request):
     context.update({
         'products': products,
         'page_obj': page_obj,
-        'reviews': reviews,
     })
     if '/uz/' in request.path:
         template = 'shop/product_list_uz.html'
@@ -26,7 +24,6 @@ def product_list(request):
 
 def category_detail(request, category_slug):
     context = get_context()
-    reviews = mainapp_models.Reviews.objects.all()
     category = get_object_or_404(models.Category, slug=category_slug)
     products = models.Product.objects.all().filter(category_id=category.id)
     paginator = Paginator(products, 8)
@@ -36,7 +33,6 @@ def category_detail(request, category_slug):
         'category': category,
         'products': products,
         'page_obj': page_obj,
-        'reviews': reviews,
     })
     if '/uz/' in request.path:
         template = 'shop/category_detail_uz.html'
@@ -81,7 +77,6 @@ def search(request):
 
 def rent_category_detail(request, rent_category_slug):
     context = get_context()
-    reviews = mainapp_models.Reviews.objects.all()
     rent_category = get_object_or_404(models.RentCategory, slug=rent_category_slug)
     rent_products = models.RentProduct.objects.all().filter(category__slug=rent_category_slug)
     paginator = Paginator(rent_products, 8)
@@ -90,7 +85,6 @@ def rent_category_detail(request, rent_category_slug):
     context.update({
         'rent_category': rent_category,
         'page_obj': page_obj,
-        'reviews': reviews,
     })
     if '/uz/' in request.path:
         template = 'shop/rent_category_detail_uz.html'
@@ -101,11 +95,9 @@ def rent_category_detail(request, rent_category_slug):
 
 def rent_product_detail(request, rent_category_slug, rent_product_slug):
     context = get_context()
-    reviews = mainapp_models.Reviews.objects.all()
     rent_category = get_object_or_404(models.RentCategory, slug=rent_category_slug)
     rent_product = get_object_or_404(models.RentProduct, slug=rent_product_slug)
     context.update({
-        'reviews': reviews,
         'rent_category': rent_category,
         'rent_product': rent_product,
     })

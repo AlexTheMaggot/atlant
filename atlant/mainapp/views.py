@@ -9,11 +9,13 @@ def get_context():
     footer = models.Footer.objects.first()
     categories = Category.objects.all()
     rent_categories = RentCategory.objects.all()
+    reviews = models.Reviews.objects.all()
     context = {
         'header': header,
         'footer': footer,
         'categories': categories,
         'rent_categories': rent_categories,
+        'reviews': reviews,
     }
     return context
 
@@ -21,7 +23,6 @@ def get_context():
 def index(request):
     context = get_context()
     main_page = models.MainPage.objects.first()
-    reviews = models.Reviews.objects.all()
     partners = models.Partner.objects.all()
     worksteps = models.WorkSteps.objects.all()
     products = Product.objects.all()
@@ -29,7 +30,6 @@ def index(request):
     page_obj = paginator.get_page(1)
     context.update({
         'main_page': main_page,
-        'reviews': reviews,
         'partners': partners,
         'worksteps': worksteps,
         'page_obj': page_obj,
@@ -44,10 +44,8 @@ def index(request):
 def about(request):
     context = get_context()
     partners = models.Partner.objects.all()
-    reviews = models.Reviews.objects.all()
     about_page = models.AboutPage.objects.first()
     context.update({
-        'reviews': reviews,
         'partners': partners,
         'about_page': about_page,
     })
@@ -61,9 +59,7 @@ def about(request):
 def rent_terms(request):
     context = get_context()
     rent_terms_page = models.RentTermPage.objects.first()
-    reviews = models.Reviews.objects.all()
     context.update({
-        'reviews': reviews,
         'rent_terms_page': rent_terms_page,
     })
     if '/uz/' in request.path:
@@ -89,10 +85,8 @@ def contacts(request):
 def delivery(request):
     context = get_context()
     delivery_page = models.DeliveryPage.objects.first()
-    reviews = models.Reviews.objects.all()
     context.update({
         'delivery_page': delivery_page,
-        'reviews': reviews,
     })
     if '/uz/' in request.path:
         template = 'mainapp/delivery_uz.html'
