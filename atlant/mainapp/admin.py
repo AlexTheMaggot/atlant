@@ -97,6 +97,16 @@ class ContactPageAdmin(SingleElementModelConfig):
             'callback_text_ru',
             'callback_text_uz',
         ),
+        (
+            'meta_title_ru',
+            'meta_description_ru',
+            'meta_keywords_ru',
+        ),
+        (
+            'meta_title_uz',
+            'meta_description_uz',
+            'meta_keywords_uz',
+        ),
     )
 
 
@@ -107,6 +117,20 @@ class DeliveryPageAdmin(SummernoteModelAdmin):
     def has_delete_permission(self, request, obj=None):
         return False
     summernote_fields = ('text_ru', 'text_uz')
+    fields = (
+        'text_ru',
+        'text_uz',
+        (
+            'meta_title_ru',
+            'meta_description_ru',
+            'meta_keywords_ru',
+        ),
+        (
+            'meta_title_uz',
+            'meta_description_uz',
+            'meta_keywords_uz',
+        ),
+    )
 
 
 class MainPageAdmin(SingleElementModelConfig):
@@ -132,6 +156,16 @@ class MainPageAdmin(SingleElementModelConfig):
             'sold',
             'success',
         ),
+        (
+            'meta_title_ru',
+            'meta_description_ru',
+            'meta_keywords_ru',
+        ),
+        (
+            'meta_title_uz',
+            'meta_description_uz',
+            'meta_keywords_uz',
+        ),
     )
 
 
@@ -146,10 +180,39 @@ class AboutPageAdmin(SingleElementModelConfig):
         'text_2_uz',
         ),
         (
-        'year',
-        'order',
-        'delivery',
-        'repeated',
+            'year',
+            'order',
+            'delivery',
+            'repeated',
+        ),
+        (
+            'meta_title_ru',
+            'meta_description_ru',
+            'meta_keywords_ru',
+        ),
+        (
+            'meta_title_uz',
+            'meta_description_uz',
+            'meta_keywords_uz',
+        ),
+    )
+
+
+class RentTermPageAdmin(SingleElementModelConfig):
+    fields = (
+        'benefits_ru',
+        'benefits_uz',
+        'suggestions_ru',
+        'suggestions_uz',
+        (
+            'meta_title_ru',
+            'meta_description_ru',
+            'meta_keywords_ru',
+        ),
+        (
+            'meta_title_uz',
+            'meta_description_uz',
+            'meta_keywords_uz',
         ),
     )
 
@@ -158,7 +221,7 @@ admin.site.register(models.Header, SingleElementModelConfig)
 admin.site.register(models.Footer, SingleElementModelConfig)
 admin.site.register(models.MainPage, MainPageAdmin)
 admin.site.register(models.ContactPage, ContactPageAdmin)
-admin.site.register(models.RentTermPage, SingleElementModelConfig)
+admin.site.register(models.RentTermPage, RentTermPageAdmin)
 admin.site.register(models.DeliveryPage, DeliveryPageAdmin)
 admin.site.register(models.AboutPage, AboutPageAdmin)
 admin.site.register(models.WorkSteps)
