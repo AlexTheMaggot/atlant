@@ -10,8 +10,7 @@ class Header(models.Model):
     telegram = models.CharField(verbose_name='Telegram', max_length=200)
     instagram = models.CharField(verbose_name='Instagram', max_length=200)
     facebook = models.CharField(verbose_name='Facebook', max_length=200)
-    youtube_1 = models.CharField(verbose_name='Youtube 1', max_length=200)
-    youtube_2 = models.CharField(verbose_name='Youtube 2', max_length=200)
+    youtube = models.CharField(verbose_name='Youtube 1', max_length=200)
 
     def __str__(self):
         return self.address_ru
@@ -25,8 +24,7 @@ class Footer(models.Model):
     telegram = models.CharField(verbose_name='Telegram', max_length=200)
     instagram = models.CharField(verbose_name='Instagram', max_length=200)
     facebook = models.CharField(verbose_name='Facebook', max_length=200)
-    youtube_1 = models.CharField(verbose_name='Youtube 1', max_length=200)
-    youtube_2 = models.CharField(verbose_name='Youtube 2', max_length=200)
+    youtube = models.CharField(verbose_name='Youtube 1', max_length=200)
     worktime_ru = models.CharField(verbose_name='Режим работы на русском', max_length=200)
     worktime_uz = models.CharField(verbose_name='Режим работы на узбекском', max_length=200)
     address_ru = models.CharField(verbose_name='Адрес на русском', max_length=200)
@@ -67,6 +65,12 @@ class MainPage(models.Model):
     client = models.IntegerField(verbose_name='Счетчик клиентов')
     sold = models.IntegerField(verbose_name='Счетчик проданных товаров')
     success = models.IntegerField(verbose_name='Счетчик успешных заказов')
+    meta_title_ru = models.CharField(verbose_name='Meta Title на русском', max_length=200)
+    meta_description_ru = models.TextField(verbose_name='Meta Description на русском')
+    meta_keywords_ru = models.CharField(verbose_name='Meta Keywords на русском', max_length=200)
+    meta_title_uz = models.CharField(verbose_name='Meta Title на узбекском', max_length=200)
+    meta_description_uz = models.TextField(verbose_name='Meta Description на узбекском')
+    meta_keywords_uz = models.CharField(verbose_name='Meta Keywords на узбекском', max_length=200)
 
     def __str__(self):
         return self.first_block_title_ru
@@ -153,6 +157,12 @@ class ContactPage(models.Model):
     address_5_uz = models.CharField(verbose_name='Адрес 5 на узбекском', max_length=200, null=True, blank=True)
     callback_text_ru = models.TextField(verbose_name='Текст обратной связи на русском')
     callback_text_uz = models.TextField(verbose_name='Текст обратной связи на узбекском')
+    meta_title_ru = models.CharField(verbose_name='Meta Title на русском', max_length=200)
+    meta_description_ru = models.TextField(verbose_name='Meta Description на русском')
+    meta_keywords_ru = models.CharField(verbose_name='Meta Keywords на русском', max_length=200)
+    meta_title_uz = models.CharField(verbose_name='Meta Title на узбекском', max_length=200)
+    meta_description_uz = models.TextField(verbose_name='Meta Description на узбекском')
+    meta_keywords_uz = models.CharField(verbose_name='Meta Keywords на узбекском', max_length=200)
 
     def __str__(self):
         return self.phone_1
@@ -167,6 +177,12 @@ class RentTermPage(models.Model):
     benefits_uz = models.TextField(verbose_name='Преимущества аренды на узбекском')
     suggestions_ru = models.TextField(verbose_name='Наши предложения на русском')
     suggestions_uz = models.TextField(verbose_name='Наши предложения на узбекском')
+    meta_title_ru = models.CharField(verbose_name='Meta Title на русском', max_length=200)
+    meta_description_ru = models.TextField(verbose_name='Meta Description на русском')
+    meta_keywords_ru = models.CharField(verbose_name='Meta Keywords на русском', max_length=200)
+    meta_title_uz = models.CharField(verbose_name='Meta Title на узбекском', max_length=200)
+    meta_description_uz = models.TextField(verbose_name='Meta Description на узбекском')
+    meta_keywords_uz = models.CharField(verbose_name='Meta Keywords на узбекском', max_length=200)
 
     def __str__(self):
         return self.benefits_ru
@@ -179,6 +195,12 @@ class RentTermPage(models.Model):
 class DeliveryPage(models.Model):
     text_ru = models.TextField(verbose_name='Текст страницы на русском')
     text_uz = models.TextField(verbose_name='Текст страницы на узбекском')
+    meta_title_ru = models.CharField(verbose_name='Meta Title на русском', max_length=200)
+    meta_description_ru = models.TextField(verbose_name='Meta Description на русском')
+    meta_keywords_ru = models.CharField(verbose_name='Meta Keywords на русском', max_length=200)
+    meta_title_uz = models.CharField(verbose_name='Meta Title на узбекском', max_length=200)
+    meta_description_uz = models.TextField(verbose_name='Meta Description на узбекском')
+    meta_keywords_uz = models.CharField(verbose_name='Meta Keywords на узбекском', max_length=200)
 
     def __str__(self):
         return self.text_ru
@@ -233,6 +255,12 @@ class AboutPage(models.Model):
     order = models.IntegerField(verbose_name='Количество заказов')
     delivery = models.IntegerField(verbose_name='Количество доставок')
     repeated = models.IntegerField(verbose_name='Процент повторных обращений')
+    meta_title_ru = models.CharField(verbose_name='Meta Title на русском', max_length=200)
+    meta_description_ru = models.TextField(verbose_name='Meta Description на русском')
+    meta_keywords_ru = models.CharField(verbose_name='Meta Keywords на русском', max_length=200)
+    meta_title_uz = models.CharField(verbose_name='Meta Title на узбекском', max_length=200)
+    meta_description_uz = models.TextField(verbose_name='Meta Description на узбекском')
+    meta_keywords_uz = models.CharField(verbose_name='Meta Keywords на узбекском', max_length=200)
 
     def __str__(self):
         return self.text_1_ru
