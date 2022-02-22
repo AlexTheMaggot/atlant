@@ -1,6 +1,8 @@
 {% extends 'wrapper.html' %}
 {% load static %}
-{% block title %}Контакты{% endblock %}
+{% block title %}{{ contact_page.meta_title_uz }}{% endblock %}
+{% block description %}{{ contact_page.meta_description_uz }}{% endblock %}
+{% block keywords %}{{ contact_page.meta_keywords_uz }}{% endblock %}
 {% block content %}
     {# Callback #}
     {% include 'blocks/callback.html' %}

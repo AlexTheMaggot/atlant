@@ -1,18 +1,18 @@
 {% extends 'wrapper.html' %}
 {% load static %}
-{% block title %}О компании{% endblock %}
+{% block title %}{{ about_page.meta_title_ru }}{% endblock %}
+{% block description %}{{ about_page.meta_description_ru }}{% endblock %}
+{% block keywords %}{{ about_page.meta_keywords_ru }}{% endblock %}
 {% block content %}
-    {# Callback #}
     {% include 'blocks/callback.html' %}
-    {# End Callback #}
-    <!-- Мобильное меню -->
+
     {% include 'blocks/mobile_menu.html' %}
-    <!-- Мобильное меню конец -->
+
     <!-- Хэдэр -->
     {% include 'header.html' %}
     <!-- Хэдэр конец -->
 
-    <!-- Загаловок страницы и хлебные крошки -->
+        <!-- Загаловок страницы и хлебные крошки -->
     <section class="title_page">
       <!-- Заголовок страницы -->
       <h1>О компании</h1>
@@ -33,10 +33,28 @@
       <!-- Конец хлебных крошек -->
     </section>
     <!-- Загаловок страницы и хлебные крошки конец-->
+
+    <!-- Секция мобильного каталога товаров -->
+    <section class="mobile_catalog">
+        <div class="open_catalog_button">
+            <button>
+                <i class="fas fa-bars"></i>Наши товары
+            </button>
+        </div>
+        <div class="open_search_button">
+            <button>
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </section>
+    <!-- Конец секции мобильного каталога товаров -->
     <!-- Контент страницы "О компании" -->
     <main class="main-content set-bg" data-setbg="{% static 'img/bg_company.png' %}">
       <!-- Секция О компании текст -->
-      <section class="company bg-pstn" data-bgpstn="{% static 'img/arrow_partners_down.png' %}">
+      <section
+        class="company bg-pstn"
+        data-bgpstn="{% static 'img/index/partners/arrow_partners_down.png' %}"
+      >
         <div class="container-fluid spad">
           <div class="row">
             <!-- Блок о компании текст -->
@@ -45,13 +63,7 @@
               <!-- Числовой блок страницы "О компании" -->
               <div class="about_description">
                 <div class="desc_text">
-                    {% if about_page.year < 2 %}
-                    <h3>{{ about_page.year }} год</h3>
-                    {% elif about_page.year < 5 %}
-                    <h3>{{ about_page.year }} года</h3>
-                    {% else %}
-                    <h3>{{ about_page.year }} лет</h3>
-                    {% endif %}
+                  <h3>{{ about_page.year }} года</h3>
                   <p>на рынке</p>
                 </div>
                 <div class="desc_text">
@@ -86,61 +98,22 @@
 
         <!-- Контейнер наши партнеры элементы -->
         <div class="partners_items row">
-          <!-- Наши партнеры элемент  -->
             {% for partner in partners %}
-                <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
-          <!-- Изображение элемента -->
-            <img src="{{ partner.img.url }}" alt="" />
-            <!-- Конец изображения элемента -->
-          </div>
+                <!-- Наши партнеры элемент  -->
+                <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3" >
+                    <!-- Изображение элемента -->
+                    <img src="{{ partner.img.url }}" alt="" />
+                    <!-- Конец изображения элемента -->
+                </div>
+                <!-- Наши партнеры элемент конец -->
             {% endfor %}
-          <!-- Наши партнеры элемент конец -->
         </div>
         <!-- Контейнер наши партнеры элементы конец -->
       </section>
       <!--  Секция наши партнеры конец -->
 
       <!-- Секция отзывов -->
-      <section class="reviews_company spad no-bg">
-        <!-- Заголовок отзывов -->
-        <div class="header-content">
-          <h2>Отзывы</h2>
-        </div>
-        <!-- Заголовок отзывов конец -->
-
-        <!-- Главный контейнер слайдеров -->
-        <div class="swiper-container">
-          <!-- Оболочка слайдов -->
-          <div class="swiper-wrapper">
-            <!-- Слайды -->
-            <div class="swiper-slide reviews-slide spad">
-                {% for review in reviews %}
-                    <!-- Пункт отзыва -->
-                    <div class="rewiew-slider-item">
-                        <!-- Заголовок с именем пользователя -->
-                        <h3>{{ review.name }}</h3>
-                        <!-- Конец заголовок с именем пользователя -->
-                        <!-- Текст отзыва -->
-                        <p>{{ review.text }}</p>
-                        <!-- Конец текста с отзывом -->
-                    </div>
-                    <!-- Пункт отзыва конец -->
-                {% endfor %}
-            </div>
-            <!-- Слайды конец -->
-          </div>
-          <!-- Оболочка слайдов конец -->
-          <!-- Конпки слайдера -->
-          <!-- Кнопка переключения назад -->
-          <div class="swiper-button-prev"></div>
-          <!-- Конец кнопки переключения назад -->
-          <!-- Кнопка переключения вперед -->
-          <div class="swiper-button-next"></div>
-          <!-- Конец кнопки переключения вперед -->
-          <!-- Конец кнопок слайдера -->
-        </div>
-        <!-- Главный контейнер слайдеров конец-->
-      </section>
+      {% include 'blocks/reviews.html' %}
       <!-- Секция отзывов конец -->
 
       <!-- Секция с формой "Есть вопросы?" -->
@@ -196,37 +169,25 @@
       </section>
       <!-- Секция с формой "Есть вопросы?" конец-->
     </main>
-
     <!-- Футер  -->
     {% include 'footer.html' %}
     <!-- Футер конец -->
 
-    <!-- Окно сообщения -->
-    <div
-      class="position-fixed top-0 right-0 p-3"
-      style="z-index: 5; right: 0; top: 0"
-    >
-      <div
-        id="liveToast"
-        class="toast fade hide"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-        data-delay="5000"
-      >
-        <div class="toast-header">
-          <strong class="mr-auto">Товар добавлен в корзину</strong>
-          <button
-            type="button"
-            class="ml-2 mb-1 close"
-            data-dismiss="toast"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="toast-body">Ваш товар добавлен в корзину!</div>
+        <!-- Окно оповещения -->
+        <div class="position-fixed top-0 right-0 p-3" style="z-index: 5; right: 0; top: 0;">
+          <div id="liveToast" class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+           <!-- Контент окна оповещения -->
+            <div class="toast-header">
+                <strong class="mr-auto">Товар добавлен в корзину</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!-- Контент окна оповещения -->
+            <div class="toast-body">
+                Ваш товар добавлен в корзину!
+            </div>
+          </div>
       </div>
-    </div>
-    <!-- Конец окна сообщения -->
+      <!-- Конец окна оповещения -->
 {% endblock %}

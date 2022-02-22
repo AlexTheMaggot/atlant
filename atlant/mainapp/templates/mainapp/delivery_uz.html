@@ -1,6 +1,8 @@
 {% extends 'wrapper.html' %}
 {% load static %}
-{% block title %}Доставка{% endblock %}
+{% block title %}{{ delivery_page.meta_title_uz }}{% endblock %}
+{% block description %}{{ delivery_page.meta_description_uz }}{% endblock %}
+{% block keywords %}{{ delivery_page.meta_keywords_uz }}{% endblock %}
 {% block content %}
     {# Callback #}
     {% include 'blocks/callback.html' %}

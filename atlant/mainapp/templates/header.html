@@ -29,15 +29,17 @@
                 <!-- Языки -->
                 <div class="lang">
                     <!-- Начало ссылок на языки -->
-                    <ul>
-                        {% if '/uz/' in request.path %}
-                            <li><a href="#" id="header_lang_ru">рус</a></li>
+                    {% if '/uz/' in request.path %}
+                        <ul>
+                            <li class=""><a href="#" id="header_lang_ru">рус</a></li>
                             <li class="active-lang"><a href="#" id="header_lang_uz">uzb</a></li>
-                        {% else %}
+                        </ul>
+                    {% else %}
+                        <ul>
                             <li class="active-lang"><a href="#" id="header_lang_ru">рус</a></li>
-                            <li><a href="#" id="header_lang_uz">uzb</a></li>
-                        {% endif %}
-                    </ul>
+                            <li class=""><a href="#" id="header_lang_uz">uzb</a></li>
+                        </ul>
+                    {% endif %}
                     <!-- Конец ссылок на языки -->
                 </div>
                 <!-- Языки конец -->
@@ -64,7 +66,7 @@
                 <!-- Блок с адресом -->
                 <div class="adress">
                     {% if '/uz/' in request.path %}
-                        <p class="adress-header">Bizning manzillar</p>
+                        <p class="adress-header">Bizning manzillarimiz</p>
                         <p>{{ header.address_uz }}</p>
                     {% else %}
                         <p class="adress-header">Наши адреса</p>
@@ -77,11 +79,10 @@
                 <div class="contacts">
                     {% if '/uz/' in request.path %}
                         <p class="contact-header">Savdo bo'limi</p>
-                        <a href="tel:{{ header.phone }}"><span>{{ header.phone }}</span></a>
                     {% else %}
                         <p class="contact-header">Отдел продаж</p>
-                        <a href="tel:{{ header.phone }}"><span>{{ header.phone }}</span></a>
                     {% endif %}
+                    <a href="tel:+998915286430">{{ header.phone }}</a>
                 </div>
                 <!-- Блок с контактами конец -->
 
@@ -91,8 +92,7 @@
                         <li class="telegram"><a href="{{ header.telegram }}"><i class="fab fa-telegram-plane"></i></a></li>
                         <li class="instagram"><a href="{{ header.instagram }}"><i class="fab fa-instagram"></i></a></li>
                         <li class="facebook"><a href="{{ header.facebook }}"><i class="fab fa-facebook-f"></i></a></li>
-                        <li class="youtube"><a href="{{ header.youtube_1 }}"><i class="fab fa-youtube"></i></a></li>
-                        <li class="youtube"><a href="{{ header.youtube_2 }}"><i class="fab fa-youtube"></i></a></li>
+                        <li class="youtube"><a href="{{ header.youtube }}"><i class="fab fa-youtube"></i></a></li>
                     </ul>
                 </div>
                 <!-- Блок с социальными сетями -->
@@ -103,21 +103,19 @@
                 <!-- Начало список ссылок на категории товаров -->
                 <div class="all-category">
                     {% if '/uz/' in request.path %}
-                        <button class="all-category-link" href="#"><span><i class="fas fa-list"></i></span>katalog</button>
+                        <button class="all-category-link"><span><i class="fas fa-list"></i></span>katalog</button>
                     {% else %}
-                        <button class="all-category-link" href="#"><span><i class="fas fa-list"></i></span>каталог товаров</button>
+                        <button class="all-category-link"><span><i class="fas fa-list"></i></span>каталог товаров</button>
                     {% endif %}
                     <!-- Начало ссылок на категории -->
                     <ul>
-                        {% if '/uz/' in request.path %}
-                            {% for category in categories %}
+                        {% for category in categories %}
+                            {% if '/uz/' in request.path %}
                                 <li><a href="{% url 'catalog_uz:category_detail' category.slug %}">{{ category.name_uz }}</a></li>
-                            {% endfor %}
-                        {% else %}
-                            {% for category in categories %}
+                            {% else %}
                                 <li><a href="{% url 'catalog:category_detail' category.slug %}">{{ category.name_ru }}</a></li>
-                            {% endfor %}
-                        {% endif %}
+                            {% endif %}
+                        {% endfor %}
                     </ul>
                     <!-- Конец ссылок на категории -->
                 </div>
@@ -127,25 +125,25 @@
                 <div class="renta-list">
                     <!-- Начало ссылок арендуемых товаров -->
                     <ul>
-                        {% for category in rent_categories %}
+                        {% for rent_category in rent_categories %}
                             <li class="nav__link__elem">
-                                {% if '/uz/' in request.path %}
-                                    <a href="{% url 'rent_uz:rent_category_detail' category.slug %}">{{ category.name_uz }}</a>
-                                {% else %}
-                                    <a href="{% url 'rent:rent_category_detail' category.slug %}">{{ category.name_ru }}</a>
-                                {% endif %}
-                                <!-- Начало выпадающих ссылок -->
-                                <ul>
-                                    {% for product in category.products.all %}
-                                        {% if '/uz/' in request.path %}
-                                            <li class="nav__link__elem"><a href="{% url 'rent_uz:rent_product_detail' category.slug product.slug %}">{{ product.name_uz }}</a></li>
-                                        {% else %}
-                                            <li class="nav__link__elem"><a href="{% url 'rent:rent_product_detail' category.slug product.slug %}">{{ product.name_ru }}</a></li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                                <!-- Конец выпадающих ссылок -->
-                            </li>
+                            {% if '/uz/' in request.path %}
+                                <a href="{% url 'rent_uz:rent_category_detail' rent_category.slug %}">{{ rent_category.name_uz }}</a>
+                            {% else %}
+                                <a href="{% url 'rent:rent_category_detail' rent_category.slug %}">{{ rent_category.name_ru }}</a>
+                            {% endif %}
+                            <!-- Начало выпадающих ссылок -->
+                            <ul class="dropdown_right">
+                                {% for product in rent_category.products.all %}
+                                    {% if '/uz/' in request.path %}
+                                        <li class="nav__link__elem"><a href="{% url 'rent_uz:rent_product_detail' rent_category.slug product.slug %}">{{ product.name_uz }}</a></li>
+                                    {% else %}
+                                        <li class="nav__link__elem"><a href="{% url 'rent:rent_product_detail' rent_category.slug product.slug %}">{{ product.name_ru }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            <!-- Конец выпадающих ссылок -->
+                        </li>
                         {% endfor %}
                     </ul>
                     <!-- Начало ссылок арендуемых товаров -->
@@ -154,13 +152,14 @@
 
                 <!-- Поле поиска -->
                 <div class="search">
+                    <button class="seacrh_btn"><i class="fas fa-search"></i></button>
                     {% if '/uz/' in request.path %}
-                        <form action="{% url 'catalog_uz:search' %}" method="GET">
+                        <form action="{% url 'catalog_uz:search' %}" method="GET" class="form_search">
                     {% else %}
-                        <form action="{% url 'catalog:search' %}" method="GET">
+                        <form action="{% url 'catalog:search' %}" method="GET" class="form_search">
                     {% endif %}
-                        <button><i class="fas fa-search"></i></button>
-                        <input type="search" required name="search">
+                        <input name="search" class="input_search_index" type="search">
+                        <button class="seacrh_btn"><i class="fas fa-search"></i></button>
                     </form>
                 </div>
                 <!-- Поле поиска -->

@@ -1,102 +1,114 @@
 {% extends 'wrapper.html' %}
 {% load static %}
-{% block title %}Index{% endblock %}
+{% block title %}{{ main_page.meta_title_ru }}{% endblock %}
+{% block description %}{{ main_page.meta_description_ru }}{% endblock %}
+{% block keywords %}{{ main_page.meta_keywords_ru }}{% endblock %}
 {% block content %}
-    {# Callback #}
     {% include 'blocks/callback.html' %}
-    {# End Callback #}
-    <!-- Мобильное меню -->
+
     {% include 'blocks/mobile_menu.html' %}
-    <!-- Мобильное меню конец -->
+
     <!-- Хэдэр -->
     {% include 'header.html' %}
     <!-- Хэдэр конец -->
 
     <!-- Секция Баннера -->
-        <section class="banner">
-            <!-- Блок картинка сам Баннер -->
-            <div class="banner-img">
-                <img src="{% static 'img/slayder.png' %}" alt="slayder.png" />
-            </div>
-            <!-- Блок картинка сам Баннер -->
+    <section class="banner">
+        <!-- Блок картинка сам Баннер -->
+        <div class="banner-img">
+            <img src="{% static 'img/slayder.png' %}" alt="slayder.png" />
+        </div>
+        <!-- Блок картинка сам Баннер -->
 
-            <!-- Блок текст баннера -->
-            <div class="banner-content">
-                <h1>{{ main_page.first_block_title_ru }}</h1>
-                <p>{{ main_page.first_block_description_ru }}</p>
-                <!-- Начало ссылки на страницу каталога товаров -->
-                <a href="Catalog.html">перейти</a>
-                <!-- Конец ссылки на страницу каталога товаров -->
-            </div>
-            <!-- Блок текст баннера -->
-        </section>
+        <!-- Блок текст баннера -->
+        <div class="banner-content">
+            <h1>{{ main_page.first_block_title_ru }}</h1>
+            <p>{{ main_page.first_block_description_ru }}</p>
+            <!-- Начало ссылки на страницу каталога товаров -->
+            <a href="{% url 'catalog:product_list' %}">перейти</a>
+            <!-- Конец ссылки на страницу каталога товаров -->
+        </div>
+        <!-- Блок текст баннера -->
+    </section>
     <!-- Секция Баннера конец -->
-
-        <!-- Секция как мы работаем -->
-            <section class="spad container-fluid">
-                <div class="how-work row">
-                    <!-- Заголовок -->
-                    <div class="col-12 header-content">
-                        <h2>Как мы работаем</h2>
-                    </div>
-                    <!-- Конец заголовока -->
-                    {% for workstep in worksteps %}
-                    <!-- Ячейка блока секции "Как мы работаем" -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item">
-                        <div class="how-work-elem">
-                            <img src="{{ workstep.img.url }}" alt=""/>
-                            <p>{{ workstep.name_ru }}</p>
-                        </div>
-                        <div class="how-work-arrow">
-                            <img src="{% static 'img/arrow_work.png' %}" alt="" />
-                        </div>
-                    </div>
-                    <!-- Конец ячейки блока секции "Как мы работаем" -->
-                    {% endfor %}
-                </div>
-            </section>
-            <!-- Секция как мы работаем конец -->
-        <!-- Секция о компании -->
-        <section class="container-fluid spad about-company">
-            <div class="about-company-row row">
-                <!-- Загаловок о компании -->
-                <div class="col-12 header-content">
-                    <h2>О компании</h2>
-                </div>
-                <!-- Загаловок о компании -->
-                <!-- Текс "О компании" -->
-                <div class="company-text col-12">
-                    <img src="{{ main_page.about_img.url }}" alt="" />
-                    <p>{{ main_page.about_par_1_ru }}</p>
-
-                    <!-- Блок счетчик -->
-                    <div class="benefits">
-                        <div class="benefits__inner">
-                            <div class="benefits__element">
-                                <p class="benefits__number">{{ main_page.client }}</p>
-                                <p class="benefits__title">Клиентов</p>
-                            </div>
-                            <div class="benefits__element">
-                                <p class="benefits__number">{{ main_page.sold }}</p>
-                                <p class="benefits__title">Проданных товаров</p>
-                            </div>
-                            <div class="benefits__element">
-                                <p class="benefits__number">{{ main_page.success }}</p>
-                                <p class="benefits__title">
-                                    Успешно выполненных заказов
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Блок счетчик -->
-                    <p>{{ main_page.about_par_2_ru }}</p>
-                </div>
-                <!-- Конец блока с текстом "О компании" -->
+    <!-- Секция мобильного каталога товаров -->
+    <section class="mobile_catalog">
+        <div class="open_catalog_button">
+            <button>
+                <i class="fas fa-bars"></i>Наши товары
+            </button>
+        </div>
+        <div class="open_search_button">
+            <button>
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </section>
+    <!-- Конец секции мобильного каталога товаров -->
+    <!-- Секция как мы работаем -->
+    <section class="spad container-fluid">
+        <div class="how-work row">
+            <!-- Заголовок -->
+            <div class="col-12 header-content">
+                <h2>Как мы работаем</h2>
             </div>
-        </section>
-        <!-- Секция о компании конец -->
+            <!-- Конец заголовока -->
+            {% for workstep in worksteps %}
+            <!-- Ячейка блока секции "Как мы работаем" -->
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 how-work-item">
+                <div class="how-work-elem">
+                    <img src="{{ workstep.img.url }}" alt="1equipment.png" />
+                    <p>{{ workstep.name_ru }}</p>
+                </div>
+                <div class="how-work-arrow">
+                    <img src="{% static 'img/arrow_work.png' %}" alt="" />
+                </div>
+            </div>
+            <!-- Конец ячейки блока секции "Как мы работаем" -->
+            {% endfor %}
+        </div>
+    </section>
+    <!-- Секция как мы работаем конец -->
+    <!-- Секция о компании -->
+    <section class="container-fluid spad about-company">
+        <div class="about-company-row row">
+            <!-- Загаловок о компании -->
+            <div class="col-12 header-content">
+                <h2>О компании</h2>
+            </div>
+            <!-- Загаловок о компании -->
+            <!-- Текс "О компании" -->
+            <div class="company-text col-12">
+                <img src="{{ main_page.about_img.url }}" alt="time_price.png" />
+                <p>{{ main_page.about_par_1_ru }}</p>
+                <!-- Блок счетчик -->
+                <div class="benefits">
+                    <div class="benefits__inner">
+                        <div class="benefits__element">
+                            <p class="benefits__number">{{ main_page.client }}</p>
+                            <p class="benefits__title">Клиентов</p>
+                        </div>
+                        <div class="benefits__element">
+                            <p class="benefits__number">{{ main_page.sold }}</p>
+                            <p class="benefits__title">Проданных товаров</p>
+                        </div>
+                        <div class="benefits__element">
+                            <p class="benefits__number">{{ main_page.success }}</p>
+                            <p class="benefits__title">
+                                Успешно выполненных заказов
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Блок счетчик -->
+                <p>{{ main_page.about_par_2_ru }}</p>
+            </div>
+            <!-- Конец блока с текстом "О компании" -->
+        </div>
+    </section>
+    <!-- Секция о компании конец -->
 
-        <!-- Секция примеры нашец продукции -->
+    <!-- Секция примеры нашец продукции -->
         <section class="spad container-fluid category-tile">
             <!-- Загаловок примеровй нашей продукции -->
             <div class="col-12 header-content right-header">
@@ -111,7 +123,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
                     <!-- Изображение товара -->
                     <div class="cat-img">
-                        <img src="{% static 'img/product_photo_big.png' %}" alt="" />
+                        <img src="{{ product.img_1.url }}" alt="" />
                     </div>
                     <!-- Конец изображение товара -->
                     <!-- Заголовок с названием товара -->
@@ -119,9 +131,9 @@
                     <!-- Конец заголовок с названием товара -->
                     <!-- Характеристики товара -->
                     <ul>
-                        <li>Ширина <span class="category-val">0,9m</span></li>
-                        <li>Длинна <span class="category-val">0,3m</span></li>
-                        <li>Высота <span class="category-val">3m</span></li>
+                        <li>{{ product.spec_1_ru }} <span class="category-val">{{ product.val_1_ru }}</span></li>
+                        <li>{{ product.spec_2_ru }} <span class="category-val">{{ product.val_2_ru }}</span></li>
+                        <li>{{ product.spec_3_ru }} <span class="category-val">{{ product.val_3_ru }}</span></li>
                     </ul>
                     <!-- Конец характеристик товара -->
                     <!-- Кнопка перейти -->
@@ -137,9 +149,11 @@
         </section>
         <!-- Секция примеры нашец продукции конец -->
 
-        {% include 'blocks/reviews.html' %}
+    <!-- Секция отзывов -->
+    {% include 'blocks/reviews.html' %}
+    <!-- Секция отзывов конец -->
 
-        <!-- Секция наши партнеры -->
+    <!-- Секция наши партнеры -->
     <section class="partners_blog container-fluid spad">
         <!-- Загаловок Наши партнеры -->
         <div class="header-content right-header">
@@ -150,11 +164,10 @@
         <!-- Контейнер наши партнеры элементы -->
         <div class="partners_items row">
             {% for partner in partners %}
-            <!-- Наши партнеры элемент  -->
-            <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3"><img src="{{ partner.img.url }}" alt=""></div>
-            <!-- Наши партнеры элемент конец -->
+                <!-- Наши партнеры элемент  -->
+                <div class="partners_item col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3"><img src="{{ partner.img.url }}" alt=""></div>
+                <!-- Наши партнеры элемент конец -->
             {% endfor %}
-            <!-- Элеменет с изображением лого партнера -->
         </div>
         <!-- Контейнер наши партнеры элементы конец -->
     </section>
@@ -162,9 +175,9 @@
 
 
 
-        <!-- Футер  -->
-        {% include 'footer.html' %}
-        <!-- Футер конец -->
+    <!-- Футер  -->
+    {% include 'footer.html' %}
+    <!-- Футер конец -->
 
         <!-- Окно оповещения -->
         <div class="position-fixed top-0 right-0 p-3" style="z-index: 5; right: 0; top: 0;">
@@ -183,4 +196,13 @@
           </div>
       </div>
       <!-- Конец окна оповещения -->
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    let site_side_sec = document.querySelectorAll('section');
+    for (let i = 0; i <= site_side_sec.length - 1; i++) {
+
+        site_side_sec[i].classList.add('site_side_sec' + '_' + i)
+    }
+</script>
 {% endblock %}

@@ -1,46 +1,40 @@
 {% load static %}
-<div class="overlay"></div>
-<section class="mobile_menu">
-    <!-- Логотип в мобильном -->
-    <div class="logo">
-        {% if '/uz/' in request.path %}
-            <a href="{% url 'mainapp_uz:index' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
-        {% else %}
-            <a href="{% url 'mainapp:index' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
-        {% endif %}
-
-    </div>
-    <!-- Логотип в мобильном конец -->
-
-    <!-- Поиск в мобильном -->
-    <div class="mobile_search">
-        {% if '/uz/' in request.path %}
-            <form action="{% url 'catalog_uz:search' %}" method="GET">
-        {% else %}
-            <form action="{% url 'catalog:search' %}" method="GET">
-        {% endif %}
-            <button><i class="fas fa-search"></i></button>
-            <input type="search" required name="search">
-        </form>
-    </div>
-    <!-- Поиск в мобильном конец -->
-
+<!-- Мобильное начало -->
+<section class="mobile_menu" id="target">
     <div class="mobile_cat_nav">
         <!-- Все категории в мобильном -->
+        <div class="mobile_search_control">
+            <div class="mobile_clouse_button">
+                <button>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div class="mobile_search_form">
+                <form action="{% url 'catalog:search' %}" method="GET">
+                    <input name="search" id="search_input_form" type="search">
+                    <button><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
         <div class="mobile_all-product">
-            <a class="mobile_all-product-link" href="#"><span><i class="fas fa-list"></i></span>каталог товаров</a>
-            <button class="open-cat-list"><i class="fas fa-chevron-right"></i></button>
+            <div class="mobile_all-product-link">
+                {% if '/uz/' in request.path %}
+                    <i class="fas fa-list"></i><a href="{% url 'catalog_uz:product_list' %}"><span></span>Katalog</a>
+                {% else %}
+                    <i class="fas fa-list"></i><a href="{% url 'catalog:product_list' %}"><span></span>Каталог товаров</a>
+                {% endif %}
+                <button class="open-cat-list"><span></span><span></span></button>
+            </div>
             <!-- Начало ссылки меню категории товаров -->
             <ul>
-                {% if '/uz/' in request.path %}
-                    {% for category in categories %}
+                {% for category in categories %}
+                    {% if '/uz/' in request.path %}
                         <li><a href="{% url 'catalog_uz:category_detail' category.slug %}">{{ category.name_uz }}</a></li>
-                    {% endfor %}
-                {% else %}
-                    {% for category in categories %}
+                    {% else %}
                         <li><a href="{% url 'catalog:category_detail' category.slug %}">{{ category.name_ru }}</a></li>
-                    {% endfor %}
-                {% endif %}
+                    {% endif %}
+                {% endfor %}
             </ul>
             <!-- Конец ссылки меню категории товаров -->
         </div>
@@ -50,76 +44,101 @@
         <div class="mobile-category-nav">
             <ul>
                 {% for rent_category in rent_categories %}
-                <li class="mobile-nav-elem">
-                    {% if '/uz/' in request.path %}
-                        <a href="{% url 'rent_uz:rent_category_detail' rent_category.slug %}">{{ rent_category.name_uz }}</a>
-                    {% else %}
-                        <a href="{% url 'rent:rent_category_detail' rent_category.slug %}">{{ rent_category.name_ru }}</a>
-                    {% endif %}
-                    <!-- Начало выпадающего списка -->
-                    <ul>
-                        {% for rent_product in rent_category.products.all %}
-                            {% if '/uz/' in request.path %}
-                                <li class="mobile-nav-elem"><a href="{% url 'rent_uz:rent_product_detail' rent_category.slug rent_product.slug %}">{{ rent_product.name_uz }}</a></li>
-                            {% else %}
-                                <li class="mobile-nav-elem"><a href="{% url 'rent:rent_product_detail' rent_category.slug rent_product.slug %}">{{ rent_product.name_ru }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                    <!-- Конец выпадающего списка -->
-                </li>
+                    <li class="mobile-nav-elem">
+                        {% if '/uz/' in request.path %}
+                            <i class="fas fa-hard-hat"></i><a href="{% url 'rent_uz:rent_category_detail' rent_category.slug %}">{{ rent_category.name_uz }}</a>
+                        {% else %}
+                            <i class="fas fa-hard-hat"></i><a href="{% url 'rent:rent_category_detail' rent_category.slug %}">{{ rent_category.name_ru }}</a>
+                        {% endif %}
+                        <ul>
+                            {% for product in rent_category.products.all %}
+                                <li class="mobile-nav-elem">
+                                    {% if '/uz/' in request.path %}
+                                        <a href="{% url 'rent_uz:rent_product_detail' rent_category.slug product.slug %}">{{ product.name_uz }}</a>
+                                    {% else %}
+                                        <a href="{% url 'rent:rent_product_detail' rent_category.slug product.slug %}">{{ product.name_ru }}</a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
         <!-- Навигация арендуемух товаров в мобильном конец -->
     </div>
-    <!-- Навигация в мобильном -->
-    <div class="mobile_nav">
-        <!-- Начало ссылок навигации-->
-        {% if '/uz/' in request.path %}
-            <ul>
-                <li><a href="{% url 'mainapp_uz:about' %}">Kompaniya haqida</a></li>
-                <li><a href="{% url 'mainapp_uz:contacts' %}">Kontaktlar</a></li>
-                <li><a href="{% url 'mainapp_uz:rent_terms' %}">Ijara shartlari</a></li>
-                <li><a href="{% url 'mainapp_uz:delivery' %}">Yetkazib berish</a></li>
-                <li><a href="{% url 'mainapp_uz:services' %}">Xizmatlar</a></li>
-            </ul>
-        {% else %}
-            <ul>
-                <li><a href="{% url 'mainapp:about' %}">О компании</a></li>
-                <li><a href="{% url 'mainapp:contacts' %}">Контакты</a></li>
-                <li><a href="{% url 'mainapp:rent_terms' %}">Условия аренды</a></li>
-                <li><a href="{% url 'mainapp:delivery' %}">Доставка</a></li>
-                <li><a href="{% url 'mainapp:services' %}">Услуги</a></li>
-            </ul>
-        {% endif %}
-        <!-- Конец ссылок навигации -->
-    </div>
-    <!-- навигация в мобильном конец -->
-    <!-- Языки в мобильном  -->
-    <div class="mobile_lang">
-        <!-- Начало ссылки на языки -->
-        <ul>
-            {% if '/uz/' in request.path %}
-                <li><a href="#" id="mob_header_lang_ru">рус</a></li>
-                <li><a href="#" class="active-lang" id="mob_header_lang_uz">uzb</a></li>
-            {% else %}
-                <li><a href="#" class="active-lang" id="mob_header_lang_ru">рус</a></li>
-                <li><a href="#" id="mob_header_lang_uz">uzb</a></li>
-            {% endif %}
-        </ul>
-        <!-- Конец ссылки на языки -->
-    </div>
-    <!-- Языки в мобильном конец -->
-
-    <!-- Кнопка закрыть мобильное меню  -->
-    <div class="menu-clouse">
-        <button class="menu-clouse-button">Закрыть меню</button>
-    </div>
-    <!-- Кнопка закрыть мобильное меню конец -->
 </section>
-<!-- Иконка открытия мобильного меню  -->
-<div class="mobile-button">
-    <button><i class="fas fa-bars"></i></button>
-</div>
-<!-- Иконка открытия мобильного меню конец -->
+<!-- Мобильное меню конец -->
+<!-- Мобильное меню -->
+<section class="adaptive_header">
+    <div class="mobile_header">
+        <div class="mobile_nav_menu">
+            <button class="menu_button ">
+                <span class="menu_button_line first_line"></span>
+                <span class="menu_button_line second_line"></span>
+                <span class="menu_button_line three_line"></span>
+            </button>
+            {% if '/uz/' in request.path %}
+                <ul class="mobile_nav_list">
+                    <li>
+                        <a href="{% url 'mainapp_uz:about' %}">Kompaniya haqida</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mainapp_uz:contacts' %}">Kontaktlar</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mainapp_uz:rent_terms' %}">Ijara shartlari</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mainapp_uz:delivery' %}">Yetkazib berish</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mainapp_uz:services' %}">Xizmatlar</a>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="mobile_nav_list">
+                    <li>
+                        <a href="{% url 'mainapp:about' %}">О компании</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mainapp:contacts' %}">Контакты</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mainapp:rent_terms' %}">Условия аренды</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mainapp:delivery' %}">Доставка</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mainapp:services' %}">Услуги</a>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+        <div class="mobile_lang">
+            <ul>
+                {% if '/uz/' in request.path %}
+                    <li class="mobile_rus_lang"><a href="#" id="mob_header_lang_ru">рус</a></li>
+                    <li class="mobile_uzb_lang active"><a href="#" id="mob_header_lang_uz">uzb</a></li>
+                {% else %}
+                    <li class="mobile_rus_lang  active"><a href="#" id="mob_header_lang_ru">рус</a></li>
+                    <li class="mobile_uzb_lang "><a href="#" id="mob_header_lang_uz">uzb</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="mobile_logo_info">
+        <div class="mobile_logo">
+            <a href="#"><img src="{{ header.logo.url }}" alt=""></a>
+        </div>
+        <div class="mobile_contact_info">
+            {% if '/uz/' in request.path %}
+                <p>Savdo bo'limi telefoni:</p>
+            {% else %}
+                <p>Телефон отдела продаж:</p>
+            {% endif %}
+            <a href="tel:{{ header.phone }}">{{ header.phone }}</a>
+        </div>
+    </div>
+</section>

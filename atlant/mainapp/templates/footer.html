@@ -1,106 +1,81 @@
 {% load static %}
 <footer class="container-fluid footer spad">
-            <div class="row footer-row">
-                <!-- Навигация -->
-                <nav class="footer-nav">
-                    <!-- Ссылки навигации -->
-                    <ul>
-                        {% if '/uz/' in request.path %}
-                            <li><a href="{% url 'mainapp_uz:about' %}">О компании</a></li>
-                            <li><a href="{% url 'mainapp_uz:contacts' %}">Контакты</a></li>
-                            <li><a href="{% url 'mainapp_uz:rent_terms' %}">Условия аренды</a></li>
-                            <li><a href="{% url 'mainapp_uz:delivery' %}">Доставка</a></li>
-                            <li><a href="{% url 'mainapp_uz:services' %}">Услуги</a></li>
-                        {% else %}
-                            <li><a href="{% url 'mainapp:about' %}">О компании</a></li>
-                            <li><a href="{% url 'mainapp:contacts' %}">Контакты</a></li>
-                            <li><a href="{% url 'mainapp:rent_terms' %}">Условия аренды</a></li>
-                            <li><a href="{% url 'mainapp:delivery' %}">Доставка</a></li>
-                            <li><a href="{% url 'mainapp:services' %}">Услуги</a></li>
-                        {% endif %}
-                    </ul>
-                    <!-- Конец ссылок навигации -->
-                </nav>
-                <!-- Навигация конец -->
+    <div class="row footer-row">
+        <!-- Навигация -->
+        <nav class="footer-nav">
+            <!-- Ссылки навигации -->
+            {% if '/uz/' in request.path %}
+                <ul>
+                    <li><a href="{% url 'mainapp_uz:about' %}">Kompaniya haqida</a></li>
+                    <li><a href="{% url 'mainapp_uz:contacts' %}">Kontaktlar</a></li>
+                    <li><a href="{% url 'mainapp_uz:rent_terms' %}">Ijara shartlari</a></li>
+                    <li><a href="{% url 'mainapp_uz:delivery' %}">Yetkazib berish</a></li>
+                    <li><a href="{% url 'mainapp_uz:services' %}">Xizmatlar</a></li>
+                </ul>
+            {% else %}
+                <ul>
+                    <li><a href="{% url 'mainapp:about' %}">О компании</a></li>
+                    <li><a href="{% url 'mainapp:contacts' %}">Контакты</a></li>
+                    <li><a href="{% url 'mainapp:rent_terms' %}">Условия аренды</a></li>
+                    <li><a href="{% url 'mainapp:delivery' %}">Доставка</a></li>
+                    <li><a href="{% url 'mainapp:services' %}">Услуги</a></li>
+                </ul>
+            {% endif %}
+            <!-- Конец ссылок навигации -->
+        </nav>
+        <!-- Навигация конец -->
 
-                <!-- Блок с социальными сетями -->
-                <div class="footer-social">
-                    <!-- Заголовок соц сетей -->
-                    {% if '/uz/' in request.path %}
-                        <p>Мы в социальных сетях:</p>
-                    {% else %}
-                        <p>Мы в социальных сетях:</p>
-                    {% endif %}
-                    <!-- Конец заголовка соц сетей -->
-                    <!-- Ссылки на соц сети -->
-                    <ul>
-                        <li class="telegram">
-                            <a href="{{ footer.telegram }}"
-                                ><i class="fab fa-telegram-plane"></i
-                            ></a>
-                        </li>
-                        <li class="instagram">
-                            <a href="{{ footer.instagram }}"><i class="fab fa-instagram"></i></a>
-                        </li>
-                        <li class="facebook">
-                            <a href="{{ footer.facebook }}"><i class="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li class="youtube">
-                            <a href="{{ footer.youtube_1 }}"><i class="fab fa-youtube"></i></a>
-                        </li>
-                        <li class="youtube">
-                            <a href="{{ footer.youtube_2 }}"><i class="fab fa-youtube"></i></a>
-                        </li>
-                    </ul>
-                    <!-- Конец ссылок на соц сети -->
-                </div>
-                <!-- Блок с социальными сетями конец -->
+        <!-- Блок с социальными сетями -->
+        <div class="footer-social">
+            <!-- Заголовок соц сетей -->
+            <p>Мы в социальных сетях:</p>
+            <!-- Конец заголовка соц сетей -->
+            <!-- Ссылки на соц сети -->
+            <ul>
+                <li class="telegram">
+                    <a href="{{ footer.telegram }}"><i class="fab fa-telegram-plane"></i
+                        ></a>
+                </li>
+                <li class="instagram">
+                    <a href="{{ footer.instagram }}"><i class="fab fa-instagram"></i></a>
+                </li>
+                <li class="facebook">
+                    <a href="{{ footer.facebook }}"><i class="fab fa-facebook-f"></i></a>
+                </li>
+                <li class="youtube">
+                    <a href="{{ footer.youtube }}"><i class="fab fa-youtube"></i></a>
+                </li>
+            </ul>
+            <!-- Конец ссылок на соц сети -->
+        </div>
+        <!-- Блок с социальными сетями конец -->
 
-                <!-- Блок Время работы -->
-                <div class="footer-workTime">
-                    <!-- Начало заголовка режима работы -->
-                    {% if '/uz/' in request.path %}
-                        <p class="workTime-header">Режим работы</p>
-                        <!-- Конец заголовка режима работы -->
-                        <!-- Начало текста время работы -->
-                        <p>{{ footer.worktime_uz }}</p>
-                        <!-- Конец текста время работы -->
-                        <!-- Кнопка вызова модального окна -->
-                        <button type="button" data-toggle="modal" data-target="#myModal">Перезвоните мне</button>
-                    {% else %}
-                        <p class="workTime-header">Режим работы</p>
-                        <!-- Конец заголовка режима работы -->
-                        <!-- Начало текста время работы -->
-                        <p>{{ footer.worktime_ru }}</p>
-                        <!-- Конец текста время работы -->
-                        <!-- Кнопка вызова модального окна -->
-                        <button type="button" data-toggle="modal" data-target="#myModal">Перезвоните мне</button>
-                    {% endif %}
-                    <!-- Конец кнопки вызова модального окна -->
-                </div>
-                <!-- Блок Время работы конец -->
+        <!-- Блок Время работы -->
+        <div class="footer-workTime">
+            <!-- Начало заголовка режима работы -->
+            <p class="workTime-header">Режим работы</p>
+            <!-- Конец заголовка режима работы -->
+            <!-- Начало текста время работы -->
+            <p>{{ footer.worktime_ru }}</p>
+            <!-- Конец текста время работы -->
+            <!-- Кнопка вызова модального окна -->
+            <button type="button" data-toggle="modal" data-target="#myModal">Перезвоните мне</button>
+            <!-- Конец кнопки вызова модального окна -->
+        </div>
+        <!-- Блок Время работы конец -->
 
-                <!-- Блок с контактами -->
-                <div class="footer-contact">
-                    <!-- Заголовок контактов -->
-                    {% if '/uz/' in request.path %}
-                        <p class="footer-contact-header">Контакты:</p>
-                    {% else %}
-                        <p class="footer-contact-header">Контакты:</p>
-                    {% endif %}
-                    <!-- Конец заголовка контактов -->
-                    <!-- Блок номеров телефонов в футере -->
-                    <div class="footer-contact-elem">
-                        <a href="tel:{{ footer.phone }}"
-                            ><i class="fas fa-phone-alt"></i>{{ footer.phone }}</a>
-                            {% if 'uz' in request.path %}
-                                <p><i class="fas fa-map-marker-alt"></i>{{ footer.address_uz }}</p>
-                            {% else %}
-                                <p><i class="fas fa-map-marker-alt"></i>{{ footer.address_ru }}</p>
-                            {% endif %}
-                    </div>
-                    <!-- Конец блока номеров телефонов в футере -->
+        <!-- Блок с контактами -->
+        <div class="footer-contact">
+            <!-- Заголовок контактов -->
+            <p class="footer-contact-header">Контакты:</p>
+            <!-- Конец заголовка контактов -->
+            <!-- Блок номеров телефонов в футере -->
+            <div class="footer-contact-elem">
+                <a href="tel:+998939923471"><i class="fas fa-phone-alt"></i>{{ footer.phone }}</a>
+                    <p><i class="fas fa-map-marker-alt"></i>{{ footer.address_ru }}</p>
                 </div>
-                <!-- Блок с контактами конец -->
+                <!-- Конец блока номеров телефонов в футере -->
             </div>
-        </footer>
+            <!-- Блок с контактами конец -->
+        </div>
+    </footer>
