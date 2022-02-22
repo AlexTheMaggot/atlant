@@ -61,7 +61,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
                         <!-- Картинка товара  -->
                         <div class="cat-img">
-                            <img src="{% static 'img/test.jpg' %}" alt="">
+                            <img src="{{ product.img_1.url }}" alt="">
                         </div>
                         <!-- Картинка товара конец -->
 
@@ -71,9 +71,9 @@
 
                         <!-- Характеристика товара -->
                         <ul>
-                            <li>Ширина <span class="category-val">0,9m</span></li>
-                            <li>Длинна <span class="category-val">0,3m</span></li>
-                            <li>Высота <span class="category-val">3m</span></li>
+                            <li>{{ product.spec_1_uz }} <span class="category-val">{{ product.val_1_uz }}</span></li>
+                            <li>{{ product.spec_2_uz }} <span class="category-val">{{ product.val_2_uz }}</span></li>
+                            <li>{{ product.spec_3_uz }} <span class="category-val">{{ product.val_3_uz }}</span></li>
                         </ul>
                         <!-- Характеристика товара конец -->
 
