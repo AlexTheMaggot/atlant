@@ -133,7 +133,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'mainapp/static')
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mainapp/media')
 
 STATICFILES_DIRS = (
