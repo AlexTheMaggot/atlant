@@ -16,6 +16,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+        ordering = ['-id']
 
 
 class Product(models.Model):
@@ -83,6 +84,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
+        ordering = ['-id']
 
 
 class RentCategory(models.Model):
@@ -113,13 +115,13 @@ class RentProduct(models.Model):
                               upload_to='rent_product_img/', null=True, blank=True)
     img_5 = models.ImageField(verbose_name='Дополнительное изображение товара (960х1280)',
                               upload_to='rent_product_img/', null=True, blank=True)
-    term = models.IntegerField(verbose_name='Срок(в днях)')
-    width = models.IntegerField(verbose_name='Ширина')
-    height = models.IntegerField(verbose_name='Высота')
-    length = models.IntegerField(verbose_name='Длинна')
-    max_height = models.IntegerField(verbose_name='Максимальная высота')
-    max_load = models.IntegerField(verbose_name='Максимальная нагрузка')
-    quantity = models.IntegerField(verbose_name='Количество в комплекте')
+    term = models.CharField(verbose_name='Срок(в днях)', max_length=200)
+    width = models.CharField(verbose_name='Ширина', max_length=200)
+    height = models.CharField(verbose_name='Высота', max_length=200)
+    length = models.CharField(verbose_name='Длинна', max_length=200)
+    max_height = models.CharField(verbose_name='Максимальная высота', max_length=200)
+    max_load = models.CharField(verbose_name='Максимальная нагрузка', max_length=200)
+    quantity = models.CharField(verbose_name='Количество в комплекте', max_length=200)
     material_ru = models.CharField(verbose_name='Материал (на русском)', max_length=200)
     material_uz = models.CharField(verbose_name='Материал (на узбекском)', max_length=200)
     country_ru = models.CharField(verbose_name='Страна производителя (на русском)', max_length=200)
