@@ -58,8 +58,12 @@ def product_detail(request, category_slug, product_slug):
 
 def search(request):
     context = get_context()
-    search_categories = models.Category.objects.all().filter(name_ru__icontains=request.GET.get('search'))
-    products = models.Product.objects.all().filter(name_ru__icontains=request.GET.get('search'))
+    if '/uz/' in request.path:
+        search_categories = models.Category.objects.all().filter(name_uz__icontains=request.GET.get('search'))
+        products = models.Product.objects.all().filter(name_uz__icontains=request.GET.get('search'))
+    else:
+        search_categories = models.Category.objects.all().filter(name_ru__icontains=request.GET.get('search'))
+        products = models.Product.objects.all().filter(name_ru__icontains=request.GET.get('search'))
     paginator = Paginator(products, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
