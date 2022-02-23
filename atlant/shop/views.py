@@ -60,17 +60,23 @@ def search(request):
     context = get_context()
     if '/uz/' in request.path:
         search_categories = models.Category.objects.all().filter(name_uz__icontains=request.GET.get('search'))
-        products = models.Product.objects.all().filter(name_uz__icontains=request.GET.get('search'))
+        search_products = models.Product.objects.all().filter(name_uz__icontains=request.GET.get('search'))
+        search_rent_products = models.RentProduct.objects.all().filter(name_uz__icontains=request.GET.get('search'))
     else:
         search_categories = models.Category.objects.all().filter(name_ru__icontains=request.GET.get('search'))
-        products = models.Product.objects.all().filter(name_ru__icontains=request.GET.get('search'))
-    paginator = Paginator(products, 8)
+        search_products = models.Product.objects.all().filter(name_ru__icontains=request.GET.get('search'))
+        search_rent_products = models.RentProduct.objects.all().filter(name_ru__icontains=request.GET.get('search'))
+    paginator = Paginator(search_products, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    rent_paginator = Paginator(search_rent_products, 8)
+    rent_page_number = request.GET.get('rent_page')
+    rent_page_obj = rent_paginator.get_page(rent_page_number)
     context.update({
         'search_categories': search_categories,
-        'products': products,
+        'search_products': search_products,
         'page_obj': page_obj,
+        'rent_page_obj': rent_page_obj,
     })
     if '/uz/' in request.path:
         template = 'shop/search_uz.html'

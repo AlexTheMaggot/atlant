@@ -79,7 +79,7 @@
 
                         <!-- Ссылка перейти к товару -->
                         <div class="category-button">
-                            <a href="#">перейти</a>
+                            <a href="{% url 'catalog_uz:product_detail' product.category.slug product.slug %}">ket</a>
                         </div>
                         <!-- Ссылка перейти к товару конец -->
                     </div>
@@ -110,6 +110,74 @@
             {% if page_obj.has_next %}
                 <!-- Стрелка для перехода на следующую страницу -->
                 <li><a href="{{ request.path }}?search={{ request.GET.search }}&page={{ page_obj.next_page_number }}">»</a></li>
+                <!-- Конец стрелки для перехода на следующую страницу -->
+            {% endif %}
+        </ul>
+        <!-- Пагинация конец-->
+        <!-- Блок Результаты поиска товаров -->
+        <div class="search_group">
+
+            <!-- Блок найденные товары -->
+            <div class="search_product row category-tile-row category_bg">
+                <!-- Загаловок результата поиска товаров -->
+                <div class="col-12">
+                    <h2 class="search_item_header">Ijara buyumlari topildi</h2>
+                </div>
+                <!-- Загаловок результата поиска товаров -->
+                {% for product in rent_page_obj %}
+                    <!-- Товар -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 category-item">
+                        <!-- Картинка товара  -->
+                        <div class="cat-img">
+                            <img src="{{ product.img_1.url }}" alt="">
+                        </div>
+                        <!-- Картинка товара конец -->
+
+                        <!-- Имя товара -->
+                        <h3>{{ product.name_uz }}</h3>
+                        <!-- Имя товара конец -->
+
+                        <!-- Характеристика товара -->
+                        <ul>
+                            <li>Uzunlik <span class="category-val">{{ product.length }}</span></li>
+                            <li>Kengligi <span class="category-val">{{ product.width }}</span></li>
+                            <li>Balandligi <span class="category-val">{{ product.height }}</span></li>
+                        </ul>
+                        <!-- Характеристика товара конец -->
+
+                        <!-- Ссылка перейти к товару -->
+                        <div class="category-button">
+                            <a href="{% url 'rent:rent_product_detail' product.category.slug product.slug %}">ket</a>
+                        </div>
+                        <!-- Ссылка перейти к товару конец -->
+                    </div>
+                    <!-- Товар конец-->
+                {% endfor %}
+            </div>
+            <!-- Блок найденные товары -->
+        </div>
+        <!-- Блок Результаты поиска товаров -->
+        <!-- Пагинация -->
+        <ul class="pagination">
+            {% if rent_page_obj.has_previous %}
+                <!-- Стрелка для перехода на предыдущую страницу -->
+                <li><a href="{{ request.path }}?search={{ request.GET.search }}&rent_page={{ rent_page_obj.previous_page_number }}">«</a></li>
+                <!-- Конец стрелки для перехода на предыдущую страницу -->
+            {% endif %}
+            {% for page_number in rent_page_obj.paginator.page_range %}
+                {% if page_number == page_obj.number %}
+                    <!-- Ссылка на которой находиться пользователь -->
+                    <li><a class="active" href="#">{{ page_number }}</a></li>
+                    <!-- Конец ссылки на которой находится пользователь -->
+                {% else %}
+                    <!-- Ссылка на другую страницу -->
+                    <li><a href="{{ request.path }}?search={{ request.GET.search }}&rent_page={{ page_number }}">{{ page_number }}</a></li>
+                    <!-- Конец ссылки на другую страницу -->
+                {% endif %}
+            {% endfor %}
+            {% if rent_page_obj.has_next %}
+                <!-- Стрелка для перехода на следующую страницу -->
+                <li><a href="{{ request.path }}?search={{ request.GET.search }}&rent_page={{ rent_page_obj.next_page_number }}">»</a></li>
                 <!-- Конец стрелки для перехода на следующую страницу -->
             {% endif %}
         </ul>
