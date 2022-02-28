@@ -1,0 +1,16 @@
+<section class="mobile_catalog">
+    <div class="open_catalog_button">
+        <button>
+            {% if '/uz/' in request.path %}
+                <i class="fas fa-bars"></i>Bizning mahsulotlarimiz
+            {% else %}
+                <i class="fas fa-bars"></i>Наши товары
+            {% endif %}
+        </button>
+    </div>
+    <div class="open_search_button">
+        <button>
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+</section>
