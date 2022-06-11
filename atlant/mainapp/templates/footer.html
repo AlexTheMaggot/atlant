@@ -28,7 +28,11 @@
         <!-- Блок с социальными сетями -->
         <div class="footer-social">
             <!-- Заголовок соц сетей -->
-            <p>Мы в социальных сетях:</p>
+            {% if '/uz/' in request.path %}
+                <p>Biz ijtimoiy tarmoqlardamiz:</p>
+            {% else %}
+                <p>Мы в социальных сетях:</p>
+            {% endif %}
             <!-- Конец заголовка соц сетей -->
             <!-- Ссылки на соц сети -->
             <ul>
@@ -53,29 +57,53 @@
         <!-- Блок Время работы -->
         <div class="footer-workTime">
             <!-- Начало заголовка режима работы -->
-            <p class="workTime-header">Режим работы</p>
-            <!-- Конец заголовка режима работы -->
-            <!-- Начало текста время работы -->
-            <p>{{ footer.worktime_ru }}</p>
-            <!-- Конец текста время работы -->
-            <!-- Кнопка вызова модального окна -->
-            <button type="button" data-toggle="modal" data-target="#myModal">Перезвоните мне</button>
-            <!-- Конец кнопки вызова модального окна -->
+            {% if '/uz/' in request.path %}
+                <p class="workTime-header">Ish tartibi</p>
+                <!-- Конец заголовка режима работы -->
+                <!-- Начало текста время работы -->
+                <p>{{ footer.worktime_uz }}</p>
+                <!-- Конец текста время работы -->
+                <!-- Кнопка вызова модального окна -->
+                <button type="button" data-toggle="modal" data-target="#myModal">Menga qo'ng'iroq qiling</button>
+                <!-- Конец кнопки вызова модального окна -->
+            {% else %}
+                <p class="workTime-header">Режим работы</p>
+                <!-- Конец заголовка режима работы -->
+                <!-- Начало текста время работы -->
+                <p>{{ footer.worktime_ru }}</p>
+                <!-- Конец текста время работы -->
+                <!-- Кнопка вызова модального окна -->
+                <button type="button" data-toggle="modal" data-target="#myModal">Перезвоните мне</button>
+                <!-- Конец кнопки вызова модального окна -->
+            {% endif %}
         </div>
         <!-- Блок Время работы конец -->
 
         <!-- Блок с контактами -->
         <div class="footer-contact">
             <!-- Заголовок контактов -->
-            <p class="footer-contact-header">Контакты:</p>
-            <!-- Конец заголовка контактов -->
-            <!-- Блок номеров телефонов в футере -->
-            <div class="footer-contact-elem">
-                <a href="tel:+998939923471"><i class="fas fa-phone-alt"></i>{{ footer.phone }}</a>
-                    <p><i class="fas fa-map-marker-alt"></i>{{ footer.address_ru }}</p>
+            {% if '/uz/' in request.path %}
+                <p class="footer-contact-header">Kontaktlar:</p>
+                <!-- Конец заголовка контактов -->
+                <!-- Блок номеров телефонов в футере -->
+                <div class="footer-contact-elem">
+                    <a href="tel:+998939923471"><i class="fas fa-phone-alt"></i>{{ footer.phone }}</a>
+                        <p><i class="fas fa-map-marker-alt"></i>{{ footer.address_uz }}</p>
+                    </div>
+                    <!-- Конец блока номеров телефонов в футере -->
                 </div>
-                <!-- Конец блока номеров телефонов в футере -->
-            </div>
-            <!-- Блок с контактами конец -->
+                <!-- Блок с контактами конец -->
+            {% else %}
+                <p class="footer-contact-header">Контакты:</p>
+                <!-- Конец заголовка контактов -->
+                <!-- Блок номеров телефонов в футере -->
+                <div class="footer-contact-elem">
+                    <a href="tel:+998939923471"><i class="fas fa-phone-alt"></i>{{ footer.phone }}</a>
+                        <p><i class="fas fa-map-marker-alt"></i>{{ footer.address_ru }}</p>
+                    </div>
+                    <!-- Конец блока номеров телефонов в футере -->
+                </div>
+                <!-- Блок с контактами конец -->
+            {% endif %}
         </div>
     </footer>
