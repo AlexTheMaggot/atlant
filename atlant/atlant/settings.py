@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import django.db.models
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -139,3 +141,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mainapp/media')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'no-reply@atlant-group.uz'
+EMAIL_HOST_PASSWORD = 'jqmjbdkiexddzhdp'
+EMAIL_USE_SSL = False
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
