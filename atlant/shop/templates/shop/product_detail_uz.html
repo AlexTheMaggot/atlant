@@ -11,17 +11,20 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                        <h2 class="modal_title">Арендовать Рамные леса ЛР-10</h2>
-                        <form action="#" class="modal_form">
+                        <h2 class="modal_title">Арендовать {{ product.name_uz }}</h2>
+                        <form action="{% url 'mainapp:product_order' %}" method="POST" class="modal_form">
+                            {% csrf_token %}
+                            <input type="hidden" name="lang" value="uz">
+                            <input type="hidden" name="type" value="rent">
                             <div class="row">
-                                <div class="col-12"><input type="text" placeholder="Имя"></div>
-                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
-                                <div class="col-6"><input type="text" placeholder="Кол-во"></div>
-                                <div class="col-6"><input type="text" placeholder="Срок:"></div>
-                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12"><input name="name" required type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input name="phone" required type="tel" placeholder="Тел:"></div>
+                                <div class="col-6"><input name="quantity" type="text" placeholder="Кол-во"></div>
+                                <div class="col-6"><input name="time" type="text" placeholder="Срок:"></div>
+                                <div class="col-12"><textarea name="text" placeholder="Коментарии"></textarea></div>
                                 <div class="col-12 checkbox_modal">
                                     <label for="checkbox">
-                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        <input required id="checkbox" class="checkbox_input" type="checkbox">
                                         Соглашаюсь с политикой обработанных данных</label>
                                 </div>
                             </div>
@@ -40,16 +43,19 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                        <h2 class="modal_title">Купить Рамные леса ЛР-10</h2>
-                        <form action="#" class="modal_form">
+                        <h2 class="modal_title">Купить {{ product.name_uz }}</h2>
+                        <form action="{% url 'mainapp:product_order' %}" method="POST" class="modal_form">
+                            {% csrf_token %}
+                            <input type="hidden" name="lang" value="uz">
+                            <input type="hidden" name="type" value="buy">
                             <div class="row">
-                                <div class="col-12"><input type="text" placeholder="Имя"></div>
-                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
-                                <div class="col-12"><input type="text" placeholder="Кол-во"></div>
-                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12"><input name="name" required type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input name="phone" required type="tel" placeholder="Тел:"></div>
+                                <div class="col-12"><input name="quantity" type="text" placeholder="Кол-во"></div>
+                                <div class="col-12"><textarea name="text" placeholder="Коментарии"></textarea></div>
                                 <div class="col-12 checkbox_modal">
                                     <label for="checkbox">
-                                        <input id="checkbox" class="checkbox_input" type="checkbox">
+                                        <input id="checkbox" required class="checkbox_input" type="checkbox">
                                         Соглашаюсь с политикой обработанных данных</label>
                                 </div>
                             </div>
@@ -64,18 +70,21 @@
     <!-- Модальное окно покупки  конец-->
 
 
-    <!-- Модальное окно уззнать цену и условия -->
+    <!-- Модальное окно узнать цену и условия -->
     <div class="modal fade" id="myModal_page">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                        <h2 class="modal_title">Купить Рамные леса ЛР-10</h2>
-                        <form action="#" class="modal_form">
+                        <h2 class="modal_title">Купить {{ product.name_uz }}</h2>
+                        <form action="{% url 'mainapp:product_order' %}" method="POST" class="modal_form">
+                            {% csrf_token %}
+                            <input type="hidden" name="lang" value="uz">
+                            <input type="hidden" name="type" value="ask">
                             <div class="row">
-                                <div class="col-12"><input type="text" placeholder="Имя"></div>
-                                <div class="col-12"><input type="tel" placeholder="Тел:"></div>
-                                <div class="col-12"><input type="text" placeholder="Кол-во"></div>
-                                <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                <div class="col-12"><input name="name" required type="text" placeholder="Имя"></div>
+                                <div class="col-12"><input name="phone" required type="tel" placeholder="Тел:"></div>
+                                <div class="col-12"><input name="quantity" type="text" placeholder="Кол-во"></div>
+                                <div class="col-12"><textarea name="text" placeholder="Коментарии"></textarea></div>
                                 <div class="col-12 checkbox_modal">
                                     <label for="checkbox">
                                         <input id="checkbox" class="checkbox_input" type="checkbox">
