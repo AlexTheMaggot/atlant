@@ -257,38 +257,7 @@
         <!-- Секция отзывов конец -->
 
         <!-- Секция с формой "Есть вопросы?" -->
-        <section class="form set-bg" data-setbg="{% static 'img/bg_leave.png' %}">
-            <div class="container-fluid spad">
-                <div class="row">
-                    <form class="form_container form_cont set-bg"  data-setbg="{% static 'img/bg_blur.png' %}" action="#">
-                        <!-- Загаловок форм -->
-                        <h3>Есть вопросы?! Пишите нам!</h3>
-                        <!-- Загаловок форм конец -->
-
-                        <!-- Поле для имени -->
-                        <input class="form_input" type="text" placeholder="Ваше имя">
-                        <!-- Поле для имени конец -->
-
-                        <!-- Поле для телефона -->
-                        <input class="form_input" type="tel" placeholder="Номер телефона">
-                        <!-- Поле для телефона конец -->
-
-                        <!-- Поле текста для вопроса -->
-                        <textarea class="textarea_input" name="message" placeholder="Текст вопроса:"></textarea>
-                        <!-- Поле текста для вопроса конец -->
-
-                        <!-- Блок отправки -->
-                        <div class="submit_block">
-                            <div class="checkbox_item">
-                                <label for="checkbox_page"><input id="checkbox_page" class="checkbox_input" type="checkbox">Соглашаюсь с политикой обработанных данных</label>
-                            </div>
-                            <button class="btn_submit" type="submit">Отправить</button>
-                        </div>
-                        <!-- Блок отправки конец -->
-                    </form>
-                </div>
-            </div>
-        </section>
+        {% include 'blocks/question_form.html' %}
         <!-- Секция с формой "Есть вопросы?" конец-->
 
 
@@ -318,16 +287,19 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
-                            <h2 class="modal_title">Рамные леса ЛР-10</h2>
-                            <form action="#" class="modal_form">
+                            <h2 class="modal_title">{{ rent_product.name_uz }}</h2>
+                            <form action="{% url 'mainapp:rent_order' %}" method="POST" class="modal_form">
+                                {% csrf_token %}
+                                <input type="hidden" name="lang" value="uz">
+                                <input type="hidden" name="rent_product" value="{{ rent_product.name_uz }}">
                                 <div class="row">
-                                    <div class="col-12"><input type="text" placeholder="Имя"></div>
-                                    <div class="col-12"><input type="tel" placeholder="Тел:"></div>
-                                    <div class="col-12"><input type="text" placeholder="Кол-во"></div>
-                                    <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                                    <div class="col-12"><input name="name" required type="text" placeholder="Имя"></div>
+                                    <div class="col-12"><input name="phone" required type="tel" placeholder="Тел:"></div>
+                                    <div class="col-12"><input name="quantity" type="text" placeholder="Кол-во"></div>
+                                    <div class="col-12"><textarea name="text" placeholder="Коментарии"></textarea></div>
                                     <div class="col-12 checkbox_modal">
                                         <label for="checkbox">
-                                            <input id="checkbox" class="checkbox_input" type="checkbox">
+                                            <input id="checkbox" required class="checkbox_input" type="checkbox">
                                             Соглашаюсь с политикой обработанных данных</label>
                                     </div>
                                 </div>
