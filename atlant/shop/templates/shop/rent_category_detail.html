@@ -226,38 +226,7 @@
     </section>
     <!--  Секция наши партнеры конец -->
         <!-- Секция с формой "Есть вопросы?" -->
-        <section class="form set-bg" data-setbg="{% static 'img/bg_leave.png' %}">
-            <div class="container-fluid spad">
-                <div class="row">
-                    <form class="form_container form_cont set-bg"  data-setbg="{% static 'img/bg_blur.png' %}" action="#">
-                        <!-- Загаловок форм -->
-                        <h3>Есть вопросы?! Пишите нам!</h3>
-                        <!-- Загаловок форм конец -->
-
-                        <!-- Поле для имени -->
-                        <input class="form_input" type="text" placeholder="Ваше имя">
-                        <!-- Поле для имени конец -->
-
-                        <!-- Поле для телефона -->
-                        <input class="form_input" type="tel" placeholder="Номер телефона">
-                        <!-- Поле для телефона конец -->
-
-                        <!-- Поле текста для вопроса -->
-                        <textarea class="textarea_input" name="message" placeholder="Текст вопроса:"></textarea>
-                        <!-- Поле текста для вопроса конец -->
-
-                        <!-- Блок отправки -->
-                        <div class="submit_block">
-                            <div class="checkbox_item">
-                                <label for="checkbox_page"><input id="checkbox_page" class="checkbox_input" type="checkbox">Соглашаюсь с политикой обработанных данных</label>
-                            </div>
-                            <button class="btn_submit" type="submit">Отправить</button>
-                        </div>
-                        <!-- Блок отправки конец -->
-                    </form>
-                </div>
-            </div>
-        </section>
+        {% include 'blocks/question_form.html' %}
         <!-- Секция с формой "Есть вопросы?" конец-->
     </main>
 
