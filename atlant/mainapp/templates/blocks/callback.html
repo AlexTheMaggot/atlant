@@ -12,16 +12,22 @@
             <!-- Начало контента модального окна -->
             <div class="modal-body">
                 <h2 class="modal_title">Пожалуйста, заполните поля для обратной связи с Вами</h2>
-                <form action="#" class="modal_form">
+                <form action="{% url 'mainapp:callback_send' %}" method="POST" class="modal_form">
                     <div class="row">
-                        <div class="col-12"><input type="text" placeholder="Имя"></div>
-                        <div class="col-12"><input type="tel" placeholder="Тел:"></div>
-                        <div class="col-6"><input type="text" placeholder="Кол-во"></div>
-                        <div class="col-6"><input type="text" placeholder="Срок:"></div>
-                        <div class="col-12"><textarea placeholder="Коментарии"></textarea></div>
+                        {% csrf_token %}
+                        {% if '/uz/' in request.path %}
+                            <input type="hidden" name="lang" value="uz">
+                        {% else %}
+                            <input type="hidden" name="lang" value="ru">
+                        {% endif %}
+                        <div class="col-12"><input name="name" required type="text" placeholder="Имя"></div>
+                        <div class="col-12"><input name="phone" required type="tel" placeholder="Тел:"></div>
+                        <div class="col-6"><input name="quantity" type="text" placeholder="Кол-во"></div>
+                        <div class="col-6"><input name="time" type="text" placeholder="Срок:"></div>
+                        <div class="col-12"><textarea name="text" placeholder="Коментарии"></textarea></div>
                         <div class="col-12 checkbox_modal">
                             <label for="checkbox">
-                                <input id="checkbox" class="checkbox_input" type="checkbox">
+                                <input id="checkbox" required class="checkbox_input" type="checkbox">
                                 Соглашаюсь с политикой обработанных данных</label>
                         </div>
                     </div>
