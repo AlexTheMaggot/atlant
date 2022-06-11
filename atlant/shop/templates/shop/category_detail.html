@@ -107,63 +107,7 @@
             <!-- Секция категории товаров конец -->
 
             <!-- Секция Call center (Форма обратной связи) -->
-            <section class="call_center set-bg container-fluid" data-setbg="{% static 'img/bg_callcentre.png' %}">
-                <div class="call_center_wrap row">
-                    <div class="call_center_container">
-                        <!-- Форма обратной связи -->
-                        <form action="#" class="call_center_forms">
-                            <!-- Заголовок формы обратной связи -->
-                            <h3 class="call_center_title">
-                                Не нашли нужный товар или вам требуется
-                                консультация?
-                            </h3>
-                            <!-- Конец заголовка формы обратной связи -->
-                            <!-- Текст формы обратной связи -->
-                            <span
-                                >Отправьте Ваши контактные данные и наши
-                                специалисты свяжутся с Вами в удобное для Вас
-                                время</span
-                            >
-                            <!-- Конец формы обратной связи -->
-                            <!-- Форма для ввода времени для звонки -->
-                            <input
-                                class="form_item"
-                                type="text"
-                                placeholder="Удобное время для звонка"
-                            />
-                            <!-- Конец формы для ввода времени для звонки -->
-                            <!-- Форма для ввода имени -->
-                            <input
-                                class="form_item"
-                                type="text"
-                                placeholder="Ваше имя"
-                            />
-                            <!-- Конец формы для ввода имени -->
-                            <!-- Форма для ввода номера телефона -->
-                            <input
-                                class="form_item"
-                                type="tel"
-                                placeholder="Номер телефона"
-                            />
-                            <!-- Форма для ввода номера телефона -->
-                            <textarea
-                                class="form__textarea"
-                                name="call_center_form"
-                                placeholder="Текст вопроса"
-                            ></textarea>
-                            <!-- Конец формы для ввода номера телефона -->
-                            <!-- Кнопка для отправки данных с формы -->
-                            <div class="bnt_call_center">
-                                <button class="call_center_btn" type="submit">
-                                    Отправить
-                                </button>
-                            </div>
-                            <!-- Конец кнопки для отправки данных с формы -->
-                        </form>
-                        <!-- Конец формы обратной связи -->
-                    </div>
-                </div>
-            </section>
+        {% include 'blocks/not_found_form.html' %}
             <!-- Секция Call center конец (Форма обратной связи) -->
 
             <!-- Секция как мы работаем -->
