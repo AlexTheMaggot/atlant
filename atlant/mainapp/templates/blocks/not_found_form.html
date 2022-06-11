@@ -1,0 +1,69 @@
+{% load static %}
+<section class="call_center set-bg container-fluid" data-setbg="{% static 'img/bg_callcentre.png' %}">
+    <div class="call_center_wrap row">
+        <div class="call_center_container">
+            <!-- Форма обратной связи -->
+            <form action="{% url 'mainapp:not_found_send' %}" method="POST" class="call_center_forms">
+                {% csrf_token %}
+                {% if '/uz/' in request.path %}
+                    <input type="hidden" name="lang" value="uz">
+                {% else %}
+                    <input type="hidden" name="lang" value="ru">
+                {% endif %}
+                <!-- Заголовок формы обратной связи -->
+                <h3 class="call_center_title">
+                    Не нашли нужный товар или вам требуется
+                    консультация?
+                </h3>
+                <!-- Конец заголовка формы обратной связи -->
+                <!-- Текст формы обратной связи -->
+                <span
+                    >Отправьте Ваши контактные данные и наши
+                    специалисты свяжутся с Вами в удобное для Вас
+                    время</span
+                >
+                <!-- Конец формы обратной связи -->
+                <!-- Форма для ввода времени для звонки -->
+                <input
+                        name="time"
+                    class="form_item"
+                    type="text"
+                    placeholder="Удобное время для звонка"
+                />
+                <!-- Конец формы для ввода времени для звонки -->
+                <!-- Форма для ввода имени -->
+                <input
+                        name="name"
+                        required
+                    class="form_item"
+                    type="text"
+                    placeholder="Ваше имя"
+                />
+                <!-- Конец формы для ввода имени -->
+                <!-- Форма для ввода номера телефона -->
+                <input
+                        name="phone"
+                        required
+                    class="form_item"
+                    type="tel"
+                    placeholder="Номер телефона"
+                />
+                <!-- Форма для ввода номера телефона -->
+                <textarea
+                    class="form__textarea"
+                    name="text"
+                    placeholder="Текст вопроса"
+                ></textarea>
+                <!-- Конец формы для ввода номера телефона -->
+                <!-- Кнопка для отправки данных с формы -->
+                <div class="bnt_call_center">
+                    <button class="call_center_btn" type="submit">
+                        Отправить
+                    </button>
+                </div>
+                <!-- Конец кнопки для отправки данных с формы -->
+            </form>
+            <!-- Конец формы обратной связи -->
+        </div>
+    </div>
+</section>
